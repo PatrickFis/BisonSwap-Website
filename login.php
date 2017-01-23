@@ -124,46 +124,9 @@ $(document).ready(function () {
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <?php include_once("analyticstracking.php") ?>
-
-  <nav class="navbar navbar-inverse">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Brentwood Leadership</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="Main.php">Home</a></li>
-          <li><a href="calendar.php">Calendar</a></li>
-          <li><a href="contact.php">Contact Us</a></li>
-          <li><a href="donate.php">Donate</a></li>
-          <li><a href="sponsor.php">Sponsors</a></li>
-          <?php if(!isset($_SESSION['user'])): ?> <!-- Hides these two buttons if logged in. -->
-          <li class = "active"><a href="login.php">Login</a></li>
-          <li><a href="register.php">Register</a></li>
-        <?php endif; ?>
-        </ul>
-        <?php if(isset($_SESSION['user'])): ?>
-          <ul class="nav navbar-nav navbar-right">
-
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <span class="glyphicon glyphicon-user"></span>&nbsp;Hi <?php echo $userRow['email']; ?>&nbsp;<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></li>
-                </ul>
-              </li>
-            </ul>
-          <?php endif; ?>
-        </div>
-        </div>
-        </nav>
+  <?php
+    include 'navbar.php';
+   ?>
 
   <div class="container">
 
