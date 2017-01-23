@@ -41,12 +41,12 @@ if( isset($_POST['btn-login']) ) {
 
     $password = hash('sha256', $pass); // password hashing using SHA256
 
-    $res=mysql_query("SELECT idUsers, username, password FROM Users WHERE email ='$email'");
+    $res=mysql_query("SELECT idusers, email, password FROM users WHERE email ='$email'");
     $row=mysql_fetch_array($res);
     $count = mysql_num_rows($res); // if uname/pass correct it returns must be 1 row
 
     if( $count == 1 && $row['password']==$password ) {
-      $_SESSION['user'] = $row['idUsers'];
+      $_SESSION['user'] = $row['idusers'];
       header("Location: Main.php");
     } else {
       $errMSG = "Incorrect Credentials, Try again...";
@@ -235,7 +235,7 @@ $(document).ready(function () {
   <!-- Footer -->
   <div class="navbar navbar-default navbar-fixed-bottom">
       <div class="container">
-        <p class="navbar-text pull-left">© 2016 - All rights reserved – Williamson County Chamber Foundation, an affiliate of the Williamson County Chamber of Commerce</p>
+        <p class="navbar-text pull-left">© 2016 - All rights reserved</p>
       </div>
   </div>
 </body>
