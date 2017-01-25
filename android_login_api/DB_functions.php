@@ -23,11 +23,11 @@ class DB_Functions {
     public function storeUser($name, $email, $password) {
         $uuid = uniqid('', true);
         $hash = $this->hashSSHA($password);
-        $encrypted_password = $hash["encrypted"]; // encrypted password
-        $salt = $hash["salt"]; // salt
+        $encrypted_password = $hash; // encrypted password
+        // $salt = $hash["salt"]; // salt
 
-        $stmt = $this->conn->prepare("INSERT INTO users(unique_id, name, email, encrypted_password, salt, created_at) VALUES(?, ?, ?, ?, ?, NOW())");
-        $stmt->bind_param("sssss", $uuid, $name, $email, $encrypted_password, $salt);
+        $stmt = $this->conn->prepare("INSERT INTO users(email, password) VALUES($email, $encrypted_password)");
+        $stmt->bind_param("sssss", $email, $encrypted_password);
         $result = $stmt->execute();
         $stmt->close();
 
@@ -75,7 +75,7 @@ class DB_Functions {
     /**
      * Check user is existed or not
      */
-    public function isUserExisted($email) {
+    public function userExists($email) {
         $stmt = $this->conn->prepare("SELECT email from users WHERE email = ?");
 
         $stmt->bind_param("s", $email);

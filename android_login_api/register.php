@@ -10,12 +10,12 @@ $response = array("error" => FALSE);
 if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])) {
 
     // receiving the post params
-    $name = $_POST['name'];
+    // $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     // check if user is already existed with the same email
-    if ($db->isUserExisted($email)) {
+    if ($db->userExists($email)) {
         // user already existed
         $response["error"] = TRUE;
         $response["error_msg"] = "User already existed with " . $email;
