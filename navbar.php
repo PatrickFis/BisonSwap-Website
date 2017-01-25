@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="active mobile-hidden" href="./"><img border="0" alt="home" src="../img/logo-lq.png" width="238" height="50"/></a>
+      <a class="active mobile-hidden" href="./"><img border="0" alt="home" src="../img/logo-lq.png" width="100" height="50"/></a>
       
     </div>
       
@@ -50,6 +50,14 @@
           </ul>
         </li>
         <li><a href="contact.php">Link 6</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="upload-youtube-video.php">Sub Link 1</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="create-profile.php">Sub Link 2</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
