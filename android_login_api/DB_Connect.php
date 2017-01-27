@@ -11,7 +11,7 @@ class DB_Connect {
 				$DBUSER = 'root';
 				$DBPASS = '';
 				$DBNAME = 'bisonswap';
-        $this->conn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+        $this->conn = new mysqli($DBHOST, $DBUSER, $DBPASS, $DBNAME);
 
         // return database handler
         return $this->conn;
