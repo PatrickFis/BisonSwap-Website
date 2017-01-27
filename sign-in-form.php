@@ -4,7 +4,7 @@
             <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
         <div class="col-sm-12">
           <div class="form-group">
-            <h2 class="">Already a member? Sign in:.</h2>
+            <h2 class="">Already a member? Sign in:</h2>
           </div>
           <div class="form-group">
             <hr />
