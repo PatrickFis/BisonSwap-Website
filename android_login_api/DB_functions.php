@@ -20,7 +20,7 @@ class DB_Functions {
      * Storing new user
      * returns user details
      */
-    public function storeUser($name, $email, $password) {
+    public function storeUser($email, $password) {
         $uuid = uniqid('', true);
         $hash = $this->hashSSHA($password);
         $encrypted_password = $hash; // encrypted password
