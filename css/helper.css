@@ -143,3 +143,8 @@
     opacity: 1;
   }
 }
+
+.form {
+  border-radius: 25px;
+    padding: 20px; 
+}

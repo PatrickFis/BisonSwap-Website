@@ -53,14 +53,15 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="upload-youtube-video.php">Sub Link 1</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="create-profile.php">Sub Link 2</a></li>
-          </ul>
+            <div class="account-dropdown">
+            	<li><a href="">My Account</a></li>
+            	<li><a href="">Trade Histor</a></li>
+            	<li><a href="">My Account</a></li>
+            </div>
         </li>
       </ul>
     </div>
-  </div>
+  </div> 
 </nav>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-git2.min.js" ></script>
