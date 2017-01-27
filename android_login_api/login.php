@@ -1,6 +1,6 @@
 login.php
 <?php
-require_once 'DB_Functions.php';
+require_once 'DB_functions.php';
 $db = new DB_Functions();
 
 // json response array
