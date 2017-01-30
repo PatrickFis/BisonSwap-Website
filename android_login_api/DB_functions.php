@@ -57,13 +57,14 @@ class DB_Functions {
      */
     public function getUserByEmailAndPassword($email, $password) {
 
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
+        // $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
+        // $stmt->bind_param("s", $email);
         $test = "SELECT * FROM users where email = $email";
         if($result = $this->conn->query($test)) {
           while($row = $result->fetch_row()) {
             printf("%s %s\n", $row[0], $row[1]);
           }
+          $result->close();
         }
         if ($stmt->execute()) {
             $user = $stmt->get_result()->fetch_assoc();
