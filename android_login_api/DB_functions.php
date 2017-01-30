@@ -62,16 +62,9 @@ class DB_Functions {
         $test = "SELECT * FROM users where email = '$email'";
         if($result = $this->conn->query($test)) {
           while($row = $result->fetch_row()) {
-            $encrypted_password = row[2];
+            $encrypted_password = $row[2];
             $userPass = hashSSHA($password);
-            echo $userPass."\n".$encrypted_password."\n";
-            if($userPass == $encrypted_password) {
-              $user = [];
-              for($i = 0; $i < count($result); $i++) {
-                $user[i] = $row[i];
-              }
-              echo var_dump($user);
-            }
+            echo $encrypted_password;
           }
           $result->close();
         }
