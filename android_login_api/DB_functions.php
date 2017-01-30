@@ -21,22 +21,22 @@ class DB_Functions {
      * returns user details
      */
     public function storeUser($email, $password) {
-	echo "Got to store user in DB_functions \n";
+	  // echo "Got to store user in DB_functions \n";
         $uuid = uniqid('', true);
         $hash = $this->hashSSHA($password);
         $encrypted_password = $hash; // encrypted password
         // $salt = $hash["salt"]; // salt
-	echo "Got encrypted pass\n";
+	      // echo "Got encrypted pass\n";
         $stmt = $this->conn->prepare("INSERT INTO users(email, password) VALUES(?, ?)");
-echo "Prepared statement\n";
-echo "Before bind\n";       
- $stmt->bind_param("ss", $email, $encrypted_password);
-echo "Bind statement\n";       
- $result = $stmt->execute();
-	printf("Error: %s\n", $stmt->conn->connect_error);
-	printf("Error: %s\n", $stmt->conn->error);        
-$stmt->close();
-	
+        // echo "Prepared statement\n";
+        // echo "Before bind\n";
+        $stmt->bind_param("ss", $email, $encrypted_password);
+        // echo "Bind statement\n";
+        $result = $stmt->execute();
+      	// printf("Error: %s\n", $stmt->conn->connect_error);
+      	// printf("Error: %s\n", $stmt->conn->error);
+        $stmt->close();
+
         // check for successful store
         if ($result) {
             $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
@@ -44,11 +44,11 @@ $stmt->close();
             $stmt->execute();
             $user = $stmt->get_result()->fetch_assoc();
             $stmt->close();
-		echo "Got to stmt close\n";
+		        //echo "Got to stmt close\n";
             return $user;
         } else {
-echo "Got to else";            
-return false;
+            // echo "Got to else";
+            return false;
         }
     }
 

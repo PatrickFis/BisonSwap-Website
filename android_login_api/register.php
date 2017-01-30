@@ -13,7 +13,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     // $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-echo $email.$password;
+    // echo $email.$password;
     // check if user is already existed with the same email
     if ($db->userExists($email)) {
         // user already existed
@@ -22,7 +22,7 @@ echo $email.$password;
         echo json_encode($response);
     } else {
         // create a new user
-	echo "Got to store user\n";
+	      // echo "Got to store user\n";
         $user = $db->storeUser($email, $password);
  if ($user) {
             // user stored successfully
