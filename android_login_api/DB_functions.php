@@ -60,6 +60,7 @@ class DB_Functions {
         // $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
         // $stmt->bind_param("s", $email);
         $test = "SELECT * FROM users where email = '$email'";
+        echo $test;
         if($result = $this->conn->query($test)) {
           while($row = $result->fetch_row()) {
             $encrypted_password = $row[2];
