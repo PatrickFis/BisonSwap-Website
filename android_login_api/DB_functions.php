@@ -63,9 +63,7 @@ class DB_Functions {
         echo $test;
         if($result = $this->conn->query($test)) {
           while($row = $result->fetch_row()) {
-            $encrypted_password = $row[2];
-            $userPass = hashSSHA($password);
-            echo $encrypted_password;
+            printf("%s %s %s\n", $row[0], $row[1], $row[2]);
           }
           $result->close();
         }
