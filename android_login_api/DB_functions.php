@@ -64,6 +64,7 @@ class DB_Functions {
           while($row = $result->fetch_row()) {
             $encrypted_password = $result[2];
             $userPass = hashSSHA($password);
+            echo $userPass."\n".$encrypted_password."\n";
             if($userPass == $encrypted_password) {
               $user = [];
               for($i = 0; $i < count($result); $i++) {
