@@ -65,12 +65,13 @@ class DB_Functions {
             $user = $stmt->get_result()->fetch_assoc();
             $stmt->close();
 
-            // verifying user password
-            $salt = $user['salt'];
-            $encrypted_password = $user['encrypted_password'];
-            $hash = $this->checkhashSSHA($salt, $password);
+            // Verify the user's password
+            $userPass = $user['password'];
+            // $salt = $user['salt'];
+            // $encrypted_password = $user['encrypted_password'];
+            $hash = $this->hashSSHA($password);
             // check for password equality
-            if ($encrypted_password == $hash) {
+            if ($userPass == $hash) {
                 // user authentication details are correct
                 return $user;
             }
