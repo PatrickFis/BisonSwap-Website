@@ -65,7 +65,11 @@ class DB_Functions {
             $encrypted_password = $result[2];
             $userPass = hashSSHA($password);
             if($userPass == $encrypted_password) {
-              echo json_encode($result);
+              $user = [];
+              for($i = 0; $i < count($result); $i++) {
+                $user[i] = $result[i];
+              }
+              echo var_dump($user);
             }
           }
           $result->close();
