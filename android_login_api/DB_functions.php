@@ -64,6 +64,8 @@ class DB_Functions {
         if($result = $this->conn->query($test)) {
           while($row = $result->fetch_row()) {
             printf("%s %s %s\n", $row[0], $row[1], $row[2]);
+            $array = [$row[0], $row[1], $row[2]];
+            print_r($array);
           }
           $result->close();
         }
