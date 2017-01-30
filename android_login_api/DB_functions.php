@@ -59,13 +59,18 @@ class DB_Functions {
 
         // $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
         // $stmt->bind_param("s", $email);
-        $test = "SELECT * FROM users where email = $email";
+        $test = "SELECT * FROM users where email = '$email'";
         if($result = $this->conn->query($test)) {
           while($row = $result->fetch_row()) {
-            printf("%s %s\n", $row[0], $row[1]);
+            $encrypted_password = $result[2];
+            $userPass = hashSSHA($password);
+            if($userPass == $encrypted_password) {
+              echo json_encode($result);
+            }
           }
           $result->close();
         }
+
         if ($stmt->execute()) {
             $user = $stmt->get_result()->fetch_assoc();
             $stmt->close();
