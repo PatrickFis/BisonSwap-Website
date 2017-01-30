@@ -2,35 +2,6 @@
     text-transform: uppercase;
 }
 
-.fb-profile img.fb-image-lg{
-    z-index: 0;
-    width: 100%;  
-    margin-bottom: 10px;
-}
-
-.fb-image-profile
-{
-    margin: -90px 10px 0px 50px;
-    z-index: 9;
-    width: 20%; 
-}
-
-@media (max-width:768px)
-{
-    
-    .fb-profile-text>h1{
-        font-weight: 700;
-        font-size:16px;
-    }
-    
-    .fb-image-profile
-    {
-        margin: -45px 10px 0px 25px;
-        z-index: 9;
-        width: 20%; 
-    }
-}
-
 .cliente {
   border: #cdcdcd medium solid;
   border-radius: 5px;
@@ -97,15 +68,6 @@
   .container {
       margin-bottom:0px;
   }
-  .col-xs-9 {
-      border-left-width:0px;
-      border-right-width:0px;
-  }
-}
-.video-frame .btn-buy-song {
-    position:absolute;
-    top:0px;
-    right:0px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -145,7 +107,11 @@
 }
 
 .form {
-  border-width: 2px;
+  border: 2px solid #ddd;
   border-radius: 25px;
-  padding: 20px; 
+  padding: 40px;
+}
+
+.form-container {
+  padding: 15px;
 }
