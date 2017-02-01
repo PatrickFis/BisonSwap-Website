@@ -39,13 +39,18 @@ class DB_Functions {
 
         // check for successful store
         if ($result) {
-            $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
-            $stmt->bind_param("s", $email);
-            $stmt->execute();
-            $user = $stmt->get_result()->fetch_assoc();
-            $stmt->close();
-		        //echo "Got to stmt close\n";
+            $query = "SELECT * FROM users WHERE email = $email";
+            $result = $this->conn->query($query);
+            $row = $result->fetch_row();
+            $user = $row;
             return $user;
+            // $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
+            // $stmt->bind_param("s", $email);
+            // $stmt->execute();
+            // $user = $stmt->get_result()->fetch_assoc();
+            // $stmt->close();
+		        // //echo "Got to stmt close\n";
+            // return $user;
         } else {
             // echo "Got to else";
             return false;
