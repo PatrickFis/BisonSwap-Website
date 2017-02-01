@@ -60,9 +60,9 @@ class DB_Functions {
         // $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
         // $stmt->bind_param("s", $email);
         // Had to migrate away from prepared statements and use queries
-        $test = "SELECT * FROM users where email = '$email'";
-        echo $test;
-        if($result = $this->conn->query($test)) {
+        $query = "SELECT * FROM users where email = '$email'";
+        // echo $query;
+        if($result = $this->conn->query($query)) {
           while($row = $result->fetch_row()) {
             // printf("%s %s %s\n", $row[0], $row[1], $row[2]);
             // $array = [$row[0], $row[1], $row[2]];
