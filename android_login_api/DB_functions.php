@@ -104,30 +104,23 @@ class DB_Functions {
      * Check user is existed or not
      */
     public function userExists($email) {
-        $query = "SELECT email from users where EMAIL = $email";
-        $result = $this->conn->query($query);
-        $row = $result->fetch_row();
-        if(strcmp($row[0], $email) == 0) {
-          return true;
+        $stmt = $this->conn->prepare("SELECT email from users WHERE email = ?");
+
+        $stmt->bind_param("s", $email);
+
+        $stmt->execute();
+
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            // user existed
+            $stmt->close();
+            return true;
+        } else {
+            // user not existed
+            $stmt->close();
+            return false;
         }
-        else return false;
-        // $stmt = $this->conn->prepare("SELECT email from users WHERE email = ?");
-
-        // $stmt->bind_param("s", $email);
-
-        // $stmt->execute();
-
-        // $stmt->store_result();
-
-        // if ($stmt->num_rows > 0) {
-        //     // user existed
-        //     $stmt->close();
-        //     return true;
-        // } else {
-        //     // user not existed
-        //     $stmt->close();
-        //     return false;
-        // }
     }
 
     /**
