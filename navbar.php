@@ -53,11 +53,10 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>
           <ul class="dropdown-menu">
-            <div class="account-dropdown">
-            	<li><a href="">My Account</a></li>
-            	<li><a href="">Trade Histor</a></li>
-            	<li><a href="">My Account</a></li>
-            </div>
+          	<li><a href="">My Account</a></li>
+          	<li><a href="">Trade Histor</a></li>
+          	<li><a href="">My Account</a></li>
+          </ul>
         </li>
       </ul>
     </div>
