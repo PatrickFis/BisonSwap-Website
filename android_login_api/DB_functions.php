@@ -59,6 +59,7 @@ class DB_Functions {
 
         // $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
         // $stmt->bind_param("s", $email);
+        // Had to migrate away from prepared statements and use queries
         $test = "SELECT * FROM users where email = '$email'";
         echo $test;
         if($result = $this->conn->query($test)) {
@@ -73,7 +74,7 @@ class DB_Functions {
               $user["idusers"] = $row[0];
               $user["email"] = $row[1];
               $result->close();
-              print_r($user);
+              // print_r($user);
               return $user;
             }
           }

@@ -14,23 +14,20 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     // get the user by email and password
     $user = $db->getUserByEmailAndPassword($email, $password);
-    echo "Got username and pass\n";
+    // echo "Got username and pass\n";
     if ($user != false) {
-        // use is found
-        echo "User not found\n";
+        // User was found with supplied credintials
         $response["error"] = FALSE;
         $response["user"]["email"] = $user["email"];
         echo json_encode($response);
     } else {
-        // user is not found with the credentials
-        echo "Credentials wrong\n";
+        // User was not found with supplied credintials
         $response["error"] = TRUE;
         $response["error_msg"] = "Login credentials are wrong. Please try again!";
         echo json_encode($response);
     }
 } else {
-    // required post params is missing
-    echo "Logged in\n";
+    // Missing a required parameters
     $response["error"] = TRUE;
     $response["error_msg"] = "Required parameters email or password is missing!";
     echo json_encode($response);
