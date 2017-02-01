@@ -66,27 +66,37 @@ class DB_Functions {
             printf("%s %s %s\n", $row[0], $row[1], $row[2]);
             $array = [$row[0], $row[1], $row[2]];
             print_r($array);
+            $encrypted_password = $row[2];
+            if($hashSSHA($password) == $encrypted_password) {
+              // Password matches the stored password
+              $user["error"] = false;
+              $user["idusers"] = $row[0];
+              $user["email"] = $row[1];
+              $result->close();
+              print_r($user);
+              return $user;
+            }
           }
           $result->close();
         }
 
-        if ($stmt->execute()) {
-            $user = $stmt->get_result()->fetch_assoc();
-            $stmt->close();
-
-            // Verify the user's password
-            $userPass = $user['password'];
-            // $salt = $user['salt'];
-            // $encrypted_password = $user['encrypted_password'];
-            $hash = $this->hashSSHA($password);
-            // check for password equality
-            if ($userPass == $hash) {
-                // user authentication details are correct
-                return $user;
-            }
-        } else {
-            return NULL;
-        }
+        // if ($stmt->execute()) {
+        //     $user = $stmt->get_result()->fetch_assoc();
+        //     $stmt->close();
+        //
+        //     // Verify the user's password
+        //     $userPass = $user['password'];
+        //     // $salt = $user['salt'];
+        //     // $encrypted_password = $user['encrypted_password'];
+        //     $hash = $this->hashSSHA($password);
+        //     // check for password equality
+        //     if ($userPass == $hash) {
+        //         // user authentication details are correct
+        //         return $user;
+        //     }
+        // } else {
+        //     return NULL;
+        // }
     }
 
     /**
