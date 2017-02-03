@@ -19,6 +19,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         // User was found with supplied credintials
         $response["error"] = FALSE;
         $response["user"]["email"] = $user["email"];
+        $response["user"]["idusers"] = $user["idusers"];
         echo json_encode($response);
     } else {
         // User was not found with supplied credintials

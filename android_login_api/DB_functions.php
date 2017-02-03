@@ -38,6 +38,7 @@ class DB_Functions {
         $stmt->close();
 
         // check for successful store
+        // Fix this later
         if ($result) {
             $query = "SELECT * FROM users WHERE email = $email";
             $result = $this->conn->query($query);
