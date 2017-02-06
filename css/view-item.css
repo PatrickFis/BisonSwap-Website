@@ -9,6 +9,7 @@
     left: 0;
     margin-left: 5px;
     width: 100%;
+    margin-bottom: -55px;
 }
 /* Indicators list style */
 .article-slide .carousel-indicators li {
