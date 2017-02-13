@@ -36,5 +36,7 @@
   };
   firebase.initializeApp(config);
 </script>
+<script src="web/scripts/auth.js"></script>
+
 </body>
 </html>
