@@ -16,7 +16,7 @@
 'use strict';
 
 // Initializes FriendlyChat.
-function Auth() {
+function FriendlyChat() {
   this.checkSetup();
 
   // Shortcuts to DOM Elements
@@ -127,5 +127,5 @@ FriendlyChat.prototype.checkSetup = function() {
 };
 
 window.onload = function() {
-  window.auth = new Auth();
+  window.friendlyChat = new FriendlyChat();
 };
