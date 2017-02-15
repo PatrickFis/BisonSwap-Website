@@ -36,7 +36,7 @@
 
   <!-- App Styling -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="web/styles/main.css">
 </head>
 <!-- User sign in and sign out -->
 <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
