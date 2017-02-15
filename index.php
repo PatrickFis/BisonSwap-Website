@@ -43,21 +43,7 @@
   <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
     <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
       <h3><i class="material-icons">business</i>BisonSwap</h3>
-      <ul class="nav navbar-nav">
-        <li><a href="recent-uploads.php">Link 1<span class="sr-only">(current)</span></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Link 2<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="dancehall.php">Sub Link 1</a></li>
-            <li><a href="gospel.php">Sub Link 2</a></li>
-            <li><a href="hiphop.php">Sub Link 3</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="drama.php">Another Link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="vlogs.php">One More</a></li>
-          </ul>
-        </li>
-      </ul>
+      <a href="#" class="btn btn-primary" role="button">Link 1</a>
     </div>
     <div id="user-container">
       <div hidden id="user-pic"></div>
