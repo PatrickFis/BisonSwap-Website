@@ -61,7 +61,7 @@ FriendlyChat.prototype.onAuthStateChanged = function(user) {
     var userName = user.displayName;
 
     // Set the user's profile pic and name.
-    this.userPic.style.backgroundImage = 'url(' + (profilePicUrl || '/images/profile_placeholder.png') + ')';
+    //this.userPic.style.backgroundImage = 'url(' + (profilePicUrl || '/images/profile_placeholder.png') + ')';
     this.userName.textContent = userName;
 
     // Show user's profile and sign-out button.
