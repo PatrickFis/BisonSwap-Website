@@ -52,8 +52,6 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="active mobile-hidden" href="./"><img border="0" alt="home" src="../img/logo-lq.png" width="100" height="50"/></a>
-
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -105,7 +103,7 @@
           </li>
         </ul>
       </div>
-    </div> 
+    </div>
     <div id="user-container">
       <div hidden id="user-pic"></div>
       <div hidden id="user-name"></div>
