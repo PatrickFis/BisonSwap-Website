@@ -9,18 +9,25 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-  <!-- User sign in and sign out. -->
-  <div id="user-container">
-    <div hidden id="user-pic"></div>
-    <div hidden id="user-name"></div>
-    <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-      Sign-out
-    </button>
-    <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-      <i class="material-icons">account_circle</i>Sign-in with Google
-    </button>
+<!-- User sign in and sign out -->
+<header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
+  <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+    <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+      <h3><i class="material-icons">chat_bubble_outline</i> Friendly Chat</h3>
+    </div>
+    <div id="user-container">
+      <div hidden id="user-pic"></div>
+      <div hidden id="user-name"></div>
+      <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+        Sign-out
+      </button>
+      <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+        <i class="material-icons">account_circle</i>Sign-in with Google
+      </button>
+    </div>
   </div>
+</header>
+<body>
 <?php
     include 'navbar.php';
 ?>
