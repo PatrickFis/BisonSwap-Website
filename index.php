@@ -10,7 +10,17 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+  <!-- User sign in and sign out. -->
+  <div id="user-container">
+    <div hidden id="user-pic"></div>
+    <div hidden id="user-name"></div>
+    <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+      Sign-out
+    </button>
+    <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+      <i class="material-icons">account_circle</i>Sign-in with Google
+    </button>
+  </div>
 <?php
     include 'navbar.php';
 ?>
