@@ -43,7 +43,6 @@
   <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
     <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
       <h3><i class="material-icons">business</i>BisonSwap</h3>
-      <a href="#"><button>Link</button></a>
     </div>
     <div id="user-container">
       <div hidden id="user-pic"></div>
