@@ -43,9 +43,7 @@
   <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
     <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
       <h3><i class="material-icons">business</i>BisonSwap</h3>
-    </div>
-    <div>
-      <ul>
+      <ul class="nav navbar-nav">
         <li><a href="recent-uploads.php">Link 1<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Link 2<span class="caret"></span></a>
