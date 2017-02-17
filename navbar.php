@@ -51,18 +51,13 @@
         </li>
         <li><a href="contact.php">Link 6</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a> 
           <ul class="dropdown-menu">
-            <li><button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-                Sign-out
-                </button>
-                <button id="sign-in" class="btn-default">
-                  <i class="material-icons">account_circle</i>Sign-in
-                </button>
-            </li>
-          	<li><a href="">My Account</a></li> 
-          	<li><a href="">Trade Histor</a></li>
-          	<li><a href="">My Account</a></li>
+            <li><a id="sign-out">Sign-out</a></li>
+            <li><a id="sign-in"><!--i class="material-icons">account_circle</i-->Sign-in</a></li>
+            <li><a href="">My Account</a></li> 
+            <li><a href="">Trade Histor</a></li>
+            <li><a href="">My Account</a></li>
           </ul>
         </li>
       </ul>
@@ -76,7 +71,7 @@
       $('.input').keyup(function(){
         var search = $('.input').val();
         $.post("liveSearchResults.php",{"search":search},function(data){
-          $('.entry').html(data);
+          $('.entry').html(data); 
         });
       });
     });
