@@ -39,7 +39,7 @@
         <br>
         <div style="position:absolute; width:232px; z-index:1;background-color:#fff;" class="entry"></div>
       </form>
-      <ul class="nav navbar-nav navbar-right"> 
+      <ul class="nav navbar-nav navbar-right">
         <li><a href="create-profile.php">Link 4</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Link 5<span class="caret"></span></a>
@@ -47,20 +47,13 @@
             <li><a href="upload-youtube-video.php">Sub Link 1</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="create-profile.php">Sub Link 2</a></li>
-          </ul> 
+          </ul>
         </li>
         <li><a href="contact.php">Link 6</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>
           <ul class="dropdown-menu">
-            <li><button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-                Sign-out
-                </button>
-                <button id="sign-in" class="btn-default">
-                  <i class="material-icons">account_circle</i>Sign-in
-                </button>
-            </li>
-          	<li><a href="">My Account</a></li> 
+          	<li><a href="">My Account</a></li>
           	<li><a href="">Trade Histor</a></li>
           	<li><a href="">My Account</a></li>
           </ul>
