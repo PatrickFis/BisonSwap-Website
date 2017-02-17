@@ -20,11 +20,11 @@ function FriendlyChat() {
   this.checkSetup();
 
   // Shortcuts to DOM Elements
-  this.userPic = document.getElementById('user-pic');
+  // this.userPic = document.getElementById('user-pic');
   this.userName = document.getElementById('user-name');
   this.signInButton = document.getElementById('sign-in');
   this.signOutButton = document.getElementById('sign-out');
-  this.signInSnackbar = document.getElementById('must-signin-snackbar');
+  // this.signInSnackbar = document.getElementById('must-signin-snackbar');
 
   this.signOutButton.addEventListener('click', this.signOut.bind(this));
   this.signInButton.addEventListener('click', this.signIn.bind(this));
@@ -59,16 +59,16 @@ FriendlyChat.prototype.signOut = function() {
 FriendlyChat.prototype.onAuthStateChanged = function(user) {
   if (user) { // User is signed in!
     // Get profile pic and user's name from the Firebase user object.
-    var profilePicUrl = user.photoURL;
+    // var profilePicUrl = user.photoURL;
     var userName = user.displayName;
 
     // Set the user's profile pic and name.
-    this.userPic.style.backgroundImage = 'url(' + (profilePicUrl || '/images/profile_placeholder.png') + ')';
+    // this.userPic.style.backgroundImage = 'url(' + (profilePicUrl || '/images/profile_placeholder.png') + ')';
     this.userName.textContent = userName;
 
     // Show user's profile and sign-out button.
     this.userName.removeAttribute('hidden');
-    this.userPic.removeAttribute('hidden');
+    // this.userPic.removeAttribute('hidden');
     this.signOutButton.removeAttribute('hidden');
 
     // Hide sign-in button.
@@ -77,7 +77,7 @@ FriendlyChat.prototype.onAuthStateChanged = function(user) {
   } else { // User is signed out!
     // Hide user's profile and sign-out button.
     this.userName.setAttribute('hidden', 'true');
-    this.userPic.setAttribute('hidden', 'true');
+    // this.userPic.setAttribute('hidden', 'true');
     this.signOutButton.setAttribute('hidden', 'true');
 
     // Show sign-in button.
@@ -97,7 +97,7 @@ FriendlyChat.prototype.checkSignedInWithMessage = function() {
     message: 'You must sign-in first',
     timeout: 2000
   };
-  this.signInSnackbar.MaterialSnackbar.showSnackbar(data);
+  // this.signInSnackbar.MaterialSnackbar.showSnackbar(data);
   return false;
 };
 
