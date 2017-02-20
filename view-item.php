@@ -18,7 +18,7 @@
 
 <div class="container">
   	<div class="row">
-	  	<div class="col-sm-10">
+	  	<div class="col-sm-9">
 	  		<div class="carousel slide article-slide" id="article-photo-carousel">
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner cont-slider">
@@ -49,7 +49,7 @@
 					  <img alt="" src="http://placehold.it/250x180">
 					</li>
 					<li class="" data-slide-to="3" data-target="#article-photo-carousel">
-					  <img alt="" src="http://placehold.it/250x180">
+					  <img alt="" src="http://placehold.it/250x180"> 
 					</li>
 					<li class="" data-slide-to="4" data-target="#article-photo-carousel">
 					  <img alt="" src="http://placehold.it/250x180">
@@ -57,8 +57,12 @@
 				</ol>
 			</div>
 	  	</div>
+	  	<div class="col-sm-3"> 
+	  		<button id="test" onclick="readTest()">Test!</button>
+	  		<div id="item-name"></div>
+	  	</div>
   	</div>
-    <button id="test" onclick="readTest">Test!</button>
+    
 </div>
 
 </body>
@@ -69,10 +73,11 @@
 <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
 <script>
   function readTest() {
+  	//alert("Here");
     var user = firebase.auth().currentUser.email;
     return firebase.database().ref('items/' + user.email).once('value').then(function(snapshot) {
       var itemName = snapshot.val().itemName;
-      alert(itemName);
+      document.getElementById("item-name").setValue(itemNames);
     });
   }
 </script>
