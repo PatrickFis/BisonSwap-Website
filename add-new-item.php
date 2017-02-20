@@ -86,14 +86,15 @@
 </body>
 <script>
 function addItem() {
+  var user = firebase.auth().currentUser;
   var pushData = {
-    userid: ,
-    itemName: itemName,
-    itemCategory: itemCategory,
-    itemDescription: itemDescription,
-    date: date,
-    itemPictures: itemPictures,
-    rating: rating
+    email: user.email,
+    itemName: document.getElementById("itemname"),
+    itemCategory: document.getElementById("cat"),
+    itemDescription: document.getElementById("item-description"),
+    date: new Date(),
+    itemPictures: document.getElementById("pic-1"),
+    rating: document.getElementById("condition")
   };
   var newPushKey = firebase.database().ref().child('items').push().key;
   var updates = {};
