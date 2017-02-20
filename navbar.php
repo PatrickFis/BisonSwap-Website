@@ -49,15 +49,15 @@
             <li><a href="create-profile.php">Sub Link 2</a></li>
           </ul> 
         </li>
-        <li><a href="contact.php">Link 6</a></li>
+        <li><a id="user-name"></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a> 
           <ul class="dropdown-menu">
-            <li><a id="sign-out">Sign-out</a></li>
             <li><a id="sign-in"><!--i class="material-icons">account_circle</i-->Sign-in</a></li>
             <li><a href="">My Account</a></li> 
             <li><a href="">Trade Histor</a></li>
             <li><a href="">My Account</a></li>
+            <li><a id="sign-out">Sign-out</a></li>
           </ul>
         </li>
       </ul>

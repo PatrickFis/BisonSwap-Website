@@ -70,4 +70,38 @@
     </div>
   </div>
 </body>
+<script>
+function addItem(userid, itemName, itemCategory, itemDescription, date, itemPictures, rating) {
+  var pushData = {
+    userid: userid,
+    itemName: itemName,
+    itemCategory: itemCategory,
+    itemDescription: itemDescription,
+    date: date,
+    itemPictures: itemPictures,
+    rating: rating
+  };
+  var newPushKey = firebase.database().ref().child('items').push().key;
+  var updates = {};
+  updates['/items/' + newPushKey] = pushData;
+  return firebase.database().ref().update(updates);
+}
+</script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA0saZpdhgWuQ5MvD81I3K09M0Wbk31c6Q",
+    authDomain: "bisonswap-a0af2.firebaseapp.com",
+    databaseURL: "https://bisonswap-a0af2.firebaseio.com",
+    storageBucket: "bisonswap-a0af2.appspot.com",
+    messagingSenderId: "307753783953"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="web/scripts/auth.js"></script>
 </html>
