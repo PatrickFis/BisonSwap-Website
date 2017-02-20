@@ -44,18 +44,19 @@
     <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
       <h3><i class="material-icons">business</i>BisonSwap</h3>
     </div>
-    <div id="user-container"> 
+    <div id="user-container">
       <div hidden id="user-pic"></div>
       <div hidden id="user-name"></div>
       <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
         Sign-out
       </button>
       <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-        <i class="material-icons">account_circle</i>Sign-in 
+        <i class="material-icons">account_circle</i>Sign-in
       </button>
     </div>
-  </div> 
+  </div>
 </header-->
+  <button id="test" onclick="testFunction()">Test</button>
 <body>
 <?php
     include 'navbar.php';
@@ -71,6 +72,18 @@
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+<script>
+function testFunction() {
+  var pushData = {
+    test1: 0,
+    test2: 1
+  };
+  var newPushKey = firebase.database().ref().child('test').push().key;
+  var updates = {};
+  updates['/test/' + newPushKey] = pushData;
+  return firebase.database().ref().update(updates);
+}
+</script>
 <script>
   // Initialize Firebase
   var config = {
