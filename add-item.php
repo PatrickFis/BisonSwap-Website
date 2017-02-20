@@ -126,14 +126,19 @@
 
 </body>
 <script>
-function testFunction() {
+function addItem(userid, itemName, itemCategory, itemDescription, date, itemPictures, rating) {
   var pushData = {
-    test1: 0,
-    test2: 1
+    userid: userid,
+    itemName: itemName,
+    itemCategory: itemCategory,
+    itemDescription: itemDescription,
+    date: date,
+    itemPictures: itemPictures,
+    rating: rating
   };
-  var newPushKey = firebase.database().ref().child('test').push().key;
+  var newPushKey = firebase.database().ref().child('items').push().key;
   var updates = {};
-  updates['/test/' + newPushKey] = pushData;
+  updates['/items/' + newPushKey] = pushData;
   return firebase.database().ref().update(updates);
 }
 </script>
