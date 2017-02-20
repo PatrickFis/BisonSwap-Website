@@ -15,10 +15,10 @@
 <?php
     include 'navbar.php';
 ?>
-  
+
 <div class="container">
   	<div class="row">
-	  	<div class="col-sm-8">
+	  	<div class="col-sm-10">
 	  		<div class="carousel slide article-slide" id="article-photo-carousel">
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner cont-slider">
