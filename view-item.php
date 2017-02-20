@@ -72,6 +72,7 @@
     var user = firebase.auth().currentUser.email;
     return firebase.database().ref('items/' + user.email).once('value').then(function(snapshot) {
       var itemName = snapshot.val().itemName;
+      alert(itemName);
     });
   }
 </script>
