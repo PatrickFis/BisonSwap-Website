@@ -89,12 +89,12 @@ function addItem() {
   var user = firebase.auth().currentUser;
   var pushData = {
     email: user.email,
-    itemName: document.getElementById("itemname"),
-    itemCategory: document.getElementById("cat"),
-    itemDescription: document.getElementById("item-description"),
+    itemName: document.getElementById("itemname").innerHTML,
+    itemCategory: document.getElementById("cat").innerHTML,
+    itemDescription: document.getElementById("item-description").innerHTML,
     date: new Date(),
-    itemPictures: document.getElementById("pic-1"),
-    rating: document.getElementById("condition")
+    itemPictures: document.getElementById("pic-1").innerHTML,
+    rating: document.getElementById("condition").innerHTML
   };
   var newPushKey = firebase.database().ref().child('items').push().key;
   var updates = {};
