@@ -98,12 +98,12 @@
     var items = [];
     snapshot.forEach(function(childSnapshot) {
       var item = new Item({
-        "date": date,
-        "email": email,
-        "itemCategory": itemCategory,
-        "itemDescription": itemDescription,
-        "itemName": itemName,
-        "rating": rating
+        "date": childSnapshot.val().date,
+        "email": childSnapshot.val().email,
+        "itemCategory": childSnapshot.val().itemCategory,
+        "itemDescription": childSnapshot.val().itemDescription,
+        "itemName": childSnapshot.val().itemName,
+        "rating": childSnapshot.val().rating
       });
       items.push(item);
     });
