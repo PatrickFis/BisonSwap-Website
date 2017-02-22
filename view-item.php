@@ -49,7 +49,7 @@
 					  <img alt="" src="http://placehold.it/250x180">
 					</li>
 					<li class="" data-slide-to="3" data-target="#article-photo-carousel">
-					  <img alt="" src="http://placehold.it/250x180"> 
+					  <img alt="" src="http://placehold.it/250x180">
 					</li>
 					<li class="" data-slide-to="4" data-target="#article-photo-carousel">
 					  <img alt="" src="http://placehold.it/250x180">
@@ -63,7 +63,7 @@
 	  		<p id="item-description"></p>
 	  	</div>
   	</div>
-    
+
 </div>
 
 </body>
@@ -85,6 +85,24 @@
 </script>
 <script src="web/scripts/auth.js"></script>
 
+<script>
+  firebase.database().ref('/items/').once('value').then(function(snapshot) {
+    var items = [];
+    snapshot.forEach(function(childSnapshot) {
+      var item = new Item({
+        "date": date,
+        "email": email,
+        "itemCategory": itemCategory,
+        "itemDescription": itemDescription,
+        "itemName": itemName,
+        "rating": rating
+      });
+      items.push(item);
+    });
+    localStorage.setItem("Item", JSON.stringify(items));
+    console.log(items);
+  });
+</script>
 <script>
     firebase.database().ref('/items/-KdSNc76RleFK1GGPyLB').once('value').then(function(snapshot) {
     	document.getElementById("item-name").innerHTML = snapshot.val().itemName;
