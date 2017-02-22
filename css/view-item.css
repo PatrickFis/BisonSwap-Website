@@ -1,6 +1,14 @@
 /* Main carousel style */
 .carousel {
-    width: 600px;
+    width: 100%;
+    background-color: #eee;
+}
+
+.carousel-inner > .item > img, 
+.carousel-inner > .item > a > img{
+height: 100%; /* use this, or not */
+width: auto;
+margin: auto;
 }
 
 /* Indicators list style */
@@ -9,7 +17,7 @@
     left: 0;
     margin-left: 5px;
     width: 100%;
-    margin-bottom: -55px;
+    margin-bottom: 5px; /*-55*/
 }
 /* Indicators list style */
 .article-slide .carousel-indicators li {
@@ -22,7 +30,7 @@
     margin-left: 5;
     margin-right: 5px !important;
     margin-top: 0;
-    width: 100px;
+    width: auto;
 }
 /* Indicators images style */
 .article-slide .carousel-indicators img {
@@ -30,7 +38,7 @@
     float: left;
     height: 54px;
     left: 0;
-    width: 100px;
+    width: auto;
 }
 /* Indicators active image style */
 .article-slide .carousel-indicators .active img {

@@ -57,9 +57,10 @@
 				</ol>
 			</div>
 	  	</div>
-	  	<div class="col-sm-3"> 
-	  		<button id="test" onclick="readTest()">Test!</button>
-	  		<div id="item-name"></div>
+	  	<div class="col-sm-3">
+	  		<h3 id="item-name"></h3>
+	  		<p><b>Description:<b><p>
+	  		<p id="item-description"></p>
 	  	</div>
   	</div>
     
@@ -72,16 +73,6 @@
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
 <script>
-  function readTest() {
-  	//alert("Here");
-    var user = firebase.auth().currentUser.email;
-    return firebase.database().ref('items/' + user.email).once('value').then(function(snapshot) {
-      var itemName = snapshot.val().itemName;
-      document.getElementById("item-name").setValue(itemNames);
-    });
-  }
-</script>
-<script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyA0saZpdhgWuQ5MvD81I3K09M0Wbk31c6Q",
@@ -93,4 +84,12 @@
   firebase.initializeApp(config);
 </script>
 <script src="web/scripts/auth.js"></script>
+
+<script>
+    firebase.database().ref('/items/-KdSNc76RleFK1GGPyLB').once('value').then(function(snapshot) {
+    	document.getElementById("item-name").innerHTML = snapshot.val().itemName;
+    	document.getElementById("item-description").innerHTML = snapshot.val().itemDescription;
+    });
+</script>
+
 </html>

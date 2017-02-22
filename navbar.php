@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="active mobile-hidden" href="./"><img border="0" alt="home" src="../img/logo-lq.png" width="100" height="50"/></a>
+      <a class="active mobile-hidden" href="./"><img border="0" alt="home" src="../img/logo-lq.png" width="70" height="50"/></a>
       
     </div>
       
