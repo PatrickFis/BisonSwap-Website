@@ -85,6 +85,7 @@
 </script>
 <script src="web/scripts/auth.js"></script>
 
+<!-- Test scripts to pull all data from the /items/ database-->
 <script>
   function Item(date, email, itemCategory, itemDescription, itemName, rating) {
     this.date = date;
