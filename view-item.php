@@ -97,6 +97,12 @@
   firebase.database().ref('/items/').once('value').then(function(snapshot) {
     var items = [];
     snapshot.forEach(function(childSnapshot) {
+      console.log(childSnapshot.val().date,
+      childSnapshot.val().email,
+      childSnapshot.val().itemCategory,
+      childSnapshot.val().itemDescription,
+      childSnapshot.val().itemName,
+      childSnapshot.val().rating);
       var item = new Item({
         "date": childSnapshot.val().date,
         "email": childSnapshot.val().email,
