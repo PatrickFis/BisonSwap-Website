@@ -86,6 +86,14 @@
 <script src="web/scripts/auth.js"></script>
 
 <script>
+  function Item(date, email, itemCategory, itemDescription, itemName, rating) {
+    this.date = date;
+    this.email = email;
+    this.itemCategory = itemCategory;
+    this.itemDescription = itemDescription;
+    this.itemName = itemName;
+    this.rating = rating;
+  }
   firebase.database().ref('/items/').once('value').then(function(snapshot) {
     var items = [];
     snapshot.forEach(function(childSnapshot) {
