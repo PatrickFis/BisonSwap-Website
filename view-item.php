@@ -92,7 +92,7 @@
     this.email = email;
     this.itemCategory = itemCategory;
     this.itemDescription = itemDescription;
-    this.itemName = itemName;
+    this.itemName = itemName; 
     this.rating = rating;
   }
   firebase.database().ref('/items/').once('value').then(function(snapshot) {

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Home | Bison Swap</title>
+  <title>Item Name Here | Bison Swap</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/helper.css">
+  <link rel="stylesheet" href="/css/view-item.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Disable tap highlight on IE -->
@@ -77,7 +78,46 @@
     storageBucket: "bisonswap-a0af2.appspot.com",
     messagingSenderId: "307753783953"
   };
-  firebase.initializeApp(config);
+  firebase.initializeApp(config);  
+</script>
+
+<script>
+  function Item(date, email, itemCategory, itemDescription, itemName, rating) {
+    this.date = date;
+    this.email = email;
+    this.itemCategory = itemCategory;
+    this.itemDescription = itemDescription;
+    this.itemName = itemName;
+    this.rating = rating;
+  }
+  firebase.database().ref('/items/').once('value').then(function(snapshot) { 
+    var items = [];
+    snapshot.forEach(function(childSnapshot) {
+      console.log(childSnapshot.val().date,
+      childSnapshot.val().email,
+      childSnapshot.val().itemCategory,
+      childSnapshot.val().itemDescription,
+      childSnapshot.val().itemName,
+      childSnapshot.val().rating);
+      var item = new Item({
+        "date": childSnapshot.val().date,
+        "email": childSnapshot.val().email,
+        "itemCategory": childSnapshot.val().itemCategory,
+        "itemDescription": childSnapshot.val().itemDescription,
+        "itemName": childSnapshot.val().itemName,
+        "rating": childSnapshot.val().rating
+      });
+      items.push(item);
+    });
+    localStorage.setItem("Item", JSON.stringify(items));
+    console.log(items);
+  });
+</script>
+<script>
+    firebase.database().ref('/items/-KdSNc76RleFK1GGPyLB').once('value').then(function(snapshot) {
+      document.getElementById("item-name").innerHTML = snapshot.val().itemName;
+      document.getElementById("item-description").innerHTML = snapshot.val().itemDescription;
+    });
 </script>
 <script src="web/scripts/auth.js"></script>
 
