@@ -8,11 +8,11 @@
         <span class="icon-bar"></span>
       </button>
       <a class="active mobile-hidden" href="./"><img border="0" alt="home" src="../img/logo-lq.png" width="70" height="50"/></a>
-      
+
     </div>
-      
+
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-  
+
       <ul class="nav navbar-nav">
         <li><a href="recent-uploads.php">Link 1<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
@@ -28,7 +28,7 @@
           </ul>
         </li>
       </ul>
-      
+
       <form action="search.php" class="navbar-left navbar-form mobile-hidden" role="search">
         <div class="input-group add-on">
           <input type="text" class="input form-control" placeholder="Search" name="search" autocomplete="off">
@@ -39,7 +39,7 @@
         <br>
         <div style="position:absolute; width:232px; z-index:1;background-color:#fff;" class="entry"></div>
       </form>
-      <ul class="nav navbar-nav navbar-right"> 
+      <ul class="nav navbar-nav navbar-right">
         <li><a href="create-profile.php">Link 4</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Link 5<span class="caret"></span></a>
@@ -47,22 +47,21 @@
             <li><a href="upload-youtube-video.php">Sub Link 1</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="create-profile.php">Sub Link 2</a></li>
-          </ul> 
+          </ul>
         </li>
         <li><a id="user-name"></a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a> 
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>
           <ul class="dropdown-menu">
             <li><a id="sign-in"><!--i class="material-icons">account_circle</i-->Sign-in</a></li>
-            <li><a href="">My Account</a></li> 
-            <li><a href="">Trade Histor</a></li>
             <li><a href="">My Account</a></li>
+            <li><a href="">Trade History</a></li>
             <li><a id="sign-out">Sign-out</a></li>
           </ul>
         </li>
       </ul>
     </div>
-  </div> 
+  </div>
 </nav>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-git2.min.js" ></script>
@@ -71,7 +70,7 @@
       $('.input').keyup(function(){
         var search = $('.input').val();
         $.post("liveSearchResults.php",{"search":search},function(data){
-          $('.entry').html(data); 
+          $('.entry').html(data);
         });
       });
     });
