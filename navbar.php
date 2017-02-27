@@ -84,15 +84,3 @@
       });
     });
   </script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyA0saZpdhgWuQ5MvD81I3K09M0Wbk31c6Q",
-      authDomain: "bisonswap-a0af2.firebaseapp.com",
-      databaseURL: "https://bisonswap-a0af2.firebaseio.com",
-      storageBucket: "bisonswap-a0af2.appspot.com",
-      messagingSenderId: "307753783953"
-    };
-    firebase.initializeApp(config);
-  </script>
-  <script src="web/scripts/auth.js"></script>
