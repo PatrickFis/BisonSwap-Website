@@ -26,7 +26,7 @@
 
 </head>
 <?php
-    include 'menubar.php';
+    include 'navbar.php';
 ?>
 
 <body>
