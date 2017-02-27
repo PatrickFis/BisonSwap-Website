@@ -63,7 +63,7 @@
     </div>
   </div>
 </nav>
-
+<script src="web/scripts/auth.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-git2.min.js" ></script>
   <script>
     $(function(){
