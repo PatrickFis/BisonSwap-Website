@@ -61,11 +61,8 @@
     include 'navbar.php';
 ?>
 
-<div class="container">
-  <?php
-    include 'sign-in-form.php';
-  ?>
-</div>
+<?php include 'home-container.php'; ?>
+
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
