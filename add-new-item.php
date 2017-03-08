@@ -86,6 +86,11 @@
 </body>
 <script>
 function addItem() {
+  var timestamp = Number(new Date());
+  var storageRef = firebase.storage().ref(timestamp.toString());
+  var $ = jQuery;
+  var file_data = $('pic-1').prop('files')[0];
+  storageRef.put(file_data);
   var user = firebase.auth().currentUser;
   var pushData = {
     email: user.email,
