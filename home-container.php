@@ -14,29 +14,29 @@
     <!-- Projects Row -->
     <div class="row">
         <div class="col-md-4 portfolio-item">
-            <a href="#">
+            <a href="item.php">
                 <img class="img-responsive" src="http://placehold.it/700x400" alt="">
             </a>
             <h3>
-                <a href="#">Item Name</a>
+                <a href="item.php">Item Name</a>
             </h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
         </div>
         <div class="col-md-4 portfolio-item">
-            <a href="#">
+            <a href="item.php">
                 <img class="img-responsive" src="http://placehold.it/700x400" alt="">
             </a>
             <h3>
-                <a href="#">Item Name</a>
+                <a href="item.php">Item Name</a>
             </h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
         </div>
         <div class="col-md-4 portfolio-item">
-            <a href="#">
+            <a href="item.php">
                 <img class="img-responsive" src="http://placehold.it/700x400" alt="">
             </a>
             <h3>
-                <a href="#">Item Name</a>
+                <a href="item.php">Item Name</a>
             </h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
         </div>
@@ -46,29 +46,29 @@
     <!-- Projects Row -->
     <div class="row">
         <div class="col-md-4 portfolio-item">
-            <a href="#">
+            <a href="item.php">
                 <img class="img-responsive" src="http://placehold.it/700x400" alt="">
             </a>
             <h3>
-                <a href="#">Item Name</a>
+                <a href="item.php">Item Name</a>
             </h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
         </div>
         <div class="col-md-4 portfolio-item">
-            <a href="#">
+            <a href="item.php">
                 <img class="img-responsive" src="http://placehold.it/700x400" alt="">
             </a>
             <h3>
-                <a href="#">Item Name</a>
+                <a href="item.php">Item Name</a>
             </h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
         </div>
         <div class="col-md-4 portfolio-item">
-            <a href="#">
+            <a href="item.php">
                 <img class="img-responsive" src="http://placehold.it/700x400" alt="">
             </a>
             <h3>
-                <a href="#">Item Name</a>
+                <a href="item.php">Item Name</a>
             </h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
         </div>
@@ -77,29 +77,29 @@
     <!-- Projects Row -->
     <div class="row">
         <div class="col-md-4 portfolio-item">
-            <a href="#">
+            <a href="item.php">
                 <img class="img-responsive" src="http://placehold.it/700x400" alt="">
             </a>
             <h3>
-                <a href="#">Item Name</a>
+                <a href="item.php">Item Name</a>
             </h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
         </div>
         <div class="col-md-4 portfolio-item">
-            <a href="#">
+            <a href="item.php">
                 <img class="img-responsive" src="http://placehold.it/700x400" alt="">
             </a>
             <h3>
-                <a href="#">Item Name</a>
+                <a href="item.php">Item Name</a>
             </h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
         </div>
         <div class="col-md-4 portfolio-item">
-            <a href="#">
+            <a href="item.php">
                 <img class="img-responsive" src="http://placehold.it/700x400" alt="">
             </a>
             <h3>
-                <a href="#">Item Name</a>
+                <a href="item.php">Item Name</a>
             </h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
         </div>
