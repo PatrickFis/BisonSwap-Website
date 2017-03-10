@@ -107,7 +107,7 @@ function addItem() {
   var updates = {};
   updates['/items/' + newPushKey] = pushData;
 
-  var file = document.getElementById("pic-1");
+  var file = document.getElementById("pic-1").files[0];
   firebase.storage().ref().put(file).then(function(snapshot) {
     console.log('Uploaded a blob or file!');
   });
