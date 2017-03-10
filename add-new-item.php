@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="http://www.w3schools.com/lib/w3data.js"></script><div w3-include-html="content.html"></div>
-<link rel="stylesheet" href="helper.css">
 <head>
   <title>Home | Bison Swap</title>
   <meta charset="utf-8">
@@ -107,6 +106,11 @@ function addItem() {
   var newPushKey = firebase.database().ref().child('items').push().key;
   var updates = {};
   updates['/items/' + newPushKey] = pushData;
+
+  var file = document.getElementById("pic-1");
+  firebase.storage().ref().put(file).then(function(snapshot) {
+    console.log('Uploaded a blob or file!');
+  });
   return firebase.database().ref().update(updates);
 }
 </script>
