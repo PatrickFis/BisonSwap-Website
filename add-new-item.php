@@ -137,18 +137,48 @@ function addItem() {
   var updates = {};
   updates['/items/' + newPushKey] = pushData;
   // Get the first image uploaded by the user
-  var file = document.getElementById("pic-1").files[0];
-  var fileName = document.getElementById("pic-1").value;
-  // Remove the path from the file name
-  var index = fileName.lastIndexOf("\\");
-  fileName = fileName.substring(index+1, fileName.length);
-  // Store the image in images/userid/fileName
-  var childRef = 'images/' + user.uid + '/' + fileName;
-  console.log('File name: ' + fileName);
-  // Upload the file
-  firebase.storage().ref().child(childRef).put(file).then(function(snapshot) {
-    console.log('Uploaded a blob or file!');
-  });
+  if(pic_1_name != '0') {
+    var file = document.getElementById("pic-1").files[0];
+    firebase.storage().ref().child(pic_1_name).put(file).then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+    });
+  }
+  if(pic_2_name != '0') {
+    var file = document.getElementById("pic-2").files[0];
+    firebase.storage().ref().child(pic_2_name).put(file).then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+    });
+  }
+  if(pic_3_name != '0') {
+    var file = document.getElementById("pic-3").files[0];
+    firebase.storage().ref().child(pic_3_name).put(file).then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+    });
+  }
+  if(pic_4_name != '0') {
+    var file = document.getElementById("pic-4").files[0];
+    firebase.storage().ref().child(pic_4_name).put(file).then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+    });
+  }
+  if(pic_5_name != '0') {
+    var file = document.getElementById("pic-5").files[0];
+    firebase.storage().ref().child(pic_5_name).put(file).then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+    });
+  }
+  // var file = document.getElementById("pic-1").files[0];
+  // var fileName = document.getElementById("pic-1").value;
+  // // Remove the path from the file name
+  // var index = fileName.lastIndexOf("\\");
+  // fileName = fileName.substring(index+1, fileName.length);
+  // // Store the image in images/userid/fileName
+  // var childRef = 'images/' + user.uid + '/' + fileName;
+  // console.log('File name: ' + fileName);
+  // // Upload the file
+  // firebase.storage().ref().child(childRef).put(file).then(function(snapshot) {
+  //   console.log('Uploaded a blob or file!');
+  // });
   return firebase.database().ref().update(updates);
 }
 </script>
