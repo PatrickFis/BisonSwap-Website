@@ -139,33 +139,38 @@ function addItem() {
   // Get the first image uploaded by the user
   if(pic_1_name != '0') {
     var file1 = document.getElementById("pic-1").files[0];
-    firebase.storage().ref().child(pic_1_name).put(file1).then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
-    });
+    // firebase.storage().ref().child(pic_1_name).put(file1).then(function(snapshot) {
+    //   console.log('Uploaded a blob or file!');
+    // });
+    uploadPromise(file1, pic_1_name);
   }
   if(pic_2_name != '0') {
     var file2 = document.getElementById("pic-2").files[0];
-    firebase.storage().ref().child(pic_2_name).put(file2).then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
-    });
+    // firebase.storage().ref().child(pic_2_name).put(file2).then(function(snapshot) {
+    //   console.log('Uploaded a blob or file!');
+    // });
+    uploadPromise(file2, pic_2_name);
   }
   if(pic_3_name != '0') {
     var file3 = document.getElementById("pic-3").files[0];
-    firebase.storage().ref().child(pic_3_name).put(file3).then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
-    });
+    // firebase.storage().ref().child(pic_3_name).put(file3).then(function(snapshot) {
+    //   console.log('Uploaded a blob or file!');
+    // });
+    uploadPromise(file3, pic_3_name);
   }
   if(pic_4_name != '0') {
     var file4 = document.getElementById("pic-4").files[0];
-    firebase.storage().ref().child(pic_4_name).put(file4).then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
-    });
+    // firebase.storage().ref().child(pic_4_name).put(file4).then(function(snapshot) {
+    //   console.log('Uploaded a blob or file!');
+    // });
+    uploadPromise(file4, pic_4_name);
   }
   if(pic_5_name != '0') {
     var file5 = document.getElementById("pic-5").files[0];
-    firebase.storage().ref().child(pic_5_name).put(file5).then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
-    });
+    // firebase.storage().ref().child(pic_5_name).put(file5).then(function(snapshot) {
+    //   console.log('Uploaded a blob or file!');
+    // });
+    uploadPromise(file5, pic_5_name);
   }
   // var file = document.getElementById("pic-1").files[0];
   // var fileName = document.getElementById("pic-1").value;
@@ -180,6 +185,12 @@ function addItem() {
   //   console.log('Uploaded a blob or file!');
   // });
   return firebase.database().ref().update(updates);
+}
+function uploadPromise(imageFile, pic_name) {
+  return new Promise(function(resolve, reject) {
+    var storageRef = firebase.storage().ref().child(pic_name);
+    var task = storageRef.put(imageFile);
+  });
 }
 </script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
