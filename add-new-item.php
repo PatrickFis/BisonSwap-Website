@@ -100,6 +100,9 @@ function addItem() {
   var pic_4_name = document.getElementById("pic-1").value;
   var pic_5_name = document.getElementById("pic-1").value;
   console.log(pic_2_name);
+  if(pic_2_name == null) {
+    console.log(null);
+  }
   var pushData = {
     email: user.email,
     itemName: document.getElementById("itemname").value,
