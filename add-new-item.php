@@ -94,6 +94,12 @@ function addItem() {
   // var file_data = $('pic-1').prop('files')[0];
   // storageRef.put(file_data);
   var user = firebase.auth().currentUser;
+  var pic_1_name = document.getElementById("pic-1").value;
+  var pic_2_name = document.getElementById("pic-1").value;
+  var pic_3_name = document.getElementById("pic-1").value;
+  var pic_4_name = document.getElementById("pic-1").value;
+  var pic_5_name = document.getElementById("pic-1").value;
+  console.log(pic_2_name);
   var pushData = {
     email: user.email,
     itemName: document.getElementById("itemname").value,
