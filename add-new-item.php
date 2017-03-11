@@ -95,10 +95,10 @@ function addItem() {
   // storageRef.put(file_data);
   var user = firebase.auth().currentUser;
   var pic_1_name = document.getElementById("pic-1").value;
-  var pic_2_name = document.getElementById("pic-1").value;
-  var pic_3_name = document.getElementById("pic-1").value;
-  var pic_4_name = document.getElementById("pic-1").value;
-  var pic_5_name = document.getElementById("pic-1").value;
+  var pic_2_name = document.getElementById("pic-2").value;
+  var pic_3_name = document.getElementById("pic-3").value;
+  var pic_4_name = document.getElementById("pic-4").value;
+  var pic_5_name = document.getElementById("pic-5").value;
   console.log(pic_2_name);
   if(pic_2_name == null) {
     console.log(null);
