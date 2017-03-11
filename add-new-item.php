@@ -99,17 +99,38 @@ function addItem() {
   var pic_3_name = document.getElementById("pic-3").value;
   var pic_4_name = document.getElementById("pic-4").value;
   var pic_5_name = document.getElementById("pic-5").value;
-  console.log(pic_2_name);
-  if(pic_2_name == null) {
-    console.log(null);
+  if(pic_1_name.length < 4) {
+    pic_1_name = '0';
   }
+  else pic_1_name = 'images/' + user.uid + '/' + pic_1_name.substring(pic_1_name.lastIndexOf('\\')+1, pic_1_name.length);
+  if(pic_2_name.length < 4) {
+    pic_2_name = '0';
+  }
+  else pic_2_name = 'images/' + user.uid + '/' + pic_2_name.substring(pic_2_name.lastIndexOf('\\')+1, pic_2_name.length);
+  if(pic_3_name.length < 4) {
+    pic_3_name = '0';
+  }
+  else pic_3_name = 'images/' + user.uid + '/' + pic_3_name.substring(pic_3_name.lastIndexOf('\\')+1, pic_3_name.length);
+  if(pic_4_name.length < 4) {
+    pic_4_name = '0';
+  }
+  else pic_4_name = 'images/' + user.uid + '/' + pic_4_name.substring(pic_4_name.lastIndexOf('\\')+1, pic_4_name.length);
+  if(pic_5_name.length < 4) {
+    pic_5_name = '0'
+  }
+  else pic_5_name = 'images/' + user.uid + '/' + pic_5_name.substring(pic_5_name.lastIndexOf('\\')+1, pic_5_name.length);
   var pushData = {
     email: user.email,
     itemName: document.getElementById("itemname").value,
     itemCategory: document.getElementById("cat").value,
     itemDescription: document.getElementById("item-description").value,
     date: new Date(),
-    itemPictures: document.getElementById("pic-1").value,
+    //itemPictures: document.getElementById("pic-1").value,
+    pic_1: pic_1_name,
+    pic_2: pic_2_name,
+    pic_3: pic_3_name,
+    pic_4: pic_4_name,
+    pic_5: pic_5_name,
     rating: document.getElementById("condition").value
   };
   var newPushKey = firebase.database().ref().child('items').push().key;
