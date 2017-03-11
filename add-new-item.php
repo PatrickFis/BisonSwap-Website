@@ -112,8 +112,9 @@ function addItem() {
   // Remove the path from the file name
   var index = fileName.lastIndexOf("\\");
   fileName = fileName.substring(index+1, fileName.length);
+  var childRef = 'images/' + fileName;
   console.log('File name: ' + fileName);
-  firebase.storage().ref().child('images/' + fileName).put(file).then(function(snapshot) {
+  firebase.storage().ref().child(childRef).put(file).then(function(snapshot) {
     console.log('Uploaded a blob or file!');
   });
   return firebase.database().ref().update(updates);
