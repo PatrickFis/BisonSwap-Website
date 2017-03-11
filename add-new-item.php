@@ -106,14 +106,16 @@ function addItem() {
   var newPushKey = firebase.database().ref().child('items').push().key;
   var updates = {};
   updates['/items/' + newPushKey] = pushData;
-
+  // Get the first image uploaded by the user
   var file = document.getElementById("pic-1").files[0];
   var fileName = document.getElementById("pic-1").value;
   // Remove the path from the file name
   var index = fileName.lastIndexOf("\\");
   fileName = fileName.substring(index+1, fileName.length);
+  // Store the image in images/userid/fileName
   var childRef = 'images/' + user.uid + '/' + fileName;
   console.log('File name: ' + fileName);
+  // Upload the file
   firebase.storage().ref().child(childRef).put(file).then(function(snapshot) {
     console.log('Uploaded a blob or file!');
   });
