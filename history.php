@@ -110,7 +110,9 @@
     localStorage.setItem("Item", JSON.stringify(items));
     console.log(items);
     for(var i = 0; i < items.length; i++) {
-      console.log(items[i].email);
+      if(firebase.auth().currentUser.email != items[i].email) {
+        items[i] = null;
+      }
     }
   });
 </script>
