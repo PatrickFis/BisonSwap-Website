@@ -61,15 +61,16 @@
     include 'navbar.php';
 ?>
 
-<script>
-  console.log(firebase.database().ref('items/-KfrhVcQD9NslOJVdjnB').once('value'));
-</script>
+</body>
 
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+<script>
+  console.log(firebase.database().ref('items/-KfrhVcQD9NslOJVdjnB').once('value'));
+</script>
 <script>
   // Initialize Firebase
   var config = {
@@ -83,5 +84,4 @@
 </script>
 <script src="web/scripts/auth.js"></script>
 
-</body>
 </html>
