@@ -82,7 +82,7 @@
 <script>
   var snap = firebase.database().ref('items/').once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
-      console.log(childSnapshot.key());
+      console.log(childSnapshot.key);
     });
   });
   console.log(firebase.database().ref('items/-KfrhVcQD9NslOJVdjnB').once('value'));
