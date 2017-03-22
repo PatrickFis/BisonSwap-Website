@@ -80,14 +80,36 @@
   firebase.initializeApp(config);
 </script>
 <script>
-  var snap = firebase.database().ref('items/').once('value').then(function(snapshot) {
+  function Item(date, email, itemCategory, itemDescription, itemName, rating) {
+    this.date = date;
+    this.email = email;
+    this.itemCategory = itemCategory;
+    this.itemDescription = itemDescription;
+    this.itemName = itemName;
+    this.rating = rating;
+  }
+  firebase.database().ref('/items/').once('value').then(function(snapshot) {
+    var items = [];
     snapshot.forEach(function(childSnapshot) {
-      console.log(childSnapshot.key);
-      var key = childSnapshot.key;
-      console.log(childSnapshot.child(key).val().email);
+      console.log(childSnapshot.val().date,
+      childSnapshot.val().email,
+      childSnapshot.val().itemCategory,
+      childSnapshot.val().itemDescription,
+      childSnapshot.val().itemName,
+      childSnapshot.val().rating);
+      var item = new Item({
+        "date": childSnapshot.val().date,
+        "email": childSnapshot.val().email,
+        "itemCategory": childSnapshot.val().itemCategory,
+        "itemDescription": childSnapshot.val().itemDescription,
+        "itemName": childSnapshot.val().itemName,
+        "rating": childSnapshot.val().rating
+      });
+      items.push(item);
     });
+    localStorage.setItem("Item", JSON.stringify(items));
+    console.log(items);
   });
-  console.log(firebase.database().ref('items/-KfrhVcQD9NslOJVdjnB').once('value'));
 </script>
 <script src="web/scripts/auth.js"></script>
 
