@@ -103,7 +103,7 @@
         childSnapshot.val().itemDescription,
         hildSnapshot.val().itemName,
         childSnapshot.val().rating
-      });
+      );
       items.push(item);
     });
     localStorage.setItem("Item", JSON.stringify(items));
