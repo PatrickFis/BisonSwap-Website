@@ -144,6 +144,7 @@ function addItem() {
     for(var i = 0; i < file1.length; i++) {
       var file = file1[i];
       var storageName = 'images/' + user.uid + '/' + file.name;
+      console.log(storageName);
       storageRef.child(storageName).put(file).then(function(snapshot) {
         console.log('Uploaded a blob or file!');
       });
