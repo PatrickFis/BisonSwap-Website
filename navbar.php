@@ -55,7 +55,7 @@
           <ul class="dropdown-menu">
             <li><a id="sign-in"><!--i class="material-icons">account_circle</i-->Sign-in</a></li>
             <li><a href="">My Account</a></li>
-            <li><a href="">Trade History</a></li>
+            <li><a href="history.php">Trade History</a></li>
             <li><a id="sign-out">Sign-out</a></li>
           </ul>
         </li>
