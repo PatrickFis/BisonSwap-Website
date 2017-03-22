@@ -149,9 +149,9 @@ function addItem() {
         console.log('Uploaded a blob or file!');
       });
     }
-    storageRef.child(pic_1_name).put(file1).then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
-    });
+    // storageRef.child(pic_1_name).put(file1).then(function(snapshot) {
+    //   console.log('Uploaded a blob or file!');
+    // });
     // firebase.storage().ref().child(pic_1_name).put(file1).then(function(snapshot) {
     //   console.log('Uploaded a blob or file!');
     // });
