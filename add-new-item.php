@@ -144,12 +144,11 @@ function addItem() {
     for(var i = 0; i < file1.length; i++) {
       var file = file1[i];
       var storageName = 'images/' + user.uid + '/' + file.name;
-      console.log(storageName);
-      storageRef.child(storageName).put(file).then(function(snapshot) {
-        console.log('Uploaded a blob or file!');
-      });
-      var start = new Date().getTime();
-      while (new Date().getTime() < start + 5000);
+      uploadPromise(file);
+      // console.log(storageName);
+      // storageRef.child(storageName).put(file).then(function(snapshot) {
+      //   console.log('Uploaded a blob or file!');
+      // });
     }
     // storageRef.child(pic_1_name).put(file1).then(function(snapshot) {
     //   console.log('Uploaded a blob or file!');
@@ -207,6 +206,13 @@ function addItem() {
   //   console.log('Uploaded a blob or file!');
   // });
   return firebase.database().ref().update(updates);
+}
+function uploadPromise(file) {
+  return new Promise(function(resolve, reject) {
+    var storageRef = firebase.storage().ref();
+    var storageName = 'images/' + firebase.auth().currentUser.uid + '/' + file.name;
+    var task = storageRef.child(storageName).put(file);
+  });
 }
 </script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
