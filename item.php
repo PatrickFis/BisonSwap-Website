@@ -78,7 +78,7 @@
     storageBucket: "bisonswap-a0af2.appspot.com",
     messagingSenderId: "307753783953"
   };
-  firebase.initializeApp(config);  
+  firebase.initializeApp(config);
 </script>
 
 <script>
@@ -90,7 +90,7 @@
     this.itemName = itemName;
     this.rating = rating;
   }
-  firebase.database().ref('/items/').once('value').then(function(snapshot) { 
+  firebase.database().ref('/items/').once('value').then(function(snapshot) {
     var items = [];
     snapshot.forEach(function(childSnapshot) {
       console.log(childSnapshot.val().date,
@@ -99,14 +99,14 @@
       childSnapshot.val().itemDescription,
       childSnapshot.val().itemName,
       childSnapshot.val().rating);
-      var item = new Item({
-        "date": childSnapshot.val().date,
-        "email": childSnapshot.val().email,
-        "itemCategory": childSnapshot.val().itemCategory,
-        "itemDescription": childSnapshot.val().itemDescription,
-        "itemName": childSnapshot.val().itemName,
-        "rating": childSnapshot.val().rating
-      });
+      var item = new Item(
+        childSnapshot.val().date,
+        childSnapshot.val().email,
+        childSnapshot.val().itemCategory,
+        childSnapshot.val().itemDescription,
+        childSnapshot.val().itemName,
+        childSnapshot.val().rating
+      );
       items.push(item);
     });
     localStorage.setItem("Item", JSON.stringify(items));
