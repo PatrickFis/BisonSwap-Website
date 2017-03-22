@@ -148,6 +148,8 @@ function addItem() {
       storageRef.child(storageName).put(file).then(function(snapshot) {
         console.log('Uploaded a blob or file!');
       });
+      var start = new Date().getTime();
+      while (new Date().getTime() < start + 5000);
     }
     // storageRef.child(pic_1_name).put(file1).then(function(snapshot) {
     //   console.log('Uploaded a blob or file!');
