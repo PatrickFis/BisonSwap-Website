@@ -80,6 +80,7 @@
   firebase.initializeApp(config);
 </script>
 <script>
+  // Get a list of all the items stored in the database
   function Item(date, email, itemCategory, itemDescription, itemName, rating) {
     this.date = date;
     this.email = email;
@@ -108,6 +109,9 @@
     });
     localStorage.setItem("Item", JSON.stringify(items));
     console.log(items);
+    for(var i = 0; i < items.length; i++) {
+      console.log(items[i].email);
+    }
   });
 </script>
 <script src="web/scripts/auth.js"></script>
