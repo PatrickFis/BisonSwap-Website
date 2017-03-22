@@ -84,7 +84,7 @@
     snapshot.forEach(function(childSnapshot) {
       console.log(childSnapshot.key);
       var key = childSnapshot.key;
-      console.log(childSnapshot.child(key + "/email"));
+      console.log(childSnapshot.child(key + "/email").key);
     });
   });
   console.log(firebase.database().ref('items/-KfrhVcQD9NslOJVdjnB').once('value'));
