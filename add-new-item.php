@@ -213,7 +213,7 @@ function addItem() {
 //     var storageName = 'images/' + firebase.auth().currentUser.uid + '/' + file.name;
 //     var task = storageRef.child(storageName).put(file);
 //   });
-}
+// }
 </script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
