@@ -60,10 +60,6 @@
 <?php
     include 'navbar.php';
     echo "asdfasd";
-?>
-
-<p id="CHANGE ME"></p>
-<? php
   $array = json_decode($_POST['items']);
   echo $array;
   echo "asdfadsf";
