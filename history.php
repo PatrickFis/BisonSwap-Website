@@ -62,6 +62,10 @@
 ?>
 
 <p id="CHANGE ME"></p>
+<? php
+  $array = json_decode($_POST['items']);
+  echo $array;
+ ?>
 </body>
 
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
@@ -119,10 +123,10 @@
     var changeString = "";
     for(var i = 0; i < items.length; i++) {
       if(items[i] != null) {
-        changeString += "\"" + items[i].itemName + "\"" + "<br>";
+        changeString += items[i].itemName + "<br>";
       }
     }
-    document.getElementById("CHANGE ME").innerHTML = changeString;
+    // document.getElementById("CHANGE ME").innerHTML = changeString;
   });
 </script>
 <script src="web/scripts/auth.js"></script>
