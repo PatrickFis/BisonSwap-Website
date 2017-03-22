@@ -61,6 +61,7 @@
     include 'navbar.php';
 ?>
 
+<p id="CHANGE ME"></p>
 </body>
 
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
@@ -109,11 +110,19 @@
     });
     localStorage.setItem("Item", JSON.stringify(items));
     console.log(items);
+    // Remove items not posted by the current user
     for(var i = 0; i < items.length; i++) {
       if(firebase.auth().currentUser.email != items[i].email) {
         items[i] = null;
       }
     }
+    var changeString = "";
+    for(var i = 0; i < items.length; i++) {
+      if(items[i] != null) {
+        changeString += "\"" + items[i].itemName + "\"" + "\n";
+      }
+    }
+    document.getElementById("CHANGE ME").innerHTML = changeString;
   });
 </script>
 <script src="web/scripts/auth.js"></script>
