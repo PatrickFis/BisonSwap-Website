@@ -65,6 +65,7 @@
 <? php
   $array = json_decode($_POST['items']);
   echo $array;
+  echo "asdfadsf";
  ?>
 </body>
 
