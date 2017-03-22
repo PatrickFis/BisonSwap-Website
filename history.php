@@ -69,9 +69,6 @@
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
 <script>
-  console.log(firebase.database().ref('items/-KfrhVcQD9NslOJVdjnB').once('value'));
-</script>
-<script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyA0saZpdhgWuQ5MvD81I3K09M0Wbk31c6Q",
@@ -81,6 +78,9 @@
     messagingSenderId: "307753783953"
   };
   firebase.initializeApp(config);
+</script>
+<script>
+  console.log(firebase.database().ref('items/-KfrhVcQD9NslOJVdjnB').once('value'));
 </script>
 <script src="web/scripts/auth.js"></script>
 
