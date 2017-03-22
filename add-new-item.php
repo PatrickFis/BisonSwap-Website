@@ -60,7 +60,7 @@
               <p><b>Upload up to 5 images:</b></p>
             </div>
             <div class="form-group">
-              <input class="btn btn-default btn-file" type="file" name="pic-1" id="pic-1" multiple>
+              <input class="btn btn-default btn-file" type="file" name="pic-1" id="pic-1">
             </div>
             <div class="form-group">
               <input class="btn btn-default btn-file" type="file" name="pic-2" id="pic-2">
