@@ -119,7 +119,7 @@
     var changeString = "";
     for(var i = 0; i < items.length; i++) {
       if(items[i] != null) {
-        changeString += "\"" + items[i].itemName + "\"" + "\n";
+        changeString += "\"" + items[i].itemName + "\"" + "<br>";
       }
     }
     document.getElementById("CHANGE ME").innerHTML = changeString;
