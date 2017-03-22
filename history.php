@@ -101,7 +101,7 @@
         childSnapshot.val().email,
         childSnapshot.val().itemCategory,
         childSnapshot.val().itemDescription,
-        hildSnapshot.val().itemName,
+        childSnapshot.val().itemName,
         childSnapshot.val().rating
       );
       items.push(item);
