@@ -93,6 +93,7 @@ function addItem() {
   // var $ = jQuery;
   // var file_data = $('pic-1').prop('files')[0];
   // storageRef.put(file_data);
+  console.log("READ ME " + document.getElementById("pic-1").files.length);
   var user = firebase.auth().currentUser;
   var storageRef = firebase.storage().ref();
   var pic_1_name = document.getElementById("pic-1").value;
