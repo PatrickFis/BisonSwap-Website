@@ -125,9 +125,8 @@ function addItem() {
       console.log('Uploaded a blob or file!');
       });
     }
+    return firebase.database().ref().update(updates);
   }
-  return firebase.database().ref().update(updates);
-}
 </script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
