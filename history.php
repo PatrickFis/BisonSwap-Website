@@ -61,7 +61,9 @@
     include 'navbar.php';
 ?>
 
-
+<script>
+  console.log(firebase.database().ref('items/-KfrhVcQD9NslOJVdjnB').once('value'));
+</script>
 
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
