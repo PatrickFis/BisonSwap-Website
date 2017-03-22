@@ -97,13 +97,12 @@
       childSnapshot.val().itemDescription,
       childSnapshot.val().itemName,
       childSnapshot.val().rating);
-      var item = new Item({
-        "date": childSnapshot.val().date,
-        "email": childSnapshot.val().email,
-        "itemCategory": childSnapshot.val().itemCategory,
-        "itemDescription": childSnapshot.val().itemDescription,
-        "itemName": childSnapshot.val().itemName,
-        "rating": childSnapshot.val().rating
+      var item = new Item(childSnapshot.val().date,
+        childSnapshot.val().email,
+        childSnapshot.val().itemCategory,
+        childSnapshot.val().itemDescription,
+        hildSnapshot.val().itemName,
+        childSnapshot.val().rating
       });
       items.push(item);
     });
