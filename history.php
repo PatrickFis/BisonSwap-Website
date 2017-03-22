@@ -59,6 +59,7 @@
 <body>
 <?php
     include 'navbar.php';
+    echo "asdfasd";
 ?>
 
 <p id="CHANGE ME"></p>
