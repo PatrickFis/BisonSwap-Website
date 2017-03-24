@@ -91,11 +91,12 @@
     var currentEmail = firebase.auth().currentUser.email;
     var targetEmail = document.getElementById("email").value;
     var pushData = {
-      user_email: currentEmail,
-      target_email: targetEmail
+      name: firebase.auth().currentUser.name,
+      photoUrl: firebase.auth().currentUser.photoURL || '/images/profile_placeholder.png',
+      text: ''
     };
     var updates = {};
-    updates['test/'] = pushData;
+    updates['test/' + currentEmail + '_BISONSWAP_' + targetEmail + '/messages/'] = pushData;
     return firebase.database().ref().update(updates);
   }
 </script>
