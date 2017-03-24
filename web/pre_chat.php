@@ -88,8 +88,8 @@
 </script>
 <script>
   function chat() {
-    var currentEmail = firebase.auth().currentUser.email;
-    var targetEmail = document.getElementById("email").value;
+    var currentEmail = firebase.auth().currentUser.email.replaceAll("\.", "(");
+    var targetEmail = document.getElementById("email").value.replaceAll("\.", "(");
     // var pushData = {
     //   name: firebase.auth().currentUser.name,
     //   photoUrl: firebase.auth().currentUser.photoURL,
@@ -99,6 +99,10 @@
     updates['test/' + currentEmail + '_BISONSWAP_' + targetEmail + '/messages/'] = '';
     return firebase.database().ref().update(updates);
   }
+  String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+  };
 </script>
 <script src="scripts/auth.js"></script>
 
