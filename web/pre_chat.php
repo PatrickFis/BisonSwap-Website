@@ -66,7 +66,7 @@
     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
     <input id="email" type="text" class="form-control" name="email" placeholder="Enter a user's email">
   </div>
-  <button type="button" class="btn btn-default" onclick="chat()">Default</button>
+  <button type="submit" class="btn btn-success" onclick="addItem()">Submit</button>
 </form>
 
 </body>
