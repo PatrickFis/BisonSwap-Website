@@ -90,13 +90,13 @@
   function chat() {
     var currentEmail = firebase.auth().currentUser.email;
     var targetEmail = document.getElementById("email").value;
-    var pushData = {
-      name: firebase.auth().currentUser.name,
-      photoUrl: firebase.auth().currentUser.photoURL,
-      text: ''
-    };
+    // var pushData = {
+    //   name: firebase.auth().currentUser.name,
+    //   photoUrl: firebase.auth().currentUser.photoURL,
+    //   text: ''
+    // };
     var updates = {};
-    updates['test/' + currentEmail + '_BISONSWAP_' + targetEmail + '/messages/'] = pushData;
+    updates['test/' + currentEmail + '_BISONSWAP_' + targetEmail + '/messages/'] = '';
     return firebase.database().ref().update(updates);
   }
 </script>
