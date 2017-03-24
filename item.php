@@ -82,12 +82,13 @@
 </script>
 
 <script>
-  function Item(date, email, itemCategory, itemDescription, itemName, rating) {
+  function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating) {
     this.date = date;
     this.email = email;
     this.itemCategory = itemCategory;
     this.itemDescription = itemDescription;
     this.itemName = itemName;
+    this.pic_1 = pic_1;
     this.rating = rating;
   }
   firebase.database().ref('/items/').once('value').then(function(snapshot) {
@@ -98,6 +99,7 @@
       childSnapshot.val().itemCategory,
       childSnapshot.val().itemDescription,
       childSnapshot.val().itemName,
+      childSnapshot.val().pic_1,
       childSnapshot.val().rating);
       var item = new Item(
         childSnapshot.val().date,
@@ -105,6 +107,7 @@
         childSnapshot.val().itemCategory,
         childSnapshot.val().itemDescription,
         childSnapshot.val().itemName,
+        childSnapshot.val().pic_1,
         childSnapshot.val().rating
       );
       items.push(item);
