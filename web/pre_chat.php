@@ -66,9 +66,10 @@
     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
     <input id="email" type="text" class="form-control" name="email" placeholder="Enter a user's email">
   </div>
-  <button type="button" class="btn btn-default">Default</button>
+  <button type="button" class="btn btn-default" onclick="chat()">Default</button>
 </form>
 
+</body>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
@@ -85,7 +86,19 @@
   };
   firebase.initializeApp(config);
 </script>
+<script>
+  function chat() {
+    var currentEmail = firebase.auth().currentUser.email;
+    var targetEmail = document.getElementById("email").value;
+    var pushData = {
+      user_email: currentEmail,
+      target_email: targetEmail
+    };
+    var updates = {};
+    updates['test/'] = pushData;
+    return firebase.database().ref().update(updates);
+  }
+</script>
 <script src="scripts/auth.js"></script>
 
-</body>
 </html>
