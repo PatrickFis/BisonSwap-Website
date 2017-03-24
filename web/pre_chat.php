@@ -92,7 +92,7 @@
     var targetEmail = document.getElementById("email").value;
     var pushData = {
       name: firebase.auth().currentUser.name,
-      photoUrl: firebase.auth().currentUser.photoURL || '/images/profile_placeholder.png',
+      photoUrl: firebase.auth().currentUser.photoURL,
       text: ''
     };
     var updates = {};
