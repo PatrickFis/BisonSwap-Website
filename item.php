@@ -117,7 +117,7 @@
   });
 </script>
 <script>
-    firebase.database().ref('/items/-KdSNc76RleFK1GGPyLB').once('value').then(function(snapshot) {
+    firebase.database().ref('/items/-Kg0hqYb_kdv-xGxraQo').once('value').then(function(snapshot) {
       document.getElementById("item-name").innerHTML = snapshot.val().itemName;
       document.getElementById("item-description").innerHTML = snapshot.val().itemDescription;
     });
