@@ -120,7 +120,7 @@ function addItem() {
   updates['/items/' + newPushKey] = pushData;
   // Get the first image uploaded by the user
   if(pic_1_name != '0') {
-    var file1 = document.getElementById("pic-1").files;
+    var file1 = document.getElementById("pic-1").files[0];
     storageRef.child(pic_1_name).put(file1).then(function(snapshot) {
       console.log('Uploaded a blob or file!');
       });
