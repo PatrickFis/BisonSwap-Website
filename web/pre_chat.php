@@ -95,9 +95,9 @@
     //   photoUrl: firebase.auth().currentUser.photoURL,
     //   text: ''
     // };
-    var updates = {};
-    updates['test/' + currentEmail + '_BISONSWAP_' + targetEmail + '/messages/'] = '';
-    return firebase.database().ref().update(updates);
+    // var updates = {};
+    // updates['test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/"] = '';
+    return firebase.database().ref().update('test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/");
   }
 </script>
 <script src="scripts/auth.js"></script>
