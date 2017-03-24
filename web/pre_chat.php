@@ -88,8 +88,8 @@
 </script>
 <script>
   function chat() {
-    var currentEmail = firebase.auth().currentUser.email.replace(/./g, "(");
-    var targetEmail = document.getElementById("email").value.replace(/./g, "(");
+    var currentEmail = firebase.auth().currentUser.email.replace(/[.]/g, "(");
+    var targetEmail = document.getElementById("email").value.replace(/[.]/g, "(");
     // var pushData = {
     //   name: firebase.auth().currentUser.name,
     //   photoUrl: firebase.auth().currentUser.photoURL,
