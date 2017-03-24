@@ -118,7 +118,7 @@
     var changeString = "";
     for(var i = 0; i < items.length; i++) {
       if(items[i] != null) {
-        changeString += items[i].itemName + "<button type='submit' class='btn btn-success'>Submit</button>" + "<br>";
+        changeString += items[i].itemName + "<button type='submit' class='btn btn-success'>Edit</button>" + "<br>";
       }
     }
     document.getElementById("CHANGE ME").innerHTML = changeString;
