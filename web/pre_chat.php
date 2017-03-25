@@ -90,14 +90,16 @@
   function chat() {
     var currentEmail = firebase.auth().currentUser.email.replace(/[.]/g, "(");
     var targetEmail = document.getElementById("email").value.replace(/[.]/g, "(");
-    // var pushData = {
-    //   name: firebase.auth().currentUser.name,
-    //   photoUrl: firebase.auth().currentUser.photoURL,
-    //   text: ''
-    // };
-    // var updates = {};
+    var pushData = {
+      // name: firebase.auth().currentUser.name,
+      // photoUrl: firebase.auth().currentUser.photoURL,
+      // text: ''
+      changeme: 1
+    };
+    var updates = {};
+    updates = pushData;
     // updates['test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/"] = '';
-    return firebase.database().ref().update('test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/");
+    return firebase.database().ref().update('test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/") = updates;
   }
 </script>
 <script src="scripts/auth.js"></script>
