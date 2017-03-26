@@ -69,6 +69,7 @@
   <button type="submit" class="btn btn-success" onclick="chat()">Submit</button>
 </form>
 
+
 </body>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
@@ -102,6 +103,13 @@
     updates['test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/"] = pushData;
     return firebase.database().ref().update(updates);
   }
+</script>
+<script>
+  var ref = firebase.database.ref('test/').once('value').then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      console.log(childSnapshot.key)
+    });
+  });
 </script>
 <script src="scripts/auth.js"></script>
 
