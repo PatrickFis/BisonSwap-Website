@@ -105,7 +105,7 @@
   }
 </script>
 <script>
-  var ref = firebase.database.ref('test/').once('value').then(function(snapshot) {
+  var ref = firebase.database().ref('test/').once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
       console.log(childSnapshot.key)
     });
