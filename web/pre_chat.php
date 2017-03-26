@@ -110,6 +110,7 @@
     snapshot.forEach(function(childSnapshot) {
       // console.log(childSnapshot.key)
       array.push(childSnapshot.key);
+      console.log(array);
     });
   });
   console.log(array);
