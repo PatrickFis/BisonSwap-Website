@@ -91,10 +91,11 @@
     var currentEmail = firebase.auth().currentUser.email.replace(/[.]/g, "(");
     var targetEmail = document.getElementById("email").value.replace(/[.]/g, "(");
     var pushData = {
-      // name: firebase.auth().currentUser.name,
-      // photoUrl: firebase.auth().currentUser.photoURL,
+      name: firebase.auth().currentUser.displayName,
+      text: 'Change me',
+      photoUrl: firebase.auth().currentUser.photoURL || '/images/profile_placeholder.png'
       // text: ''
-      changeme: 1
+      // changeme: 1
     };
     var updates = {};
     updates = pushData;
