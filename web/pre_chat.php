@@ -98,9 +98,9 @@
       // changeme: 1
     };
     var updates = {};
-    updates = pushData;
-    // updates['test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/"] = '';
-    return firebase.database().ref().push('test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/") = updates;
+    // updates = pushData;
+    updates['test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/"] = pushData;
+    return firebase.database().ref().update(updates);
   }
 </script>
 <script src="scripts/auth.js"></script>
