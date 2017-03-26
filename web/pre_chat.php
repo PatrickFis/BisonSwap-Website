@@ -109,7 +109,7 @@
   var ref = firebase.database().ref('test/').once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
       // console.log(childSnapshot.key)
-      array.push(childSnapshot.key);
+      array.push(childSnapshot.key.replace(/[(]/g, "."));
       console.log(array);
     });
   });
