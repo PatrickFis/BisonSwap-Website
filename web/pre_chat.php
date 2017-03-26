@@ -69,6 +69,7 @@
   <button type="submit" class="btn btn-success" onclick="chat()">Submit</button>
 </form>
 
+<p id="chatOptions"></p>
 
 </body>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
@@ -114,6 +115,7 @@
       array.push(tempArray[1]);
       console.log(array);
     });
+    document.getElementById("chatOptions").innerHTML = array;
   });
   console.log(array);
 </script>
