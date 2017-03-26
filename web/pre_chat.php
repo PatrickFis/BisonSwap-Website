@@ -105,8 +105,8 @@
   }
 </script>
 <script>
+  var array = [];
   var ref = firebase.database().ref('test/').once('value').then(function(snapshot) {
-    var array = [];
     snapshot.forEach(function(childSnapshot) {
       // console.log(childSnapshot.key)
       array.push(childSnapshot.key);
