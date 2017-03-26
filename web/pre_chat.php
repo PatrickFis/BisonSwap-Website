@@ -106,10 +106,13 @@
 </script>
 <script>
   var ref = firebase.database().ref('test/').once('value').then(function(snapshot) {
+    var array = {};
     snapshot.forEach(function(childSnapshot) {
-      console.log(childSnapshot.key)
+      // console.log(childSnapshot.key)
+      array.push(childSnapshot.key);
     });
   });
+  console.log(array);
 </script>
 <script src="scripts/auth.js"></script>
 
