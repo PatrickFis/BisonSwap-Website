@@ -100,7 +100,7 @@
     var updates = {};
     updates = pushData;
     // updates['test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/"] = '';
-    return firebase.database().ref().update('test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/") = updates;
+    return firebase.database().ref().push('test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/") = updates;
   }
 </script>
 <script src="scripts/auth.js"></script>
