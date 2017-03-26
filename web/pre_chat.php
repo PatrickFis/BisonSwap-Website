@@ -109,7 +109,9 @@
   var ref = firebase.database().ref('test/').once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
       // console.log(childSnapshot.key)
-      array.push(childSnapshot.key.replace(/[(]/g, "."));
+      var tempMail = childSnapshot.key.replace(/[(]/g, ".");
+      var tempArray = tempMail.split("_BISONSWAP_");
+      array.push(tempArray[1]);
       console.log(array);
     });
   });
