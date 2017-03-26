@@ -20,7 +20,7 @@
 					  <img alt="" title="" src="http://placehold.it/600x400">
 					</div>
 				</div>
-				<ol class="carousel-indicators">
+				<ol class="carousel-indicators" align = "center">
 					<li class="active" data-slide-to="0" data-target="#article-photo-carousel">
 					  <img alt="" src="http://placehold.it/250x180">
 					</li>
@@ -80,7 +80,7 @@
   });
 </script>
 <script>
-    firebase.database().ref('/items/-KdSNc76RleFK1GGPyLB').once('value').then(function(snapshot) {
+    firebase.database().ref('/items/-Kg0hqYb_kdv-xGxraQo').once('value').then(function(snapshot) {
     	document.getElementById("item-name").innerHTML = snapshot.val().itemName;
     	document.getElementById("item-description").innerHTML = snapshot.val().itemDescription;
     });
