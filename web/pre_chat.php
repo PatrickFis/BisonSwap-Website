@@ -121,10 +121,10 @@
     });
     // var innerHTMLArray = [];
     if(array.length > 0) {
-      var string = '<a href="javascript:postwith("chat.php", {email:'+ firebase.auth().currentUser.email + ', email2:'+ array[0] + '})"' + array[0] + "</a><br>";
+      var string = '<a href="javascript:postwith("chat.php", {email:'+ firebase.auth().currentUser.email + ', email2:'+ array[0] + '})">' + array[0] + "</a><br>";
       // var string = array[0] + '<button type="submit" class="btn btn-success" onclick="chat()">Submit</button><br>';
       for(var i = 1; i < array.length; i++) {
-        string += '<a href="javascript:postwith("chat.php", {email:'+ firebase.auth().currentUser.email + ', email2:'+ array[1] + '})"' + array[1] + "</a><br>";
+        string += '<a href="javascript:postwith("chat.php", {email:'+ firebase.auth().currentUser.email + ', email2:'+ array[i] + '})">' + array[i] + "</a><br>";
         // innerHTMLArray[i] = string;
       }
   }
