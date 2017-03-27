@@ -121,14 +121,33 @@
     });
     // var innerHTMLArray = [];
     if(array.length > 0) {
-      var string = array[0] + '<button type="submit" class="btn btn-success" onclick="chat()">Submit</button><br>';
+      var string = '<a href="javascript:postwith("chat.php"), {email:'+ firebase.auth().currentUser.email', email2:'array[0]'})"' + array[0] + "</a><br>";
+      // var string = array[0] + '<button type="submit" class="btn btn-success" onclick="chat()">Submit</button><br>';
       for(var i = 1; i < array.length; i++) {
-        string += array[i] + '<button type="submit" class="btn btn-success" onclick="chat()">Submit</button><br>';
+        string += '<a href="javascript:postwith("chat.php"), {email:'+ firebase.auth().currentUser.email', email2:'array[1]'})"' + array[1] + "</a><br>";
         // innerHTMLArray[i] = string;
       }
   }
     document.getElementById("chatOptions").innerHTML = string;
   });
+</script>
+<script>
+  // Create a form and then submit it.
+  // Post with <a href="javascript:postwith('post.aspx',{user:'peter',cc:'aus'})">click</a>
+  function postwith (url, array) {
+    var myForm = document.createElement("form");
+    myForm.method="post";
+    myForm.action = url;
+    for (var k in array) {
+      var myInput = document.createElement("input");
+      myInput.setAttribute("name", array);
+      myInput.setAttribute("value", array[k]);
+      myForm.appendChild(myInput);
+    }
+    document.body.appendChild(myForm);
+    myForm.submit();
+    document.body.removeChild(myForm);
+  }
 </script>
 <script src="scripts/auth.js"></script>
 
