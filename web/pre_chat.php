@@ -106,6 +106,7 @@
   }
 </script>
 <script>
+  // Create an array of emails for user to chat with
   var array = [];
   var ref = firebase.database().ref('test/').once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
@@ -115,9 +116,13 @@
       array.push(tempArray[1]);
       console.log(array);
     });
-    document.getElementById("chatOptions").innerHTML = array;
+    var innerHTMLArray = [];
+    for(var i = 0; i < array.length; i++) {
+      var string = array[i] + '<button type="submit" class="btn btn-success" onclick="chat()">Submit</button><br>';
+      innerHTMLArray[i] = string;
+    }
+    document.getElementById("chatOptions").innerHTML = innerHTMLArray;
   });
-  console.log(array);
 </script>
 <script src="scripts/auth.js"></script>
 
