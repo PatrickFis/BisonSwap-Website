@@ -116,12 +116,15 @@
       array.push(tempArray[1]);
       console.log(array);
     });
-    var innerHTMLArray = [];
-    for(var i = 0; i < array.length; i++) {
-      var string = array[i] + '<button type="submit" class="btn btn-success" onclick="chat()">Submit</button><br>';
-      innerHTMLArray[i] = string;
-    }
-    document.getElementById("chatOptions").innerHTML = innerHTMLArray;
+    // var innerHTMLArray = [];
+    if(array.length > 0) {
+      var string = array[0] + '<button type="submit" class="btn btn-success" onclick="chat()">Submit</button><br>';
+      for(var i = 1; i < array.length; i++) {
+        string += array[i] + '<button type="submit" class="btn btn-success" onclick="chat()">Submit</button><br>';
+        // innerHTMLArray[i] = string;
+      }
+  }
+    document.getElementById("chatOptions").innerHTML = string;
   });
 </script>
 <script src="scripts/auth.js"></script>
