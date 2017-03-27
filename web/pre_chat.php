@@ -113,7 +113,10 @@
       // console.log(childSnapshot.key)
       var tempMail = childSnapshot.key.replace(/[(]/g, ".");
       var tempArray = tempMail.split("_BISONSWAP_");
-      array.push(tempArray[1]);
+      if(tempMail.includes(firebase.auth().currentUser.email)) {
+        array.push(tempArray[1]);
+      }
+      // array.push(tempArray[1]);
       console.log(array);
     });
     // var innerHTMLArray = [];
