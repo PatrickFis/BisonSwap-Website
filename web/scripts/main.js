@@ -70,6 +70,8 @@ FriendlyChat.prototype.initFirebase = function() {
 // Loads chat messages history and listens for upcoming ones.
 FriendlyChat.prototype.loadMessages = function() {
   // Pull messages between two users
+  var email1 = document.getElementById('EMAIL1').value;
+  var email2 = document.getElementById('EMAIL2').value;
   var mesRef = 'messages/';
   var ref = firebase.database().ref('messages/').once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
