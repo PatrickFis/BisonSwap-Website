@@ -53,10 +53,10 @@
 </head>
 <body>
     <?php
-      echo '<input type=hidden id="email1" name="email1" value="';
+      echo '<input type=hidden id="EMAIL1" name="email1" value="';
       echo $_GET["email1"];
       echo "\">";
-      echo '<input type=hidden id="email2" name="email2" value="';
+      echo '<input type=hidden id="EMAIL2" name="email2" value="';
       echo $_GET["email2"];
       echo "\">";
       // echo '<input type=hidden id="email1" name="email1" value="' + $_GET["email1"] + '">';
