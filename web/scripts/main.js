@@ -81,6 +81,7 @@ FriendlyChat.prototype.loadMessages = function() {
       if(tempMail.includes(firebase.auth().currentUser.email)) {
         array.push(tempArray[1]);
       }
+      console.log("asdjklfadsf");
       if(array.includes(email1) && array.includes(email2)) {
         mesRef += email1 + '_BISONSWAP_' + email2;
       }
