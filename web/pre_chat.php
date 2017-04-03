@@ -123,8 +123,8 @@
     if(array.length > 0) {
 
       // var string = "<a href=\"javascript:postwith(\"chat.html\", {email:\"+ firebase.auth().currentUser.email + \", email2:\"+ array[1] + \"})\">\" + array[1] + \"</a><br>";
-      var string = "<a href='javascript:postwith('";
-      string += 'chat.html\', {email: }';
+      var string = "<a href='javascript:postwith(";
+      string += 'chat.html, {email:' ;
       string += firebase.auth().currentUser.email;
       string += ", email2: '" + array[1] + "'})>" + array[1] + "'</a><br>";
       console.log(string);
