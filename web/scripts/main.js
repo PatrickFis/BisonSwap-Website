@@ -23,8 +23,8 @@ function FriendlyChat() {
   // var email1 = '<?php $_POST("email1")?>';
   // var email2 = '<?php $_POST("email2")?>';
   // console.log(email1);
-  this.email1 = document.getElementById('email1');
-  this.email2 = document.getElementById('email2');
+  // this.email1 = document.getElementById('email1');
+  // this.email2 = document.getElementById('email2');
   this.messageList = document.getElementById('messages');
   this.messageForm = document.getElementById('message-form');
   this.messageInput = document.getElementById('message');
