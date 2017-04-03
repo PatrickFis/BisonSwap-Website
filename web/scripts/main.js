@@ -25,6 +25,7 @@ function FriendlyChat() {
   // console.log(email1);
   var email1 = document.getElementById('EMAIL1').value;
   var email2 = document.getElementById('EMAIL2').value;
+  document.getElementById('submit').innerHTML = email1;
   this.messageList = document.getElementById('messages');
   this.messageForm = document.getElementById('message-form');
   this.messageInput = document.getElementById('message');
