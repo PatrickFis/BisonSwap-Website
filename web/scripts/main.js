@@ -20,9 +20,11 @@ function FriendlyChat() {
   this.checkSetup();
 
   // Shortcuts to DOM Elements.
-  var email1 = '<?php $_POST("email1")?>';
-  var email2 = '<?php $_POST("email2")?>';
-  console.log(email1);
+  // var email1 = '<?php $_POST("email1")?>';
+  // var email2 = '<?php $_POST("email2")?>';
+  // console.log(email1);
+  this.email1 = document.getElementById('email1');
+  this.email2 = document.getElementById('email2');
   this.messageList = document.getElementById('messages');
   this.messageForm = document.getElementById('message-form');
   this.messageInput = document.getElementById('message');
@@ -77,8 +79,8 @@ FriendlyChat.prototype.loadMessages = function() {
       if(tempMail.includes(firebase.auth().currentUser.email)) {
         array.push(tempArray[1]);
       }
-      if(array.includes(email1) && array.includes(email2)) {
-        mesRef += email1 + '_BISONSWAP_' + email2;
+      if(array.includes(this.email1) && array.includes(this.email2)) {
+        mesRef += this.email1 + '_BISONSWAP_' + this.email2;
       }
       // array.push(tempArray[1]);
       // console.log(array);
