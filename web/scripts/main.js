@@ -86,11 +86,10 @@ FriendlyChat.prototype.loadMessages = function() {
       }
       // array.push(tempArray[1]);
       // console.log(array);
-    });
+    });});
 
   // Reference to the /messages/ database path.
   // this.messagesRef = this.database.ref('messages/fischerpl@mail(lipscomb(edu_BISONSWAP_mhishidestinys@gmail(com');
-  console.log(mesRef);
   this.messagesRef = this.database.ref(mesRef);
   // Make sure we remove all previous listeners.
   this.messagesRef.off();
