@@ -101,14 +101,14 @@
     };
     var updates = {};
     // updates = pushData;
-    updates['test/' + currentEmail + '_BISONSWAP_' + targetEmail + "/"] = pushData;
+    updates['messages/' + currentEmail + '_BISONSWAP_' + targetEmail + "/"] = pushData;
     return firebase.database().ref().update(updates);
   }
 </script>
 <script>
   // Create an array of emails for user to chat with
   var array = [];
-  var ref = firebase.database().ref('test/').once('value').then(function(snapshot) {
+  var ref = firebase.database().ref('messages/').once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
       // console.log(childSnapshot.key)
       var tempMail = childSnapshot.key.replace(/[(]/g, ".");
