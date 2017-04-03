@@ -52,10 +52,6 @@
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <!-- <?php
-    echo $_GET["email1"];
-    echo $_GET["email2"];
-    ?> -->
     <?php
       echo '<input type=hidden id="email1" name="email1" value="';
       echo $_GET["email1"];
