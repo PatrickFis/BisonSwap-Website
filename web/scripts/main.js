@@ -20,8 +20,8 @@ function FriendlyChat() {
   this.checkSetup();
 
   // Shortcuts to DOM Elements.
-  var email1 = <?php $_POST("email1")?>;
-  var email2 = <?php $_POST("email2")?>;
+  var email1 = '<?php $_POST("email1")?>';
+  var email2 = '<?php $_POST("email2")?>';
   this.messageList = document.getElementById('messages');
   this.messageForm = document.getElementById('message-form');
   this.messageInput = document.getElementById('message');
