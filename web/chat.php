@@ -55,10 +55,10 @@
     <?php
       echo '<input type=hidden id="email1" name="email1" value="';
       echo $_GET["email1"];
-      echo ">";
+      echo "\">";
       echo '<input type=hidden id="email2" name="email2" value="';
       echo $_GET["email2"];
-      echo ">";
+      echo "\">";
       // echo '<input type=hidden id="email1" name="email1" value="' + $_GET["email1"] + '">';
       // echo '<input type=hidden id="email2" name="email2" value="' + $_GET["email2"] + '">';
      ?>
