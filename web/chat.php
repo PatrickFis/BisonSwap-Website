@@ -52,6 +52,9 @@
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
+  <?php
+    echo $_POST["email1"];
+    ?>
 <input type=hidden id ="email1" name=email1 value="<?php echo $email1; ?>">
 <input type=hidden id ="email2" name=email2 value="<?php echo $email2; ?>">
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
