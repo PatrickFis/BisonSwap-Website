@@ -54,6 +54,7 @@
 <body>
   <?php
     echo $_GET["email1"];
+    echo $_GET["email2"];
     ?>
 <input type=hidden id ="email1" name=email1 value="<?php $_GET["email1"]; ?>">
 <input type=hidden id ="email2" name=email2 value="<?php $_GET["email2"]; ?>">
