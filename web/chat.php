@@ -52,16 +52,22 @@
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <?php
+  <!-- <?php
     echo $_GET["email1"];
     echo $_GET["email2"];
-    ?>
+    ?> -->
     <?php
-      echo '<input type=hidden id="email1" name="email1" value="' + $_GET["email1"] + '">';
-      echo '<input type=hidden id="email2" name="email2" value="' + $_GET["email2"] + '">';
+      echo '<input type=hidden id="email1" name="email1" value="';
+      echo $_GET["email1"];
+      echo ">";
+      echo '<input type=hidden id="email2" name="email2" value="';
+      echo $_GET["email2"];
+      echo ">";
+      // echo '<input type=hidden id="email1" name="email1" value="' + $_GET["email1"] + '">';
+      // echo '<input type=hidden id="email2" name="email2" value="' + $_GET["email2"] + '">';
      ?>
-<input type=hidden id ="email1" name=email1 value="<?php $_GET["email1"]; ?>">
-<input type=hidden id ="email2" name=email2 value="<?php $_GET["email2"]; ?>">
+<!-- <input type=hidden id ="email1" name=email1 value="<?php $_GET["email1"]; ?>">
+<input type=hidden id ="email2" name=email2 value="<?php $_GET["email2"]; ?>"> -->
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
   <!-- Header section containing logo -->
