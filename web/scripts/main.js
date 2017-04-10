@@ -88,7 +88,7 @@ FriendlyChat.prototype.loadMessages = function() {
      array.push(tempArray[1]);
      // console.log(array);
    });});
-
+   console.log(mesRef);
   this.messagesRef = this.database.ref(mesRef);
   // Make sure we remove all previous listeners.
   this.messagesRef.off();
