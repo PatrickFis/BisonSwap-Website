@@ -72,6 +72,23 @@ FriendlyChat.prototype.initFirebase = function() {
 // Loads chat messages history and listens for upcoming ones.
 FriendlyChat.prototype.loadMessages = function() {
   // Reference to the /messages/ database path.
+ email1 = document.getElementById('EMAIL1').value;
+ email2 = document.getElementById('EMAIL2').value;
+ var mesRef = 'messages/';
+ var ref = firebase.database().ref('messages/').once('value').then(function(snapshot) {
+   snapshot.forEach(function(childSnapshot) {
+     // console.log(childSnapshot.key)
+     // var tempMail = childSnapshot.key.replace(/[(]/g, ".");
+     var tempArray = tempMail.split("_BISONSWAP_");
+     if(tempMail.includes(firebase.auth().currentUser.email)) {
+       array.push(tempArray[1]);
+     }
+     if(array.includes(email1) && array.includes(email2)) {
+       mesRef += email1 + '_BISONSWAP_' + email2;
+     }
+     // array.push(tempArray[1]);
+     // console.log(array);
+   });});
   this.messagesRef = this.database.ref('messages/dsmhishi@mail(lipscomb(edu_BISONSWAP_fischerpl@mail(lipscomb(edu');
   // Make sure we remove all previous listeners.
   this.messagesRef.off();
