@@ -73,23 +73,23 @@ FriendlyChat.prototype.loadMessages = function() {
  email1 = document.getElementById('EMAIL1').value;
  email2 = document.getElementById('EMAIL2').value;
  var array = [];
- var mesRef = 'messages/';
- var ref = firebase.database().ref('messages/').once('value').then(function(snapshot) {
-   console.log("INSIDE REF");
-   snapshot.forEach(function(childSnapshot) {
-     // console.log(childSnapshot.key)
-     var tempMail = childSnapshot.key.replace(/[(]/g, ".");
-     var tempArray = tempMail.split("_BISONSWAP_");
-     console.log(tempMail);
-     if(tempMail.includes(firebase.auth().currentUser.email)) {
-       array.push(tempArray[1]);
-     }
-     if(array.includes(email1) && array.includes(email2)) {
-       mesRef += email1 + '_BISONSWAP_' + email2;
-     }
-     array.push(tempArray[1]);
-     // console.log(array);
-   });});
+ var mesRef = 'messages/' + email1.replace('[.]/g',"("); + '_BISONSWAP_' + email2.replace('[.]/g', "(");
+ // var ref = firebase.database().ref('messages/').once('value').then(function(snapshot) {
+ //   console.log("INSIDE REF");
+ //   snapshot.forEach(function(childSnapshot) {
+ //     // console.log(childSnapshot.key)
+ //     var tempMail = childSnapshot.key.replace(/[(]/g, ".");
+ //     var tempArray = tempMail.split("_BISONSWAP_");
+ //     console.log(tempMail);
+ //     if(tempMail.includes(firebase.auth().currentUser.email)) {
+ //       array.push(tempArray[1]);
+ //     }
+ //     if(array.includes(email1) && array.includes(email2)) {
+ //       mesRef += email1 + '_BISONSWAP_' + email2;
+ //     }
+ //     array.push(tempArray[1]);
+ //     // console.log(array);
+ //   });});
    console.log(mesRef);
   this.messagesRef = this.database.ref(mesRef);
   // Make sure we remove all previous listeners.
