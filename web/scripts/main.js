@@ -88,7 +88,8 @@ FriendlyChat.prototype.loadMessages = function() {
      array.push(tempArray[1]);
      // console.log(array);
    });});
-  this.messagesRef = this.database.ref('messages/dsmhishi@mail(lipscomb(edu_BISONSWAP_fischerpl@mail(lipscomb(edu');
+
+  this.messagesRef = this.database.ref(mesRef);
   // Make sure we remove all previous listeners.
   this.messagesRef.off();
 
