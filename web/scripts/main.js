@@ -105,6 +105,8 @@ FriendlyChat.prototype.loadMessages = function() {
 
 // Saves a new message on the Firebase DB.
 FriendlyChat.prototype.saveMessage = function(e) {
+  mesRef = 'messages/' + email1 + '_BISONSWAP_' + email2;
+  this.messagesRef = this.database.ref(mesRef);
   e.preventDefault();
   // Check that the user entered a message and is signed in.
   if (this.messageInput.value && this.checkSignedInWithMessage()) {
@@ -114,8 +116,7 @@ FriendlyChat.prototype.saveMessage = function(e) {
       uid: currentUser.uid,
       name: currentUser.displayName,
       text: this.messageInput.value,
-      photoUrl: currentUser.photoURL || '/images/profile_placeholder.png',
-      mesRef: mesRef
+      photoUrl: currentUser.photoURL || '/images/profile_placeholder.png'
     }).then(function() {
       // Clear message text field and SEND button state.
       FriendlyChat.resetMaterialTextfield(this.messageInput);
