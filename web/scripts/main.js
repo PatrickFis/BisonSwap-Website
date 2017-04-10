@@ -75,6 +75,7 @@ FriendlyChat.prototype.loadMessages = function() {
  var array = [];
  var mesRef = 'messages/';
  var ref = firebase.database().ref('messages/').once('value').then(function(snapshot) {
+   console.log("INSIDE REF");
    snapshot.forEach(function(childSnapshot) {
      // console.log(childSnapshot.key)
      var tempMail = childSnapshot.key.replace(/[(]/g, ".");
