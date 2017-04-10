@@ -73,6 +73,10 @@ FriendlyChat.prototype.loadMessages = function() {
  email1 = document.getElementById('EMAIL1').value;
  email2 = document.getElementById('EMAIL2').value;
  var array = [];
+ email1 = email1.replace('/\./g', '(');
+ email2 = email2.replace('/\./g', '(');
+ console.log(email1);
+ console.log(email2);
  var mesRef = 'messages/' + email1.replace('/\./g',"("); + '_BISONSWAP_' + email2.replace('/\./g', "(");
  // var ref = firebase.database().ref('messages/').once('value').then(function(snapshot) {
  //   console.log("INSIDE REF");
