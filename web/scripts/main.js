@@ -80,9 +80,9 @@ FriendlyChat.prototype.loadMessages = function() {
  while(patt.test(email2)) {
    email2 = email2.replace(".", "(");
  }
- console.log(email1);
- console.log(email2);
- var mesRef = 'messages/' + email1.replace('/\./g',"("); + '_BISONSWAP_' + email2.replace('/\./g', "(");
+ // console.log(email1);
+ // console.log(email2);
+ var mesRef = 'messages/' + email1 + '_BISONSWAP_' + email2;
  // var ref = firebase.database().ref('messages/').once('value').then(function(snapshot) {
  //   console.log("INSIDE REF");
  //   snapshot.forEach(function(childSnapshot) {
