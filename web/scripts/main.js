@@ -79,6 +79,7 @@ FriendlyChat.prototype.loadMessages = function() {
      // console.log(childSnapshot.key)
      var tempMail = childSnapshot.key.replace(/[(]/g, ".");
      var tempArray = tempMail.split("_BISONSWAP_");
+     console.log(tempMail);
      if(tempMail.includes(firebase.auth().currentUser.email)) {
        array.push(tempArray[1]);
      }
