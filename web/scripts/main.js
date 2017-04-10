@@ -73,8 +73,13 @@ FriendlyChat.prototype.loadMessages = function() {
  email1 = document.getElementById('EMAIL1').value;
  email2 = document.getElementById('EMAIL2').value;
  var array = [];
- email1 = email1.replace('/\./g', '(');
- email2 = email2.replace('/\./g', '(');
+ var patt = new RegExp("\\.");
+ while(patt.test(email1)) {
+   email1 = email1.replace(".", "(");
+ }
+ while(patt.test(email2)) {
+   email2 = email2.replace(".", "(");
+ }
  console.log(email1);
  console.log(email2);
  var mesRef = 'messages/' + email1.replace('/\./g',"("); + '_BISONSWAP_' + email2.replace('/\./g', "(");
