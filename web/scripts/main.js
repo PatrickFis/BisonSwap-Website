@@ -105,7 +105,7 @@ FriendlyChat.prototype.loadMessages = function() {
 
 // Saves a new message on the Firebase DB.
 FriendlyChat.prototype.saveMessage = function(e) {
-  mesRef = 'messages/' + document.getElementById('EMAIL1').value + '_BISONSWAP_' + document.getElementById('EMAIL2').value;
+  var mesRef = 'messages/' + document.getElementById('EMAIL1').value + '_BISONSWAP_' + document.getElementById('EMAIL2').value;
   this.messagesRef = this.database.ref(mesRef);
   e.preventDefault();
   // Check that the user entered a message and is signed in.
