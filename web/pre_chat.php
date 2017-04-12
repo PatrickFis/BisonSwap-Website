@@ -101,6 +101,9 @@
     };
     var updates = {};
     // updates = pushData;
+    var pushRef = {currentEmail, targetEmail};
+    pushRef = pushRef.sort();
+    console.log(pushRef);
     updates['messages/' + currentEmail + '_BISONSWAP_' + targetEmail + "/"] = pushData;
     return firebase.database().ref().update(updates);
   }
