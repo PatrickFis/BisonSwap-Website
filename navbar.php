@@ -16,15 +16,12 @@
       <ul class="nav navbar-nav">
         <li><a href="/web/chat.html">Chat<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Link 2<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="dancehall.php">Sub Link 1</a></li>
-            <li><a href="gospel.php">Sub Link 2</a></li>
-            <li><a href="hiphop.php">Sub Link 3</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="drama.php">Another Link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="vlogs.php">One More</a></li>
+            <li><a href="dancehall.php">Home Goods</a></li>
+            <li><a href="gospel.php">Electronics</a></li>
+            <li><a href="hiphop.php">Clothing</a></li>
+            <li><a href="drama.php">Books</a></li>
           </ul>
         </li>
       </ul>
@@ -40,9 +37,9 @@
         <div style="position:absolute; width:232px; z-index:1;background-color:#fff;" class="entry"></div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="create-profile.php">Link 4</a></li>
+        <li><a href="add-new-item.php">Upload Item</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Link 5<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Offers<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="upload-youtube-video.php">Sub Link 1</a></li>
             <li role="separator" class="divider"></li>
