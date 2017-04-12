@@ -102,11 +102,11 @@
     var updates = {};
     // updates = pushData;
     var pushRef = [currentEmail, targetEmail];
-    alert(pushRef[0]);
-    alert(pushRef[1]);
+    // Sort the emails alphabetically
     pushRef = pushRef.sort();
-    console.log(pushRef);
-    updates['messages/' + currentEmail + '_BISONSWAP_' + targetEmail + "/"] = pushData;
+    var reference = 'messages' + pushRef[0] + '_BISONSWAP_' + pushRef[1] + "/";
+    // console.log(pushRef);
+    updates[reference] = pushData;
     return firebase.database().ref().update(updates);
   }
 </script>
