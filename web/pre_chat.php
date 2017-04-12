@@ -102,7 +102,8 @@
     var updates = {};
     // updates = pushData;
     var pushRef = {currentEmail, targetEmail};
-    alert(pushRef);
+    alert(pushRef[0]);
+    alert(pushRef[1]);
     pushRef = pushRef.sort();
     console.log(pushRef);
     updates['messages/' + currentEmail + '_BISONSWAP_' + targetEmail + "/"] = pushData;
