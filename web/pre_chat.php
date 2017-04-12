@@ -119,7 +119,13 @@
       var tempMail = childSnapshot.key.replace(/[(]/g, ".");
       var tempArray = tempMail.split("_BISONSWAP_");
       if(tempMail.includes(firebase.auth().currentUser.email)) {
-        array.push(tempArray[1]);
+        if(tempArray[0] == firebase.auth().currentUser.email) {
+          array.push(tempArray[0]);
+        }
+        else {
+          array.push(tempArray[0]);
+        }
+        // array.push(tempArray[1]);
       }
       // array.push(tempArray[1]);
       console.log(array);
@@ -128,15 +134,22 @@
     if(array.length > 0) {
 
       // var string = '<a href="javascript:postwith(\'chat.php\',{email1:\''+firebase.auth().currentUser.email+'\',email2:\''+array[1]+'\'})">'+array[1]+'</a><br>';
-      var string = '<a href="chat.php?email1=' + firebase.auth().currentUser.email + '&email2=' + array[1] + '">' + array[1] + '</a><br>';
-      console.log(string);
-      // var string = array[0] + '<button type="submit" class="btn btn-success" onclick="chat()">Submit</button><br>';
-      for(var i = 2; i < array.length; i++) {
-        // string += '<a href="javascript:postwith(\'chat.php\',{email1:\''+firebase.auth().currentUser.email+'\',email2:\''+array[i]+'\'})">'+array[i]+'</a><br>';
-        string += '<a href="chat.php?email1=' + firebase.auth().currentUser.email + '&email2=' + array[i] + '">' + array[i] + '</a><br>';
+      var string = "";
+      for(var i = 0; i < array.length; i++) {
+        var post_string = [firebase.auth().currentUser.email, array[i]];
+        post_string = post_string.sort();
+        string += '<a href="chat.php?email1=' + post_string[0] + '&email2=' + post_string[1] + '">' + array[i] + '</a><br>';
         console.log(string);
-        // innerHTMLArray[i] = string;
       }
+      // var string = '<a href="chat.php?email1=' + firebase.auth().currentUser.email + '&email2=' + array[1] + '">' + array[1] + '</a><br>';
+      // console.log(string);
+      // // var string = array[0] + '<button type="submit" class="btn btn-success" onclick="chat()">Submit</button><br>';
+      // for(var i = 2; i < array.length; i++) {
+      //   // string += '<a href="javascript:postwith(\'chat.php\',{email1:\''+firebase.auth().currentUser.email+'\',email2:\''+array[i]+'\'})">'+array[i]+'</a><br>';
+      //   string += '<a href="chat.php?email1=' + firebase.auth().currentUser.email + '&email2=' + array[i] + '">' + array[i] + '</a><br>';
+      //   console.log(string);
+      //   // innerHTMLArray[i] = string;
+      // }
   }
     document.getElementById("chatOptions").innerHTML = string;
   });
