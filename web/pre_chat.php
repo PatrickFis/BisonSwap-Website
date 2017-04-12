@@ -101,7 +101,7 @@
     };
     var updates = {};
     // updates = pushData;
-    var pushRef = {currentEmail, targetEmail};
+    var pushRef = [currentEmail, targetEmail];
     alert(pushRef[0]);
     alert(pushRef[1]);
     pushRef = pushRef.sort();
