@@ -94,7 +94,7 @@
     var targetEmail = document.getElementById("email").value.replace(/[.]/g, "(");
     var pushData = {
       name: firebase.auth().currentUser.displayName,
-      text: 'Change me',
+      text: 'Be cool',
       photoUrl: firebase.auth().currentUser.photoURL || '/images/profile_placeholder.png',
       uid: firebase.auth().currentUser.uid
       // text: ''
