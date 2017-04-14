@@ -96,7 +96,7 @@
       name: firebase.auth().currentUser.displayName,
       text: 'Change me',
       photoUrl: firebase.auth().currentUser.photoURL || '/images/profile_placeholder.png',
-      uid: currentUser.uid
+      uid: firebase.auth().currentUser.uid
       // text: ''
       // changeme: 1
     };
