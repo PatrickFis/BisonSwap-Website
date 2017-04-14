@@ -118,17 +118,19 @@
       // console.log(childSnapshot.key)
       var tempMail = childSnapshot.key.replace(/[(]/g, ".");
       var tempArray = tempMail.split("_BISONSWAP_");
+      alert(tempArray);
       if(tempMail.includes(firebase.auth().currentUser.email)) {
         if(tempArray[0] == firebase.auth().currentUser.email) {
-          array.push(tempArray[0]);
+          array.push(tempArray[1]);
         }
         else {
-          array.push(tempArray[1]);
+          array.push(tempArray[0]);
         }
         // array.push(tempArray[1]);
       }
       // array.push(tempArray[1]);
       console.log(array);
+      // alert(array);
     });
     // var innerHTMLArray = [];
     if(array.length > 0) {
