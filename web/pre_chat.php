@@ -95,7 +95,8 @@
     var pushData = {
       name: firebase.auth().currentUser.displayName,
       text: 'Change me',
-      photoUrl: firebase.auth().currentUser.photoURL || '/images/profile_placeholder.png'
+      photoUrl: firebase.auth().currentUser.photoURL || '/images/profile_placeholder.png',
+      uid: currentUser.uid
       // text: ''
       // changeme: 1
     };
