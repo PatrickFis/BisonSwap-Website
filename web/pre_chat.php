@@ -119,7 +119,6 @@
       // console.log(childSnapshot.key)
       var tempMail = childSnapshot.key.replace(/[(]/g, ".");
       var tempArray = tempMail.split("_BISONSWAP_");
-      alert(tempArray);
       if(tempMail.includes(firebase.auth().currentUser.email)) {
         if(tempArray[0] == firebase.auth().currentUser.email) {
           array.push(tempArray[1]);
