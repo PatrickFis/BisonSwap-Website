@@ -93,7 +93,7 @@
     var currentEmail = firebase.auth().currentUser.email.replace(/[.]/g, "(");
     var targetEmail = document.getElementById("email").value.replace(/[.]/g, "(");
     var pushData = {
-      name: firebase.auth().currentUser.displayName,
+      name: 'Bisonswap',
       text: 'Be cool',
       photoUrl: firebase.auth().currentUser.photoURL || '/images/profile_placeholder.png',
       uid: firebase.auth().currentUser.uid
