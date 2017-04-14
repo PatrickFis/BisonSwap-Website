@@ -123,7 +123,7 @@
           array.push(tempArray[0]);
         }
         else {
-          array.push(tempArray[0]);
+          array.push(tempArray[1]);
         }
         // array.push(tempArray[1]);
       }
@@ -139,7 +139,7 @@
         var post_string = [firebase.auth().currentUser.email, array[i]];
         post_string = post_string.sort();
         string += '<a href="chat.php?email1=' + post_string[0] + '&email2=' + post_string[1] + '">' + array[i] + '</a><br>';
-        console.log(string);
+        // console.log(string);
       }
       // var string = '<a href="chat.php?email1=' + firebase.auth().currentUser.email + '&email2=' + array[1] + '">' + array[1] + '</a><br>';
       // console.log(string);
