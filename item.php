@@ -120,7 +120,7 @@
     firebase.database().ref('/items/-Kg0hqYb_kdv-xGxraQo').once('value').then(function(snapshot) {
       document.getElementById("item-name").innerHTML = snapshot.val().itemName;
       document.getElementById("item-description").innerHTML = snapshot.val().itemDescription;
-      var storageRef = firebase.storage();
+      var storageRef = firebase.storage().ref(snapshot.val().pic_1);
       storageRef.child(snapshot.val().pic_1).getDownloadURL().then(function(url) {
         // `url` is the download URL for 'images/stars.jpg'
 
