@@ -5,7 +5,7 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner cont-slider">
 					<div class="item active">
-					  <img alt="" title="" src="http://placehold.it/600x400">
+					  <img id="pic_1" alt="" title="" src="http://placehold.it/600x400">
 					</div>
 					<div class="item">
 					  <img alt="" title="" src="http://placehold.it/600x400">
