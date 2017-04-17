@@ -98,10 +98,32 @@
         console.log(items);
 
         var string = "";
-        for(var i = 0; i < items.length; i++) {
+        var storage = firebase.storage();
+        for(var i = 0; i < 1; i++) {
           string += '<div class="col-md-4 portfolio-item">';
           string += '<a href="#">';
-          string += '<img class="img-responsive" src="http://placehold.it/700x400" alt="">';
+          // Replace src with image from database
+          var path = storage.ref(items[i].pic_1);
+          path.getDownloadURL().then(function(url) {
+            // `url` is the download URL for 'images/stars.jpg'
+
+            // This can be downloaded directly:
+            var xhr = new XMLHttpRequest();
+            xhr.responseType = 'blob';
+            xhr.onload = function(event) {
+              var blob = xhr.response;
+            };
+            xhr.open('GET', url);
+            xhr.send();
+            console.log(url);
+            // Or inserted into an <img> element:
+            // var img = document.getElementById('pic_'+i);
+            // img.src = url;
+            string += '<img class="img-responsive" src="'+url+'" id ="pic_'+i+'" alt="">';
+          }).catch(function(error) {
+            // Handle any errors
+          });
+
           string += '</a>';
           string += '<h3>';
           string += '<a href="#">'+items[i].itemName+'</a>';
