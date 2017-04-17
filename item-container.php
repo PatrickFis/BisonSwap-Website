@@ -5,7 +5,7 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner cont-slider">
 					<div class="item active">
-					  <img id="pic_1" alt="" title="" src="http://placehold.it/600x400">
+					  <img alt="" title="" src="http://placehold.it/600x400">
 					</div>
 					<div class="item">
 					  <img alt="" title="" src="http://placehold.it/600x400">
@@ -20,23 +20,6 @@
 					  <img alt="" title="" src="http://placehold.it/600x400">
 					</div>
 				</div>
-				<ol class="carousel-indicators" align = "center">
-					<li class="active" data-slide-to="0" data-target="#article-photo-carousel">
-					  <img alt="" src="http://placehold.it/250x180">
-					</li>
-					<li class="" data-slide-to="1" data-target="#article-photo-carousel">
-					  <img alt="" src="http://placehold.it/250x180">
-					</li>
-					<li class="" data-slide-to="2" data-target="#article-photo-carousel">
-					  <img alt="" src="http://placehold.it/250x180">
-					</li>
-					<li class="" data-slide-to="3" data-target="#article-photo-carousel">
-					  <img alt="" src="http://placehold.it/250x180">
-					</li>
-					<li class="" data-slide-to="4" data-target="#article-photo-carousel">
-					  <img alt="" src="http://placehold.it/250x180">
-					</li>
-				</ol>
 			</div>
 	  	</div>
 	  	<div class="col-sm-3">
