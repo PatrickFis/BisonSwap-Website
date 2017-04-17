@@ -121,10 +121,43 @@ function addItem() {
   // Get the first image uploaded by the user
   if(pic_1_name != '0') {
     var file1 = document.getElementById("pic-1").files[0];
-    storageRef.child(pic_1_name).put(file1).then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
-      console.log('Download URL:');
-      console.log(snapshot.downloadURL);
+    // storageRef.child(pic_1_name).put(file1).then(function(snapshot) {
+    //   console.log('Uploaded a blob or file!');
+    //   // console.log('Download URL:');
+    //   // console.log(snapshot.downloadURL);
+    //   });
+      var uploadTask = storageRef.child(pic_1_name).put(file1);
+      // Register three observers:
+      // 1. 'state_changed' observer, called any time the state changes
+      // 2. Error observer, called on failure
+      // 3. Completion observer, called on successful completion
+      uploadTask.on('state_changed', function(snapshot){
+        // Observe state change events such as progress, pause, and resume
+        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED: // or 'paused'
+            console.log('Upload is paused');
+            break;
+          case firebase.storage.TaskState.RUNNING: // or 'running'
+            console.log('Upload is running');
+            console.log(uploadTask.snapshot.downloadURL);
+            break;
+          case firebase.storage.TaskState.SUCCESS:
+            console.log('Upload successful');
+            break;
+        }
+      }, function(error) {
+        // Handle unsuccessful uploads
+        console.log("ERROR");
+      }, function() {
+        // Handle successful uploads on complete
+        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+        var downloadURL = uploadTask.snapshot.downloadURL;
+        // alert(downloadURL);
+        // console.log(firebase.storage().ref(pic_1_name).getDownloadURL);
+
       });
     }
     return firebase.database().ref().update(updates);
