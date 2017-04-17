@@ -31,7 +31,9 @@
 ?>
 
 <body>
+  <div id="test">
 
+  </div>
     <!-- Page Content -->
     <div class="container">
 
@@ -207,6 +209,58 @@
         messagingSenderId: "307753783953"
       };
       firebase.initializeApp(config);
+    </script>
+    <script>
+      function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating) {
+        this.date = date;
+        this.email = email;
+        this.itemCategory = itemCategory;
+        this.itemDescription = itemDescription;
+        this.itemName = itemName;
+        this.pic_1 = pic_1;
+        this.rating = rating;
+      }
+      firebase.database().ref('/items/').once('value').then(function(snapshot) {
+        var items = [];
+        snapshot.forEach(function(childSnapshot) {
+          console.log(childSnapshot.val().date,
+          childSnapshot.val().email,
+          childSnapshot.val().itemCategory,
+          childSnapshot.val().itemDescription,
+          childSnapshot.val().itemName,
+          childSnapshot.val().pic_1,
+          childSnapshot.val().rating);
+          var item = new Item(
+            childSnapshot.val().date,
+            childSnapshot.val().email,
+            childSnapshot.val().itemCategory,
+            childSnapshot.val().itemDescription,
+            childSnapshot.val().itemName,
+            childSnapshot.val().pic_1,
+            childSnapshot.val().rating
+          );
+          items.push(item);
+        });
+        localStorage.setItem("Item", JSON.stringify(items));
+        console.log(items);
+
+        var string = "";
+        for(var i = 0; i < item.length; i++) {
+          string += '<div class="col-md-4 portfolio-item">';
+          string += '<a href="#"';
+          string += '<img class="img-responsive" src="http://placehold.it/700x400" alt="">';
+          string += '</a>';
+          string += '<h3>';
+          string += '<a href="#">Item Name</a>';
+          string += '</h3>';
+          string += '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>';
+          string += '</div>';
+        }
+        var newDiv = document.createElement("div");
+        newDiv.appendChild(document.createTextNode(string));
+        var replaceDiv = document.getElementById("test");
+        document.body.insertBefore(newDiv, replaceDiv);
+      });
     </script>
     <script src="web/scripts/auth.js"></script>
 </body>
