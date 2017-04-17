@@ -123,6 +123,8 @@ function addItem() {
     var file1 = document.getElementById("pic-1").files[0];
     storageRef.child(pic_1_name).put(file1).then(function(snapshot) {
       console.log('Uploaded a blob or file!');
+      console.log('Download URL:');
+      console.log(snapshot.downloadURL);
       });
     }
     return firebase.database().ref().update(updates);

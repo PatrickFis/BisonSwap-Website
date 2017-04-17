@@ -98,12 +98,22 @@
         console.log(items);
 
         var string = "";
-        var storage = firebase.storage();
-        for(var i = 0; i < 1; i++) {
+        for(var i = 0; i < 2; i++) {
           string += '<div class="col-md-4 portfolio-item">';
           string += '<a href="#">';
           // Replace src with image from database
-          var path = storage.ref(items[i].pic_1);
+          string += '<img class="img-responsive" src="http://placehold.it/600x400" id ="pic_'+i+'" alt="">';
+          string += '</a>';
+          string += '<h3>';
+          string += '<a href="#">'+items[i].itemName+'</a>';
+          string += '</h3>';
+          string += '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>';
+          string += '</div>';
+        }
+        document.getElementById("replace").innerHTML = string;
+        for(var j = 0; j < 1; j++) {
+          var storage = firebase.storage();
+          var path = storage.ref(items[j].pic_1);
           path.getDownloadURL().then(function(url) {
             // `url` is the download URL for 'images/stars.jpg'
 
@@ -117,21 +127,17 @@
             xhr.send();
             console.log(url);
             // Or inserted into an <img> element:
-            // var img = document.getElementById('pic_'+i);
-            // img.src = url;
-            string += '<img class="img-responsive" src="'+url+'" id ="pic_'+i+'" alt="">';
+            var img = document.getElementById('pic_'+j);
+            console.log('pic_'+j);
+            console.log(j);
+            img.src = url;
+
           }).catch(function(error) {
             // Handle any errors
+            console.log(error);
           });
 
-          string += '</a>';
-          string += '<h3>';
-          string += '<a href="#">'+items[i].itemName+'</a>';
-          string += '</h3>';
-          string += '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>';
-          string += '</div>';
         }
-        document.getElementById("replace").innerHTML = string;
         // var newDiv = document.createElement("div");
         // newDiv.appendChild(document.createTextNode(string));
         // var replaceDiv = document.getElementById("test");
