@@ -83,23 +83,6 @@
 </div>
 </div>
 </body>
-<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
-<script>
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyA0saZpdhgWuQ5MvD81I3K09M0Wbk31c6Q",
-  authDomain: "bisonswap-a0af2.firebaseapp.com",
-  databaseURL: "https://bisonswap-a0af2.firebaseio.com",
-  storageBucket: "bisonswap-a0af2.appspot.com",
-  messagingSenderId: "307753783953"
-};
-firebase.initializeApp(config);
-</script>
-<script src="web/scripts/auth.js"></script>
 <script>
 function addItem() {
   // document.getElementById("pic-1").addEventListener("submit", function(event) {
@@ -122,6 +105,19 @@ function addItem() {
     pic_1_name = '0';
   }
   else pic_1_name = 'images/' + user.uid + '/' + document.getElementById("itemname").value + '/' + pic_1_name.substring(pic_1_name.lastIndexOf('\\')+1, pic_1_name.length);
+  var pushData = {
+    email: user.email,
+    itemName: document.getElementById("itemname").value,
+    itemCategory: document.getElementById("cat").value,
+    itemDescription: document.getElementById("item-description").value,
+    date: new Date(),
+    //itemPictures: document.getElementById("pic-1").value,
+    pic_1: pic_1_name,
+    rating: document.getElementById("condition").value
+  };
+  var newPushKey = firebase.database().ref().child('items').push().key;
+  var updates = {};
+  updates['/items/' + newPushKey] = pushData;
   // Get the first image uploaded by the user
   if(pic_1_name != '0') {
     var file1 = document.getElementById("pic-1").files[0];
@@ -130,7 +126,6 @@ function addItem() {
     //   // console.log('Download URL:');
     //   // console.log(snapshot.downloadURL);
     //   });
-    alert("HERE")
       var uploadTask = storageRef.child(pic_1_name).put(file1);
       // Register three observers:
       // 1. 'state_changed' observer, called any time the state changes
@@ -160,25 +155,29 @@ function addItem() {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         var downloadURL = uploadTask.snapshot.downloadURL;
-        alert(downloadURL);
+        // alert(downloadURL);
         // console.log(firebase.storage().ref(pic_1_name).getDownloadURL);
 
       });
     }
     return firebase.database().ref().update(updates);
   }
-  var pushData = {
-    email: user.email,
-    itemName: document.getElementById("itemname").value,
-    itemCategory: document.getElementById("cat").value,
-    itemDescription: document.getElementById("item-description").value,
-    date: new Date(),
-    //itemPictures: document.getElementById("pic-1").value,
-    pic_1: pic_1_name,
-    rating: document.getElementById("condition").value
-  };
-  var newPushKey = firebase.database().ref().child('items').push().key;
-  var updates = {};
-  updates['/items/' + newPushKey] = pushData;
 </script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+<script>
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyA0saZpdhgWuQ5MvD81I3K09M0Wbk31c6Q",
+  authDomain: "bisonswap-a0af2.firebaseapp.com",
+  databaseURL: "https://bisonswap-a0af2.firebaseio.com",
+  storageBucket: "bisonswap-a0af2.appspot.com",
+  messagingSenderId: "307753783953"
+};
+firebase.initializeApp(config);
+</script>
+<script src="web/scripts/auth.js"></script>
 </html>
