@@ -64,7 +64,7 @@
       firebase.initializeApp(config);
     </script>
     <script>
-      function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, url) {
+      function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, url, key) {
         this.date = date;
         this.email = email;
         this.itemCategory = itemCategory;
@@ -73,6 +73,7 @@
         this.pic_1 = pic_1;
         this.rating = rating;
         this.url = url;
+        this.key = key;
       }
       firebase.database().ref('/items/').once('value').then(function(snapshot) {
         var items = [];
@@ -84,7 +85,8 @@
           childSnapshot.val().itemName,
           childSnapshot.val().pic_1,
           childSnapshot.val().rating,
-          childSnapshot.val().url);
+          childSnapshot.val().url,
+          childSnapshot.key);
           var item = new Item(
             childSnapshot.val().date,
             childSnapshot.val().email,
@@ -93,7 +95,8 @@
             childSnapshot.val().itemName,
             childSnapshot.val().pic_1,
             childSnapshot.val().rating,
-            childSnapshot.val().url
+            childSnapshot.val().url,
+            childSnapshot.key
           );
           items.push(item);
         });
@@ -108,11 +111,12 @@
           string += '<img height=300 width=250 src="'+items[i].url+'" id ="pic_'+i+'" alt="">';
           string += '</a>';
           string += '<h3>';
-          string += '<a href="#">'+items[i].itemName+'</a>';
+          string += '<a href="items.php?key='+items[i].key+'">'+items[i].itemName+'</a>';
           string += '</h3>';
           string += '<p>'+items[i].itemDescription+'</p>';
           string += '<p> Category: '+items[i].itemCategory+'</p>';
           string += '<p> Rating: '+items[i].rating+'</p>';
+          string += '<div hidden>'+items[i].key+'</p>';
           string += '</div>';
         }
         document.getElementById("replace").innerHTML = string;
