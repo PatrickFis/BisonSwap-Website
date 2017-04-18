@@ -116,7 +116,7 @@
           string += '<p>'+items[i].itemDescription+'</p>';
           string += '<p> Category: '+items[i].itemCategory+'</p>';
           string += '<p> Rating: '+items[i].rating+'</p>';
-          string += '<div hidden>'+items[i].key+'</p>';
+          // string += '<div hidden>'+items[i].key+'</div>';
           string += '</div>';
         }
         document.getElementById("replace").innerHTML = string;
