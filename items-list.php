@@ -110,7 +110,9 @@
           string += '<h3>';
           string += '<a href="#">'+items[i].itemName+'</a>';
           string += '</h3>';
-          string += '<p>'+items[i].itemDescription+'</p>'
+          string += '<p>'+items[i].itemDescription+'</p>';
+          string += '<p> Category: '+items[i].itemCategory+'</p>';
+          string += '<p> Rating: '+items[i].rating+'</p>';
           string += '</div>';
         }
         document.getElementById("replace").innerHTML = string;
