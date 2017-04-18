@@ -61,7 +61,13 @@
 <?php
     include 'navbar.php';
 ?>
-
+<?php
+  echo '<input type=hidden id="KEY" name="KEY" value="';
+  echo $_GET["key"];
+  echo "\">";
+  // echo '<input type=hidden id="email1" name="email1" value="' + $_GET["email1"] + '">';
+  // echo '<input type=hidden id="email2" name="email2" value="' + $_GET["email2"] + '">';
+ ?>
 <?php include 'item-container.php'; ?>
 
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
@@ -117,7 +123,8 @@
   });
 </script>
 <script>
-    firebase.database().ref('/items/-Khn37l9bJQHy_XLsPjS').once('value').then(function(snapshot) {
+    var itemRef = '/items/' + document.getElementById("KEY").value;
+    firebase.database().ref(itemRef).once('value').then(function(snapshot) {
       document.getElementById("item-name").innerHTML = snapshot.val().itemName;
       document.getElementById("item-description").innerHTML = snapshot.val().itemDescription;
       // This portion will download an image based on whatever is in the item reference's pic_1 field
