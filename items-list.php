@@ -118,13 +118,14 @@
           var path = storage.ref(items[j].pic_1);
 
           path.getDownloadURL().then(function(url) {
+            alert(url)
             // var img = document.getElementById('pic_1');
             var e = document.createElement('div');
             var string = ""
             string += '<div class="col-md-4 portfolio-item">';
             string += '<a href="#">';
             // Replace src with image from database
-            string += '<img class="img-responsive" src="'+url+'" id ="pic_'+counter+'" alt="">';
+            string += '<img class="img-responsive" style="{height:600px;width:400px}" src="'+url+'" id ="pic_'+counter+'" alt="">';
             string += '</a>';
             string += '<h3>';
             string += '<a href="#">'+items[counter].itemName+'</a>';
@@ -180,3 +181,4 @@
 </body>
 
 </html>
+
