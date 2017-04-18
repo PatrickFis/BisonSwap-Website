@@ -64,7 +64,7 @@
       firebase.initializeApp(config);
     </script>
     <script>
-      function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating) {
+      function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, url) {
         this.date = date;
         this.email = email;
         this.itemCategory = itemCategory;
@@ -72,6 +72,7 @@
         this.itemName = itemName;
         this.pic_1 = pic_1;
         this.rating = rating;
+        this.url = url;
       }
       firebase.database().ref('/items/').once('value').then(function(snapshot) {
         var items = [];
@@ -82,7 +83,8 @@
           childSnapshot.val().itemDescription,
           childSnapshot.val().itemName,
           childSnapshot.val().pic_1,
-          childSnapshot.val().rating);
+          childSnapshot.val().rating,
+          childSnapshot.val().url);
           var item = new Item(
             childSnapshot.val().date,
             childSnapshot.val().email,
@@ -90,60 +92,61 @@
             childSnapshot.val().itemDescription,
             childSnapshot.val().itemName,
             childSnapshot.val().pic_1,
-            childSnapshot.val().rating
+            childSnapshot.val().rating,
+            childSnapshot.val().url
           );
           items.push(item);
         });
         localStorage.setItem("Item", JSON.stringify(items));
         console.log(items);
 
-        // var string = "";
-        // for(var i = 0; i < 2; i++) {
-        //   string += '<div class="col-md-4 portfolio-item">';
-        //   string += '<a href="#">';
-        //   // Replace src with image from database
-        //   string += '<img class="img-responsive" src="http://placehold.it/600x400" id ="pic_'+i+'" alt="">';
-        //   string += '</a>';
-        //   string += '<h3>';
-        //   string += '<a href="#">'+items[i].itemName+'</a>';
-        //   string += '</h3>';
-        //   string += '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>';
-        //   string += '</div>';
+        var string = "";
+        for(var i = 0; i < items.length; i++) {
+          string += '<div class="col-md-4 portfolio-item">';
+          string += '<a href="#">';
+          // Replace src with image from database
+          string += '<img height=300 width=250 src="'+items[i].url+'" id ="pic_'+i+'" alt="">';
+          string += '</a>';
+          string += '<h3>';
+          string += '<a href="#">'+items[i].itemName+'</a>';
+          string += '</h3>';
+          string += '<p>'+items[i].itemDescription+'</p>'
+          string += '</div>';
+        }
+        document.getElementById("replace").innerHTML = string;
+        // var urls = [];
+        // var counter = 0;
+        // for(var j = 0; j < 4; j++) {
+        //   var storage = firebase.storage();
+        //   var path = storage.ref(items[j].pic_1);
+        //
+        //   path.getDownloadURL().then(function(url) {
+        //     alert(url)
+        //     // var img = document.getElementById('pic_1');
+        //     var e = document.createElement('div');
+        //     var string = ""
+        //     string += '<div class="col-md-4 portfolio-item">';
+        //     string += '<a href="#">';
+        //     // Replace src with image from database
+        //     string += '<img class="img-responsive" style="{height:600px;width:400px}" src="'+url+'" id ="pic_'+counter+'" alt="">';
+        //     string += '</a>';
+        //     string += '<h3>';
+        //     string += '<a href="#">'+items[counter].itemName+'</a>';
+        //     string += '</h3>';
+        //     string += '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>';
+        //     string += '</div>';
+        //     e.innerHTML = string;
+        //     document.getElementById("replace").appendChild(e);
+        //     counter = counter + 1;
+        //     urls.push(url);
+        //   });
+        //   console.log(j);
         // }
-        // document.getElementById("replace").innerHTML = string;
-        var urls = [];
-        var counter = 0;
-        for(var j = 0; j < 4; j++) {
-          var storage = firebase.storage();
-          var path = storage.ref(items[j].pic_1);
-
-          path.getDownloadURL().then(function(url) {
-            alert(url)
-            // var img = document.getElementById('pic_1');
-            var e = document.createElement('div');
-            var string = ""
-            string += '<div class="col-md-4 portfolio-item">';
-            string += '<a href="#">';
-            // Replace src with image from database
-            string += '<img class="img-responsive" style="{height:600px;width:400px}" src="'+url+'" id ="pic_'+counter+'" alt="">';
-            string += '</a>';
-            string += '<h3>';
-            string += '<a href="#">'+items[counter].itemName+'</a>';
-            string += '</h3>';
-            string += '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>';
-            string += '</div>';
-            e.innerHTML = string;
-            document.getElementById("replace").appendChild(e);
-            counter = counter + 1;
-            urls.push(url);
-          });
-          console.log(j);
-        }
-        console.log(urls);
-        console.log(urls[0]);
-        for(var j = 0; j < 2; j++) {
-          console.log(urls[j]);
-        }
+        // console.log(urls);
+        // console.log(urls[0]);
+        // for(var j = 0; j < 2; j++) {
+        //   console.log(urls[j]);
+        // }
         // for(var j = 0; j < 1; j++) {
         //   var storage = firebase.storage();
         //   var path = storage.ref(items[j].pic_1);
@@ -181,4 +184,3 @@
 </body>
 
 </html>
-
