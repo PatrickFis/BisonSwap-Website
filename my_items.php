@@ -132,8 +132,6 @@
         string += '</div>';
         string += '<div id="collapse'+i+'" class="panel-collapse collapse">';
         if(items[i].offers != null) {
-          // console.log(Object.values(items[i].offers).itemName);
-          // console.log(Object.keys(items[i].offers));
           // Get the key for the offers object and use it to grab the name and other information
           var off_key = Object.keys(items[i].offers);
           for(var j = 0; j < off_key.length; j++) {
@@ -142,26 +140,16 @@
             chat_emails = chat_emails.sort();
 
             string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>'
-            string += '<a href="#" class="btn btn-link float-right">Accept Offer</a>';
+            string += '<button onclick="acceptOffer('+off_key[j]+','+items[i].key+')" class="btn btn-link float-right">Accept Offer</a>';
             string += '<a href="#" class="btn btn-link float-right">Reject Offer</a>';
             string += '</div>'
           }
-          // console.log(items[i].offers[off_key].itemName);
-          // string += '<div class="panel-body">'+items[i].offers[off_key].itemName+'</div>';
-          // string += '<div class="panel-body">'+items[i].offers[off_key].itemName;
-          // Chat button
-          // var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key].email];
-          // chat_emails = chat_emails.sort();
-          //
-          // string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>'
-          // string += '<a href="#" class="btn btn-link float-right">Accept Offer</a>';
-          // string += '<a href="#" class="btn btn-link float-right">Reject Offer</a>';
-          // string += '</div>'
+
         }
         else {
           string += '<div class="panel-body">No Offers</div>';
         }
-        // string += '<div class="panel-body">'+items[i].offer.itemName+'</div>';
+
         string += '<div class="panel-footer">Panel Footer</div>';
         string += '</div>';
         string += '</div>';
@@ -171,7 +159,17 @@
     panel.innerHTML = string;
   });
 </script>
-
+<script>
+  function acceptOffer(offerKey, itemID) {
+    var user = firebase.auth().currentUser;
+    var pushData = {
+      accepted: 1
+    };
+    var updates = {};
+    updates['/items/'+itemID+'/offer/'+offerKey] = pushData;
+    return firebase.database().ref().update(updates);
+  }
+</script>
 
 
 <script src="web/scripts/auth.js"></script>

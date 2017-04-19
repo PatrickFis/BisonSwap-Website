@@ -138,10 +138,8 @@
             var chat_emails = [firebase.auth().currentUser.email, items[i].email];
             chat_emails = chat_emails.sort();
             string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>'
-            string += '<a href="#" class="btn btn-link float-right">Accept Offer</a>';
-            string += '<a href="#" class="btn btn-link float-right">Reject Offer</a>';
+            string += '<a href="#" class="btn btn-link float-right">Extend Offer</a>';
             string += '</div>'
-            string += '<div class="panel-footer">Panel Footer</div>';
             string += '</div>';
             string += '</div>';
           }

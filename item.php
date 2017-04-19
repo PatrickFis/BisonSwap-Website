@@ -164,7 +164,8 @@
       uid: user.uid,
       item: offerKey,
       itemName: document.getElementById(id).innerHTML,
-      date: new Date()
+      date: new Date(),
+      accepted: 0
     }
     var updates = {};
     var newPushKey = firebase.database().ref().child('/items/').push().key;
