@@ -68,6 +68,7 @@ function offer() {
   console.log(offerKey);
   var pushData = {
     email: user.email,
+    uid: user.uid,
     itemName: document.getElementById("itemname").value,
     offerDescription: document.getElementById("item-description").value,
     date: new Date()
