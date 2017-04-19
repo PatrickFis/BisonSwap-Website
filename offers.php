@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Item Name Here | Bison Swap</title>
@@ -38,30 +39,52 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="web/styles/main.css">
 </head>
+<!-- User sign in and sign out -->
+<!--header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
+  <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+    <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+      <h3><i class="material-icons">business</i>BisonSwap</h3>
+    </div>
+    <div id="user-container">
+      <div hidden id="user-pic"></div>
+      <div hidden id="user-name"></div>
+      <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+        Sign-out
+      </button>
+      <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+        <i class="material-icons">account_circle</i>Sign-in
+      </button>
+    </div>
+  </div>
+</header-->
 <body>
-  <!-- Panels containing your items -->
-  <div id="panels">
+<?php
+    include 'navbar.php';
+?>
+<div id="panels">
 
-  </div>
-  <div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapse1">Collapsible panel</a>
-      </h4>
-    </div>
-    <div id="collapse1" class="panel-collapse collapse">
-      <div class="panel-body">Panel Body</div>
-      <div class="panel-footer">Panel Footer</div>
-    </div>
-  </div>
 </div>
 
+
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
 <script>
-  var panel = document.getElementById("panels");
-  var user = firebase.auth().currentUser;
-  var user_email = user.email;
-  function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, url, key) {
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA0saZpdhgWuQ5MvD81I3K09M0Wbk31c6Q",
+    authDomain: "bisonswap-a0af2.firebaseapp.com",
+    databaseURL: "https://bisonswap-a0af2.firebaseio.com",
+    storageBucket: "bisonswap-a0af2.appspot.com",
+    messagingSenderId: "307753783953"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script>
+  function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, key, offers) {
     this.date = date;
     this.email = email;
     this.itemCategory = itemCategory;
@@ -69,12 +92,21 @@
     this.itemName = itemName;
     this.pic_1 = pic_1;
     this.rating = rating;
-    this.url = url;
     this.key = key;
+    this.offers = offers;
   }
   firebase.database().ref('/items/').once('value').then(function(snapshot) {
     var items = [];
     snapshot.forEach(function(childSnapshot) {
+      console.log(childSnapshot.val().date,
+      childSnapshot.val().email,
+      childSnapshot.val().itemCategory,
+      childSnapshot.val().itemDescription,
+      childSnapshot.val().itemName,
+      childSnapshot.val().pic_1,
+      childSnapshot.val().rating,
+      childSnapshot.key,
+      childSnapshot.val().offer);
       var item = new Item(
         childSnapshot.val().date,
         childSnapshot.val().email,
@@ -83,35 +115,40 @@
         childSnapshot.val().itemName,
         childSnapshot.val().pic_1,
         childSnapshot.val().rating,
-        childSnapshot.val().url,
-        childSnapshot.key
+        childSnapshot.key,
+        childSnapshot.val().offer
       );
       items.push(item);
     });
-    <div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" href="#collapse1">Collapsible panel</a>
-      </h4>
-    </div>
-    <div id="collapse1" class="panel-collapse collapse">
-      <div class="panel-body">Panel Body</div>
-      <div class="panel-footer">Panel Footer</div>
-    </div>
-  </div>
-</div>
     localStorage.setItem("Item", JSON.stringify(items));
+    var panel = document.getElementById("panels");
     var string = '<div class="panel-group">';
     for(var i = 0; i < items.length; i++) {
-      if(items[i].email == user_email) {
+      if(items[i].email == firebase.auth().currentUser.email) {
         string += '<div class="panel-heading">';
         string += '<h4 class="panel-title">';
         string += '<a data-toggle="collapse" href="#collapse'+i+'">'+items[i].itemName+'</a>';
         string += '</h4>';
         string += '</div>';
         string += '<div id="collapse'+i+'" class="panel-collapse collapse">';
-        string += '<div class="panel-body">Panel Body</div>';
+        if(items[i].offers != null) {
+          // console.log(Object.values(items[i].offers).itemName);
+          // console.log(Object.keys(items[i].offers));
+          // Get the key for the offers object and use it to grab the name and other information
+          var off_key = Object.keys(items[i].offers);
+          // console.log(items[i].offers[off_key].itemName);
+          // string += '<div class="panel-body">'+items[i].offers[off_key].itemName+'</div>';
+          string += '<div class="panel-body">'+items[i].offers[off_key].itemName;
+          // Chat button
+          var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key].email];
+          chat_emails = chat_emails.sort();
+          string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a>'
+          string += '</div>'
+        }
+        else {
+          string += '<div class="panel-body">No Offers</div>';
+        }
+        // string += '<div class="panel-body">'+items[i].offer.itemName+'</div>';
         string += '<div class="panel-footer">Panel Footer</div>';
         string += '</div>';
         string += '</div>';
@@ -121,6 +158,9 @@
     panel.innerHTML = string;
   });
 </script>
+
+
+
 <script src="web/scripts/auth.js"></script>
 
 </body>
