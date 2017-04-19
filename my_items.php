@@ -61,8 +61,9 @@
 <?php
     include 'navbar.php';
 ?>
-<div id="panels">
-
+<div class="container">
+  <div class="row" id="panels">
+  </div>
 </div>
 
 
@@ -84,7 +85,7 @@
 </script>
 
 <script>
-  function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, key, offers) {
+  function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, key, offers, url) {
     this.date = date;
     this.email = email;
     this.itemCategory = itemCategory;
@@ -94,6 +95,7 @@
     this.rating = rating;
     this.key = key;
     this.offers = offers;
+    this.url = url;
   }
   firebase.database().ref('/items/').once('value').then(function(snapshot) {
     var items = [];
@@ -106,7 +108,8 @@
       childSnapshot.val().pic_1,
       childSnapshot.val().rating,
       childSnapshot.key,
-      childSnapshot.val().offer);
+      childSnapshot.val().offer,
+      childSnapshot.val().url);
       var item = new Item(
         childSnapshot.val().date,
         childSnapshot.val().email,
@@ -116,35 +119,39 @@
         childSnapshot.val().pic_1,
         childSnapshot.val().rating,
         childSnapshot.key,
-        childSnapshot.val().offer
+        childSnapshot.val().offer,
+        childSnapshot.val().url
       );
       items.push(item);
     });
     localStorage.setItem("Item", JSON.stringify(items));
     var panel = document.getElementById("panels");
-    var string = '<div class="panel-group">';
+    var string = "";
     for(var i = 0; i < items.length; i++) {
       if(items[i].email == firebase.auth().currentUser.email) {
-        string += '<div class="panel-heading">';
-        string += '<h4 class="panel-title">';
-        string += '<a data-toggle="collapse" href="#collapse'+i+'">'+items[i].itemName+'</a>';
-        string += '</h4>';
-        string += '</div>';
-        string += '<div id="collapse'+i+'" class="panel-collapse collapse">';
-        if(items[i].offers != null) {
-          // Get the key for the offers object and use it to grab the name and other information
-          var off_key = Object.keys(items[i].offers);
-          for(var j = 0; j < off_key.length; j++) {
-            string += '<div class="panel-body">'+items[i].offers[off_key[j]].itemName;
-            var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key[j]].email];
-            chat_emails = chat_emails.sort();
-
-            string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info pull-right" role="button">Chat with user</a>'
-            string += '<button onclick=acceptOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-link pull-right">Accept Offer</button>';
-            string += '<button onclick=rejectOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-link pull-right">Reject Offer</button>';
-            string += '</div>'
+      string += '<div class="col-md-6 portfolio-item">';
+      string += '<a href="#">';
+      // Replace src with image from database
+      string += '<img height=400 width=100% src="'+items[i].url+'" id ="pic_'+i+'" alt="">';
+      string += '</a>';
+      string += '<div class="panel panel-default">';
+      string += '<div class="panel-heading">';
+      string += '<h4 class="panel-title">';
+      string += items[i].itemName;
+      string += '</h4>';
+      string += '</div>';
+      if(items[i].offers != null) {
+        // Get the key for the offers object and use it to grab the name and other information
+        var off_key = Object.keys(items[i].offers);
+        for(var j = 0; j < off_key.length; j++) {
+          string += '<div class="panel-body">'+items[i].offers[off_key[j]].itemName;
+          var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key[j]].email];
+          chat_emails = chat_emails.sort();
+          string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a>'
+          string += '&nbsp;&nbsp;<button onclick=acceptOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Accept</button>';
+          string += '&nbsp;&nbsp;<button onclick=rejectOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Reject</button>';
+          string += '</div>'
           }
-
         }
         else {
           string += '<div class="panel-body">No Offers</div>';
@@ -154,7 +161,42 @@
         string += '</div>';
         string += '</div>';
       }
+      // string += '<div hidden>'+items[i].key+'</div>';
+      string += '</div>';
     }
+    // var string = '<div class="panel-group">';
+    // for(var i = 0; i < items.length; i++) {
+    //   if(items[i].email == firebase.auth().currentUser.email) {
+    //     string += '<div class="panel-heading">';
+    //     string += '<h4 class="panel-title">';
+    //     string += '<a data-toggle="collapse" href="#collapse'+i+'">'+items[i].itemName+'</a>';
+    //     string += '</h4>';
+    //     string += '</div>';
+    //     string += '<div id="collapse'+i+'" class="panel-collapse collapse">';
+    //     if(items[i].offers != null) {
+    //       // Get the key for the offers object and use it to grab the name and other information
+    //       var off_key = Object.keys(items[i].offers);
+    //       for(var j = 0; j < off_key.length; j++) {
+    //         string += '<div class="panel-body">'+items[i].offers[off_key[j]].itemName;
+    //         var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key[j]].email];
+    //         chat_emails = chat_emails.sort();
+    //
+    //         string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info pull-right" role="button">Chat with user</a>'
+    //         string += '<button onclick=acceptOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-link pull-right">Accept Offer</button>';
+    //         string += '<button onclick=rejectOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-link pull-right">Reject Offer</button>';
+    //         string += '</div>'
+    //       }
+    //
+    //     }
+    //     else {
+    //       string += '<div class="panel-body">No Offers</div>';
+    //     }
+    //
+    //     string += '<div class="panel-footer">Panel Footer</div>';
+    //     string += '</div>';
+    //     string += '</div>';
+    //   }
+    // }
     string += '</div>';
     panel.innerHTML = string;
   });
