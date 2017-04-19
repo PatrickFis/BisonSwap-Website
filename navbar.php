@@ -18,9 +18,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="dancehall.php">Home Goods</a></li>
-            <li><a href="gospel.php">Electronics</a></li>
-            <li><a href="hiphop.php">Clothing</a></li>
+            <li><a href="items-list-category1.php">Home Goods</a></li>
+            <li><a href="items-list-category2.php">Electronics</a></li>
+            <li><a href="items-list-category3.php">Clothing</a></li>
             <li><a href="drama.php">Books</a></li>
           </ul>
         </li>
