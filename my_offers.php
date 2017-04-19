@@ -38,6 +38,9 @@
   <!-- App Styling -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="web/styles/main.css">
+
+  <!-- Snackbar styling -->
+  <link rel="stylesheet" href="css/snackbar.css">
 </head>
 <body>
 <?php
@@ -46,7 +49,7 @@
 <div id="panels">
 
 </div>
-
+<div id="snackbar">Offer extended</div>
 
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
@@ -129,7 +132,7 @@
             var chat_emails = [firebase.auth().currentUser.email, items[i].email];
             chat_emails = chat_emails.sort();
             string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>'
-            string += '&nbsp;&nbsp;<button onclick="extendOffer("'+off_key[j]+'","'+items[i].key+'")" class="btn btn-info">Extend Offer</button>';
+            string += '&nbsp;&nbsp;<button onclick=extendOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Extend Offer</button>';
             string += '</div>'
             string += '<div class="panel-footer">Panel Footer</div>';
             string += '</div>';
@@ -161,6 +164,14 @@
       updates['/items/'+itemID+'/offer/'+offerKey] = pushData;
       return firebase.database().ref().update(updates);
     });
+   // Get the snackbar DIV
+   var x = document.getElementById("snackbar")
+
+   // Add the "show" class to DIV
+   x.className = "show";
+
+   // After 3 seconds, remove the show class from DIV
+   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
 </script>
 
