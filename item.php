@@ -176,6 +176,7 @@
 <script>
     var itemRef = '/items/' + document.getElementById("KEY").value;
     firebase.database().ref(itemRef).once('value').then(function(snapshot) {
+      document.title = snapshot.val().itemName;
       document.getElementById("item-name").innerHTML = snapshot.val().itemName;
       document.getElementById("item-description").innerHTML = snapshot.val().itemDescription;
       // This portion will download an image based on whatever is in the item reference's pic_1 field
