@@ -44,7 +44,7 @@
 	  		<p><b>Description:<b><p>
 	  		<p id="item-description"></p>
         <?php
-          echo '<a href="make_offer.php?KEY='.$_GET['key'].'"><button class="btn btn-success>Make Offer</button></a>"';
+          echo '<a href="make_offer.php?KEY='.$_GET['key'].'">Make an offer</a>"';
          ?>
 	  	</div>
   	</div>
