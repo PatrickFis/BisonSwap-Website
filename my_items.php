@@ -139,9 +139,9 @@
             var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key[j]].email];
             chat_emails = chat_emails.sort();
 
-            string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>'
-            string += '<button onclick="acceptOffer('+off_key[j]+','+items[i].key+')" class="btn btn-link float-right">Accept Offer</a>';
-            string += '<a href="#" class="btn btn-link float-right">Reject Offer</a>';
+            string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info pull-right" role="button">Chat with user</a>'
+            string += '<button onclick="acceptOffer('+off_key[j]+','+items[i].key+')" class="btn btn-link pull-right">Accept Offer</a>';
+            string += '<a href="#" class="btn btn-link pull-right">Reject Offer</a>';
             string += '</div>'
           }
 
