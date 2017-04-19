@@ -39,24 +39,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="web/styles/main.css">
 </head>
-<!-- User sign in and sign out -->
-<!--header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
-  <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-    <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-      <h3><i class="material-icons">business</i>BisonSwap</h3>
-    </div>
-    <div id="user-container">
-      <div hidden id="user-pic"></div>
-      <div hidden id="user-name"></div>
-      <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-        Sign-out
-      </button>
-      <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-        <i class="material-icons">account_circle</i>Sign-in
-      </button>
-    </div>
-  </div>
-</header-->
 <body>
 <?php
     include 'navbar.php';
@@ -144,7 +126,7 @@
             string += '</h4>';
             string += '</div>';
             string += '<div class="panel-body">' + '<b>Offered item:&nbsp;</b>' + items[i].offers[off_key[j]].itemName;
-            var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key[j]].email];
+            var chat_emails = [firebase.auth().currentUser.email, items[i].email];
             chat_emails = chat_emails.sort();
             string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>'
             string += '&nbsp;&nbsp;<a href="#" class="btn btn-link float-right">Extend Offer</a>';
@@ -152,20 +134,6 @@
             string += '<div class="panel-footer">Panel Footer</div>';
             string += '</div>';
             string += '</div>';
-
-            // string += '<div class="panel-heading">';
-            // string += '<h4 class="panel-title">';
-            // string += '<a data-toggle="collapse" href="#collapse'+i+'">'+items[i].itemName+'</a>';
-            // string += '</h4>';
-            // string += '</div>';
-            // string += '<div id="collapse'+i+'" class="panel-collapse collapse">';
-            // var chat_emails = [firebase.auth().currentUser.email, items[i].email];
-            // chat_emails = chat_emails.sort();
-            // string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>'
-            // string += '<a href="#" class="btn btn-link float-right">Extend Offer</a>';
-            // string += '</div>'
-            // string += '</div>';
-            // string += '</div>';
           }
           else {
             string += "No offers";

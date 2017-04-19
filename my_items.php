@@ -39,24 +39,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="web/styles/main.css">
 </head>
-<!-- User sign in and sign out -->
-<!--header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
-  <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-    <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-      <h3><i class="material-icons">business</i>BisonSwap</h3>
-    </div>
-    <div id="user-container">
-      <div hidden id="user-pic"></div>
-      <div hidden id="user-name"></div>
-      <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-        Sign-out
-      </button>
-      <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-        <i class="material-icons">account_circle</i>Sign-in
-      </button>
-    </div>
-  </div>
-</header-->
 <body>
 <?php
     include 'navbar.php';
@@ -164,39 +146,6 @@
       // string += '<div hidden>'+items[i].key+'</div>';
       string += '</div>';
     }
-    // var string = '<div class="panel-group">';
-    // for(var i = 0; i < items.length; i++) {
-    //   if(items[i].email == firebase.auth().currentUser.email) {
-    //     string += '<div class="panel-heading">';
-    //     string += '<h4 class="panel-title">';
-    //     string += '<a data-toggle="collapse" href="#collapse'+i+'">'+items[i].itemName+'</a>';
-    //     string += '</h4>';
-    //     string += '</div>';
-    //     string += '<div id="collapse'+i+'" class="panel-collapse collapse">';
-    //     if(items[i].offers != null) {
-    //       // Get the key for the offers object and use it to grab the name and other information
-    //       var off_key = Object.keys(items[i].offers);
-    //       for(var j = 0; j < off_key.length; j++) {
-    //         string += '<div class="panel-body">'+items[i].offers[off_key[j]].itemName;
-    //         var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key[j]].email];
-    //         chat_emails = chat_emails.sort();
-    //
-    //         string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info pull-right" role="button">Chat with user</a>'
-    //         string += '<button onclick=acceptOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-link pull-right">Accept Offer</button>';
-    //         string += '<button onclick=rejectOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-link pull-right">Reject Offer</button>';
-    //         string += '</div>'
-    //       }
-    //
-    //     }
-    //     else {
-    //       string += '<div class="panel-body">No Offers</div>';
-    //     }
-    //
-    //     string += '<div class="panel-footer">Panel Footer</div>';
-    //     string += '</div>';
-    //     string += '</div>';
-    //   }
-    // }
     string += '</div>';
     panel.innerHTML = string;
   });
