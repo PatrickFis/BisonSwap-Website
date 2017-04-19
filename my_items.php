@@ -38,6 +38,9 @@
   <!-- App Styling -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="web/styles/main.css">
+
+  <!-- Snackbar styling -->
+  <link rel="stylesheet" href="css/snackbar.css">
 </head>
 <body>
 <?php
@@ -47,6 +50,9 @@
   <div class="row" id="panels">
   </div>
 </div>
+
+<div id="Accepted">Offer accepted</div>
+<div id="Rejected">Offer rejected</div>
 
 
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
@@ -165,8 +171,20 @@
       updates['/items/'+itemID+'/offer/'+offerKey] = pushData;
       return firebase.database().ref().update(updates);
     });
+    // Get the snackbar DIV
+    var x = document.getElementById("Accepted")
+    // Add the "show" class to DIV
+    x.className = "show";
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
   function rejectOffer(offerKey, itemID) {
+    // Get the snackbar DIV
+    var x = document.getElementById("Rejected")
+    // Add the "show" class to DIV
+    x.className = "show";
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     return firebase.database().ref('/items/'+itemID+'/offer/'+offerKey).remove();
   }
 </script>
