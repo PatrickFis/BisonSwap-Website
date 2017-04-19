@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="add-new-item.php">Upload Item</a></li>
         <li class="dropdown">
-          <a href="offers.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Offers<span class="caret"></span></a>
+          <a href="my_items.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Offers<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="upload-youtube-video.php">Sub Link 1</a></li>
             <li role="separator" class="divider"></li>
