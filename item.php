@@ -119,7 +119,26 @@
       items.push(item);
     });
     localStorage.setItem("Item", JSON.stringify(items));
-    console.log(items);
+    // console.log(items);
+
+    // Get items for offer modal
+    var offerItems = [];
+    for(var i = 0; i < items.length; i++) {
+      if(items[i].email == firebase.auth().currentUser.email) {
+        offerItems.push(items[i]);
+      }
+    }
+    // console.log("offer items");
+    // console.log(offerItems);
+    var string = '<div class="dropdown">';
+    string += '<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Your Items<span class="caret"></span></button>'
+    string += '<ul class="dropdown-menu">'
+    for(var i = 0; i < offerItems.length; i++) {
+      string += '<li><a href="#">' + offerItems[i].itemName + '</a></li>';
+    }
+    string += '</ul>';
+    string += '</div>';
+    document.getElementById("item_list").innerHTML = string;
   });
 </script>
 <script>
