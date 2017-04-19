@@ -15,7 +15,7 @@
   <?php
     // Key that holds the item on which an offer is being made
     echo '<input type=hidden id="KEY" name="KEY" value="';
-    echo $_GET["key"];
+    echo $_GET["KEY"];
     echo "\">";
     // echo '<input type=hidden id="email1" name="email1" value="' + $_GET["email1"] + '">';
     // echo '<input type=hidden id="email2" name="email2" value="' + $_GET["email2"] + '">';
@@ -64,14 +64,16 @@
 function offer() {
   var user = firebase.auth().currentUser;
   // Key of item that you want...
-  var offerKey = document.getElementById("KEY");
+  var offerKey = document.getElementById("KEY").value;
+  console.log(offerKey);
   var pushData = {
     email: user.email,
     itemName: document.getElementById("itemname").value,
     offerDescription: document.getElementById("item-description").value
   }
   var updates = {};
-  updates['/items/' + offerKey + '/offer/'] = pushData;
+  var newPushKey = firebase.database().ref().child('/items/').push().key;
+  updates['/items/'+offerKey+'/offer/'+newPushKey] = pushData;
   return firebase.database().ref().update(updates);
 }
 </script>
