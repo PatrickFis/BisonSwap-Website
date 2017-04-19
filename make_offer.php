@@ -69,7 +69,8 @@ function offer() {
   var pushData = {
     email: user.email,
     itemName: document.getElementById("itemname").value,
-    offerDescription: document.getElementById("item-description").value
+    offerDescription: document.getElementById("item-description").value,
+    date: new Date()
   }
   var updates = {};
   var newPushKey = firebase.database().ref().child('/items/').push().key;
