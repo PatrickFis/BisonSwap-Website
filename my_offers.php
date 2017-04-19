@@ -143,7 +143,7 @@
             string += items[i].itemName;
             string += '</h4>';
             string += '</div>';
-            string += '<div class="panel-body">'+items[i].offers[off_key[j]].itemName;
+            string += '<div class="panel-body">' + '<b>Offered item:&nbsp;</b>' + items[i].offers[off_key[j]].itemName;
             var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key[j]].email];
             chat_emails = chat_emails.sort();
             string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>'
