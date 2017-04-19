@@ -60,7 +60,7 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h4 class="modal-title">Make an Offer</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="item_list">
               <p>List of items that the current user has uploaded</p>
             </div>
             <div class="modal-footer">
@@ -73,7 +73,7 @@
   	</div>
 </div>
 
-<script>
+<!-- <script>
   function Item(date, email, itemCategory, itemDescription, itemName, rating) {
     this.date = date;
     this.email = email;
@@ -105,11 +105,11 @@
     // console.log(items);
     var user = firebase.auth().currentUser;
     var offerItems = [];
-    
+
     console.log("OFFER ITEMS");
     console.log(offerItems);
   });
-</script>
+</script> -->
 <!-- <script>
     firebase.database().ref('/items/-Kg0hqYb_kdv-xGxraQo').once('value').then(function(snapshot) {
     	document.getElementById("item-name").innerHTML = snapshot.val().itemName;
