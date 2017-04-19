@@ -136,14 +136,27 @@
           // console.log(Object.keys(items[i].offers));
           // Get the key for the offers object and use it to grab the name and other information
           var off_key = Object.keys(items[i].offers);
+          for(var j = 0; j < off_key.length; j++) {
+            string += '<div class="panel-body">'+items[i].offers[off_key[j]].itemName;
+            var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key[j]].email];
+            chat_emails = chat_emails.sort();
+
+            string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>'
+            string += '<a href="#" class="btn btn-link float-right">Accept Offer</a>';
+            string += '<a href="#" class="btn btn-link float-right">Reject Offer</a>';
+            string += '</div>'
+          }
           // console.log(items[i].offers[off_key].itemName);
           // string += '<div class="panel-body">'+items[i].offers[off_key].itemName+'</div>';
-          string += '<div class="panel-body">'+items[i].offers[off_key].itemName;
+          // string += '<div class="panel-body">'+items[i].offers[off_key].itemName;
           // Chat button
-          var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key].email];
-          chat_emails = chat_emails.sort();
-          string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a>'
-          string += '</div>'
+          // var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key].email];
+          // chat_emails = chat_emails.sort();
+          //
+          // string += '<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>'
+          // string += '<a href="#" class="btn btn-link float-right">Accept Offer</a>';
+          // string += '<a href="#" class="btn btn-link float-right">Reject Offer</a>';
+          // string += '</div>'
         }
         else {
           string += '<div class="panel-body">No Offers</div>';
