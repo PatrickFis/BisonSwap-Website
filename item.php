@@ -61,7 +61,13 @@
 <?php
     include 'navbar.php';
 ?>
-
+<?php
+  echo '<input type=hidden id="KEY" name="KEY" value="';
+  echo $_GET["key"];
+  echo "\">";
+  // echo '<input type=hidden id="email1" name="email1" value="' + $_GET["email1"] + '">';
+  // echo '<input type=hidden id="email2" name="email2" value="' + $_GET["email2"] + '">';
+ ?>
 <?php include 'item-container.php'; ?>
 
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
@@ -82,7 +88,7 @@
 </script>
 
 <script>
-  function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating) {
+  function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, key) {
     this.date = date;
     this.email = email;
     this.itemCategory = itemCategory;
@@ -90,6 +96,7 @@
     this.itemName = itemName;
     this.pic_1 = pic_1;
     this.rating = rating;
+    this.key = key;
   }
   firebase.database().ref('/items/').once('value').then(function(snapshot) {
     var items = [];
@@ -100,7 +107,8 @@
       childSnapshot.val().itemDescription,
       childSnapshot.val().itemName,
       childSnapshot.val().pic_1,
-      childSnapshot.val().rating);
+      childSnapshot.val().rating,
+      childSnapshot.key);
       var item = new Item(
         childSnapshot.val().date,
         childSnapshot.val().email,
@@ -108,16 +116,66 @@
         childSnapshot.val().itemDescription,
         childSnapshot.val().itemName,
         childSnapshot.val().pic_1,
-        childSnapshot.val().rating
+        childSnapshot.val().rating,
+        childSnapshot.key
       );
       items.push(item);
     });
     localStorage.setItem("Item", JSON.stringify(items));
-    console.log(items);
+    // console.log(items);
+
+    // Get items for offer modal
+    var offerItems = [];
+    for(var i = 0; i < items.length; i++) {
+      if(items[i].email == firebase.auth().currentUser.email) {
+        offerItems.push(items[i]);
+      }
+    }
+    // console.log("offer items");
+    // console.log(offerItems);
+    var string = '<div class="list-group">';
+    for(var i = 0; i < offerItems.length; i++) {
+      string += '<a href="#" class="list-group-item" id="' + offerItems[i].key + '">' + offerItems[i].itemName + '</a>';
+    }
+    string += '</div>';
+    document.getElementById("item_list").innerHTML = string;
+  });
+</script>
+<!-- On click for list items -->
+<script>
+  $(document).ready(function(){
+    $(document).on('click', '.list-group-item', function(e){
+        // alert(this.id);
+        makeOffer(this.id);
+    });
   });
 </script>
 <script>
-    firebase.database().ref('/items/-Khn37l9bJQHy_XLsPjS').once('value').then(function(snapshot) {
+  // Add an offer to the database
+  function makeOffer(id) {
+    var user = firebase.auth().currentUser;
+    // Item that you are offering
+    var offerKey = id;
+    // Item that you are making an offer for
+    var itemKey = document.getElementById("KEY").value;
+    console.log(id);
+    var pushData = {
+      email: user.email,
+      uid: user.uid,
+      item: offerKey,
+      itemName: document.getElementById(id).innerHTML,
+      date: new Date(),
+      accepted: 0
+    }
+    var updates = {};
+    var newPushKey = firebase.database().ref().child('/items/').push().key;
+    updates['/items/'+itemKey+'/offer/'+newPushKey] = pushData;
+    return firebase.database().ref().update(updates);
+  }
+</script>
+<script>
+    var itemRef = '/items/' + document.getElementById("KEY").value;
+    firebase.database().ref(itemRef).once('value').then(function(snapshot) {
       document.getElementById("item-name").innerHTML = snapshot.val().itemName;
       document.getElementById("item-description").innerHTML = snapshot.val().itemDescription;
       // This portion will download an image based on whatever is in the item reference's pic_1 field
