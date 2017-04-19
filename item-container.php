@@ -43,10 +43,33 @@
 	  		<h3 id="item-name"></h3>
 	  		<p><b>Description:<b><p>
 	  		<p id="item-description"></p>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Make Offer</button>
+
         <?php
-          echo '<a href="make_offer.php?KEY='.$_GET['key'].'">Make an offer</a>';
+          // echo '<a href="make_offer.php?KEY='.$_GET['key'].'">Make an offer</a>';
          ?>
 	  	</div>
+      <!-- Modal -->
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Make an Offer</h4>
+            </div>
+            <div class="modal-body">
+              <p>List of items that the current user has uploaded</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
   	</div>
 </div>
 
@@ -79,12 +102,17 @@
       items.push(item);
     });
     localStorage.setItem("Item", JSON.stringify(items));
-    console.log(items);
+    // console.log(items);
+    var user = firebase.auth().currentUser;
+    var offerItems = [];
+    
+    console.log("OFFER ITEMS");
+    console.log(offerItems);
   });
 </script>
-<script>
+<!-- <script>
     firebase.database().ref('/items/-Kg0hqYb_kdv-xGxraQo').once('value').then(function(snapshot) {
     	document.getElementById("item-name").innerHTML = snapshot.val().itemName;
     	document.getElementById("item-description").innerHTML = snapshot.val().itemDescription;
     });
-</script>
+</script> -->
