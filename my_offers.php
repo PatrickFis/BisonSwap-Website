@@ -129,7 +129,7 @@
             var chat_emails = [firebase.auth().currentUser.email, items[i].email];
             chat_emails = chat_emails.sort();
             string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>'
-            string += '&nbsp;&nbsp;<a href="#" class="btn btn-link float-right">Extend Offer</a>';
+            string += '&nbsp;&nbsp;<button onclick="extendOffer("'+off_key[j]+'","'+items[i].key+'")" class="btn btn-info">Extend Offer</button>';
             string += '</div>'
             string += '<div class="panel-footer">Panel Footer</div>';
             string += '</div>';
@@ -146,6 +146,23 @@
   });
 </script>
 
+<script>
+  function extendOffer(offerKey, itemID) {
+    firebase.database().ref('/items/'+itemID+'/offer/'+offerKey).once('value').then(function(snapshot) {
+      var pushData = {
+        date: new Date(),
+        email: snapshot.val().email,
+        item: snapshot.val().item,
+        itemName: snapshot.val().itemName,
+        uid: snapshot.val().uid,
+        accepted: snapshot.val().accepted
+      };
+      var updates = {};
+      updates['/items/'+itemID+'/offer/'+offerKey] = pushData;
+      return firebase.database().ref().update(updates);
+    });
+  }
+</script>
 
 
 <script src="web/scripts/auth.js"></script>
