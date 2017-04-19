@@ -90,11 +90,12 @@
 </body>
 <script>
 function addItem() {
+  var file1 = document.getElementById("pic-1").files[0];
   var user = firebase.auth().currentUser;
   var storageRef = firebase.storage().ref();
   var pic_1_name = document.getElementById("pic-1").value;
-  storageRef = firebase.storage().ref("images/" + pic_1_name);
-    uploadTask = storageRef.put(file);
+  storageRef = firebase.storage().ref("images/" + file1.name);
+    uploadTask = storageRef.put(file1);
 
     uploadTask.on('state_changed', function(snapshot) {
 

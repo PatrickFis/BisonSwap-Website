@@ -61,15 +61,15 @@
               <h4 class="modal-title">Make an Offer</h4>
             </div>
             <div class="modal-body" id="item_list">
-              <p>List of items that the current user has uploaded</p>
+              <p>Choose the item you wish to trade with...</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Trade this item</button>
             </div>
           </div>
 
-        </div>
-      </div>
+        </div> 
+      </div> 
   	</div>
 </div>
 
