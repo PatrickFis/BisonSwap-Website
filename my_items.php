@@ -51,8 +51,7 @@
   </div>
 </div>
 
-<div id="Accepted">Offer accepted</div>
-<div id="Rejected">Offer rejected</div>
+<div id="snackbar">Offer accepted</div>
 
 
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
@@ -172,16 +171,18 @@
       return firebase.database().ref().update(updates);
     });
     // Get the snackbar DIV
-    var x = document.getElementById("Accepted")
+    var x = document.getElementById("snackbar");
     // Add the "show" class to DIV
+    x.innerHTML = "Offer Accepted";
     x.className = "show";
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
   function rejectOffer(offerKey, itemID) {
     // Get the snackbar DIV
-    var x = document.getElementById("Rejected")
+    var x = document.getElementById("snackbar");
     // Add the "show" class to DIV
+    x.innerHTML = "Offer Rejected";
     x.className = "show";
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
