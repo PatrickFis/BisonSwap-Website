@@ -1,14 +1,7 @@
 <div class="container">
   	<div class="row">
 	  	<div class="col-sm-9">
-	  		<div class="carousel slide article-slide" id="article-photo-carousel">
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner cont-slider">
-					<div class="item active">
-					  <img id="pic_1" alt="" title="" src="http://placehold.it/600x400">
-					</div>
-				</div>
-			</div>
+					 <img class="img-responsive" id="pic_1" alt="" title="" src="">
 	  	</div>
 	  	<div class="col-sm-3">
 	  		<h3 id="item-name"></h3>

@@ -20,6 +20,9 @@
           <form>
             <div class="form-group">
               <h2 class="">Upload your item information</h2>
+              <p>Your item will be removed after 14 days if no offers have been accepted.
+              Offers will be automatically retracted after 72 hours unless the owner
+              extends their offer. After accepting 
             </div>
             <div class="form-group">
               <hr />
