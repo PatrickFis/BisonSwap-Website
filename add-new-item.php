@@ -111,7 +111,7 @@ function addItem() {
     itemName: document.getElementById("itemname").value,
     itemCategory: document.getElementById("cat").value,
     itemDescription: document.getElementById("item-description").value,
-    date: new Date(),
+    date: new Date().getTime(),
     //itemPictures: document.getElementById("pic-1").value,
     pic_1: pic_1_name,
     rating: document.getElementById("condition").value
