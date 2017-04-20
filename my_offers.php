@@ -178,7 +178,9 @@
         item: snapshot.val().item,
         itemName: snapshot.val().itemName,
         uid: snapshot.val().uid,
-        accepted: snapshot.val().accepted
+        accepted: snapshot.val().accepted,
+        shipped: snapshot.val().shipped,
+        arrived: snapshot.val().arrived
       };
       var updates = {};
       updates['/items/'+itemID+'/offer/'+offerKey] = pushData;

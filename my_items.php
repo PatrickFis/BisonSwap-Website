@@ -183,9 +183,13 @@
         item: snapshot.val().item,
         itemName: snapshot.val().itemName,
         uid: snapshot.val().uid,
-        accepted: 1
+        accepted: 1,
+        shipped: snapshot.val().shipped,
+        arrived: snapshot.val().arrived
       };
       var updates = {};
+      // Remove all other offers
+      firebase.database().ref('/items/'+itemID+'/offer/').remove();
       updates['/items/'+itemID+'/offer/'+offerKey] = pushData;
       return firebase.database().ref().update(updates);
     });
