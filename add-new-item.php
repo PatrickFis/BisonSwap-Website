@@ -117,7 +117,9 @@ function addItem() {
     date: new Date().getTime(),
     //itemPictures: document.getElementById("pic-1").value,
     pic_1: pic_1_name,
-    rating: document.getElementById("condition").value
+    rating: document.getElementById("condition").value,
+    shipped: 0,
+    arrived: 0
   };
   var newPushKey = firebase.database().ref().child('items').push().key;
   var updates = {};

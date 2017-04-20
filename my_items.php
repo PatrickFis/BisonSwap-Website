@@ -138,13 +138,15 @@
           if(items[i].offers[off_key[j]].accepted == "1") {
             string += "&nbsp;&nbsp;Offer accepted.";
             string += '<div class="form-group">';
-            string += '<label for="sel1">Item Status:</label>';
+            string += '<label for="sel1">Update your item\'s status:</label>';
             string += '<select class="form-control" id="sel1">';
             string += '<option>Item has not been shipped</option>';
             string += '<option>Item has been shipped</option>';
             // string += '<option>Item has arrived</option>';
             string += '</select>';
+            string += '<br><button onclick=updateItemStatus("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Update Status</button>';
             string += '</div>';
+            string += '<br><bold>Status of offered item</bold>';
           }
           else {
             string += '&nbsp;&nbsp;<button onclick=acceptOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Accept</button>';
@@ -200,6 +202,9 @@
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     return firebase.database().ref('/items/'+itemID+'/offer/'+offerKey).remove();
+  }
+  function updateOffer(offerKey, itemID) {
+
   }
 </script>
 

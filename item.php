@@ -147,7 +147,9 @@
       item: offerKey,
       itemName: document.getElementById(id).innerHTML,
       date: new Date().getTime(),
-      accepted: 0
+      accepted: 0,
+      shipped: 0,
+      arrived: 0
     }
     var updates = {};
     var newPushKey = firebase.database().ref().child('/items/').push().key;
