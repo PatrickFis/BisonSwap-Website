@@ -146,7 +146,7 @@
       uid: user.uid,
       item: offerKey,
       itemName: document.getElementById(id).innerHTML,
-      date: new Date(),
+      date: new Date().getTime(),
       accepted: 0
     }
     var updates = {};

@@ -154,7 +154,7 @@
     // Extend the offer by overwriting the current date with the current date
     firebase.database().ref('/items/'+itemID+'/offer/'+offerKey).once('value').then(function(snapshot) {
       var pushData = {
-        date: new Date(),
+        date: new Date().getTime(),
         email: snapshot.val().email,
         item: snapshot.val().item,
         itemName: snapshot.val().itemName,
