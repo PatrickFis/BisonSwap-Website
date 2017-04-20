@@ -137,16 +137,30 @@
           string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a>';
           if(items[i].offers[off_key[j]].accepted == "1") {
             string += "&nbsp;&nbsp;Offer accepted.";
-            string += '<div class="form-group">';
-            string += '<label for="sel1">Update your item\'s status:</label>';
-            string += '<select class="form-control" id="sel1">';
-            string += '<option>Item has not been shipped</option>';
-            string += '<option>Item has been shipped</option>';
-            // string += '<option>Item has arrived</option>';
-            string += '</select>';
-            string += '<br><button onclick=updateItemStatus("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Update Status</button>';
+            // string += '<div class="form-group">';
+            // string += '<label for="sel1">Update your item\'s status:</label>';
+            // string += '<select class="form-control" id="sel1">';
+            // string += '<option>Item has not been shipped</option>';
+            // string += '<option>Item has been shipped</option>';
+            // // string += '<option>Item has arrived</option>';
+            // string += '</select>';
+            // string += '<br><button onclick=updateItemStatus("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Update Status</button>';
+            // string += '</div>';
+            // string += '<br><bold>Status of offered item</bold>';
+            string += '<div>';
+            string += '<p>Update your item\'s status:</p>';
+            string += '<br><button onclick=updateYourItem("'+items[i].key+'") class="btn btn-info">Item Shipped</button>';
             string += '</div>';
-            string += '<br><bold>Status of offered item</bold>';
+            string += '<div>';
+            string += '<p>Status of offered item:</p>';
+            if(items[i].offers[off_key[j]].shipped == "0") {
+              string += '<br><p>Item has not been shipped</p>';
+            }
+            else {
+              string += '<br><p>Item has been shipped. Click the button below if the item has arrived.</p>';
+              string += '<br><button onclick=offeredItemArrived("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Item Arrived</button>';
+            }
+            string += '</div>';
           }
           else {
             string += '&nbsp;&nbsp;<button onclick=acceptOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Accept</button>';
@@ -203,8 +217,45 @@
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     return firebase.database().ref('/items/'+itemID+'/offer/'+offerKey).remove();
   }
-  function updateOffer(offerKey, itemID) {
-
+  function updateYourItem(itemID) {
+    // Update the shipping status of your item
+    firebase.database().ref('/items/'+itemID).once('value').then(function(snapshot) {
+      var pushData = {
+        arrived: snapshot.val().arrived,
+        date: snapshot.val().date,
+        email: snapshot.val().email,
+        itemCategory: snapshot.val().itemCategory,
+        itemDescription: snapshot.val().itemDescription,
+        itemName: snapshot.val().itemName,
+        offer: snapshot.val().offer,
+        pic_1: snapshot.val().pic_1,
+        rating: snapshot.val().rating,
+        shipped: 1,
+        url: snapshot.val().url
+      };
+      var updates = {};
+      updates['/items/'+itemID] = pushData;
+      return firebase.database().ref().update(updates);
+    });
+  }
+  function offeredItemArrived(offerKey, itemID) {
+    // Updates the arrived field in the offer reference
+    firebase.database().ref('/items/'+itemID+'/offer/'+offerKey).once('value').then(function(snapshot) {
+      var pushData = {
+        accepted: snapshot.val().accepted,
+        arrived: 1,
+        date: snapshot.val().date,
+        email: snapshot.val().email,
+        item: snapshot.val().item,
+        itemName: snapshot.val().itemName,
+        uid: snapshot.val().uid,
+        shipped: snapshot.val().shipped,
+        accepted: snapshot.val().accepted
+      };
+      var updates = {};
+      updates['/items/'+itemID+'/offer/'+offerKey] = pushData;
+      return firebase.database().ref().update(updates);
+    });
   }
 </script>
 
