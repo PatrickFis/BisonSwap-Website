@@ -131,8 +131,13 @@
             string += '<div class="panel-body">' + '<b>Offered item:&nbsp;</b>' + items[i].offers[off_key[j]].itemName;
             var chat_emails = [firebase.auth().currentUser.email, items[i].email];
             chat_emails = chat_emails.sort();
-            string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>'
-            string += '&nbsp;&nbsp;<button onclick=extendOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Extend Offer</button>';
+            string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>';
+            if(items[i].offers[off_key[j]].accepted == "1") {
+              string += "Offer accepted";
+            }
+            else {
+              string += '&nbsp;&nbsp;<button onclick=extendOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Extend Offer</button>';
+            }
             string += '</div>'
             string += '<div class="panel-footer">Panel Footer</div>';
             string += '</div>';
