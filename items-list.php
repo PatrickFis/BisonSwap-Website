@@ -64,7 +64,7 @@
       firebase.initializeApp(config);
     </script>
     <script>
-      function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, url, key) {
+      function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, url, key, offer) {
         this.date = date;
         this.email = email;
         this.itemCategory = itemCategory;
@@ -74,6 +74,7 @@
         this.rating = rating;
         this.url = url;
         this.key = key;
+        this.offer = offer;
       }
       firebase.database().ref('/items/').once('value').then(function(snapshot) {
         var items = [];
@@ -86,7 +87,8 @@
           childSnapshot.val().pic_1,
           childSnapshot.val().rating,
           childSnapshot.val().url,
-          childSnapshot.key);
+          childSnapshot.key,
+          childSnapshot.val().offer);
           var item = new Item(
             childSnapshot.val().date,
             childSnapshot.val().email,
@@ -96,7 +98,8 @@
             childSnapshot.val().pic_1,
             childSnapshot.val().rating,
             childSnapshot.val().url,
-            childSnapshot.key
+            childSnapshot.key,
+            childSnapshot.val().offer
           );
           items.push(item);
         });
@@ -105,6 +108,20 @@
 
         var string = "";
         for(var i = 0; i < items.length; i++) {
+          var accept = 0;
+          if(items[i].offer != null) {
+            console.log("NOT NULL");
+            var off_key = Object.keys(items[i].offer);
+            console.log(off_key);
+            for(var j = 0; j < off_key.length; j++) {
+              if(items[i].offer[off_key[j]].accepted == "1") {
+                accept = 1;
+              }
+            }
+          }
+          if(accept == 1) {
+            continue;
+          }
           string += '<div class="col-md-4 portfolio-item">';
           string += '<a href="#">';
           // Replace src with image from database
