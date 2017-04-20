@@ -136,7 +136,15 @@
           chat_emails = chat_emails.sort();
           string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a>';
           if(items[i].offers[off_key[j]].accepted == "1") {
-            string += "Offer accepted.";
+            string += "&nbsp;&nbsp;Offer accepted.";
+            string += '<div class="form-group">';
+            string += '<label for="sel1">Item Status:</label>';
+            string += '<select class="form-control" id="sel1">';
+            string += '<option>Item has not been shipped</option>';
+            string += '<option>Item has been shipped</option>';
+            // string += '<option>Item has arrived</option>';
+            string += '</select>';
+            string += '</div>';
           }
           else {
             string += '&nbsp;&nbsp;<button onclick=acceptOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Accept</button>';
