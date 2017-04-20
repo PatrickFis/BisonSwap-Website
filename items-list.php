@@ -108,6 +108,7 @@
 
         var string = "";
         for(var i = 0; i < items.length; i++) {
+          // Do not display any items that have accepted offers
           var accept = 0;
           if(items[i].offer != null) {
             console.log("NOT NULL");
