@@ -25,6 +25,25 @@ for item in items.each():
     # Get the item key
     item_key = item.key()
     date_ref = item.val()['date']
+    acceptedOffer = 0
     # Delete the item if it's older than 14 days
     if(epoch_time - int(date_ref)) > 1210000000:
-        db.child("items").child(item_key).remove()
+        try:
+            # Check if the item has an accepted offer
+            offers = db.child("items").child(item_key).child("offer").child().get()
+            for offer in offers.each():
+                # Check if any of the offers have been accepted
+                accepted = offer.val()['accepted']
+                #print(accepted)
+                if(int(accepted) == 1):
+                    acceptedOffer = 1
+            if(acceptedOffer == 1):
+                continue
+            else:
+                db.child("items").child(item_key).remove()
+        except TypeError:
+            print("No offers")
+        except KeyError:
+            print("No offers")
+        except AttributeError:
+            print("No offers")

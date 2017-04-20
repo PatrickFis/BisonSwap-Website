@@ -27,16 +27,16 @@ for item in items.each():
     try:
         # Get the offer using the item key
         offer = db.child("items").child(item_key).child("offer").child().get()
-        #print(offer.val()[list(offer.val())[0]]['date'])
-        # Get the time that the offer was submitted
-        date_ref = offer.val()[list(offer.val())[0]]['date']
-        # Skip the deletion if the offer was accepted
-        accepted = offer.val()[list(offer.val())[0]]['accepted']
-        if(int(accepted) == 1):
-            continue
-        # Remove the offer if it is older than 3 days
-        if(epoch_time - int(date_ref)) > 259200000:
-            db.child("items").child(item_key).child("offer").child().remove()
+        for offers in offer.each():
+            #print(offers.val()['date'])
+            # Get the time that the offer was submitted
+            date_ref = offers.val()['date']
+            accepted = offers.val()['accepted']
+            if(int(accepted) == 1):
+                continue
+            elif(epoch_time - int(date_ref)) > 259200000:
+                db.child("items").child(item_key).child("offer").child(offers.key()).remove()
+
     except TypeError:
         print("No offers")
     except KeyError:
