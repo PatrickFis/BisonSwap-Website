@@ -134,6 +134,20 @@
             string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>';
             if(items[i].offers[off_key[j]].accepted == "1") {
               string += "Offer accepted";
+              string += '<div>';
+              string += '<p>Update your item\'s status:</p>';
+              string += '<br><button onclick=updateYourItem("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Item Shipped</button>';
+              string += '</div>';
+              string += '<div>';
+              string += '<p>Status of other item:</p>';
+              if(items[i].shipped == "0") {
+                string += '<br><p>Item has not been shipped</p>';
+              }
+              else {
+                string += '<br><p>Item has been shipped. Click the button below if the item has arrived.</p>';
+                string += '<br><button onclick=otherItemArrived("'+items[i].key+'") class="btn btn-info">Item Arrived</button>';
+              }
+              string += '</div>';
             }
             else {
               string += '&nbsp;&nbsp;<button onclick=extendOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Extend Offer</button>';
@@ -176,6 +190,46 @@
    x.className = "show";
    // After 3 seconds, remove the show class from DIV
    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
+  function updateYourItem(offerKey, itemID) {
+    // Update the shipping status of your item
+    firebase.database().ref('/items/'+itemID+'/offer/'+offerKey).once('value').then(function(snapshot) {
+      var pushData = {
+        accepted: snapshot.val().accepted,
+        arrived: snapshot.val().arrived,
+        date: snapshot.val().date,
+        email: snapshot.val().email,
+        item: snapshot.val().item,
+        itemName: snapshot.val().itemName,
+        uid: snapshot.val().uid,
+        shipped: 1,
+        accepted: snapshot.val().accepted
+      };
+      var updates = {};
+      updates['/items/'+itemID+'/offer/'+offerKey] = pushData;
+      return firebase.database().ref().update(updates);
+    });
+  }
+  function otherItemArrived(itemID) {
+    // Update the arrival status of the item you traded for
+    firebase.database().ref('/items/'+itemID).once('value').then(function(snapshot) {
+      var pushData = {
+        arrived: 1,
+        date: snapshot.val().date,
+        email: snapshot.val().email,
+        itemCategory: snapshot.val().itemCategory,
+        itemDescription: snapshot.val().itemDescription,
+        itemName: snapshot.val().itemName,
+        offer: snapshot.val().offer,
+        pic_1: snapshot.val().pic_1,
+        rating: snapshot.val().rating,
+        shipped: snapshot.val().shipped,
+        url: snapshot.val().url
+      };
+      var updates = {};
+      updates['/items/'+itemID] = pushData;
+      return firebase.database().ref().update(updates);
+    });
   }
 </script>
 

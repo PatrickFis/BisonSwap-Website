@@ -137,16 +137,6 @@
           string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a>';
           if(items[i].offers[off_key[j]].accepted == "1") {
             string += "&nbsp;&nbsp;Offer accepted.";
-            // string += '<div class="form-group">';
-            // string += '<label for="sel1">Update your item\'s status:</label>';
-            // string += '<select class="form-control" id="sel1">';
-            // string += '<option>Item has not been shipped</option>';
-            // string += '<option>Item has been shipped</option>';
-            // // string += '<option>Item has arrived</option>';
-            // string += '</select>';
-            // string += '<br><button onclick=updateItemStatus("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Update Status</button>';
-            // string += '</div>';
-            // string += '<br><bold>Status of offered item</bold>';
             string += '<div>';
             string += '<p>Update your item\'s status:</p>';
             string += '<br><button onclick=updateYourItem("'+items[i].key+'") class="btn btn-info">Item Shipped</button>';
