@@ -118,7 +118,7 @@
           // If the user has made an offer on an item
           if(items[i].offers[off_key[j]].email == firebase.auth().currentUser.email) {
             string += '<div class="col-md-6 portfolio-item">';
-            string += '<a href="#">';
+            string += '<a href="item.php?key='+items[i].key+'">';
             // Replace src with image from database
             string += '<img height=400 width=100% src="'+items[i].url+'" id ="pic_'+i+'" alt="">';
             string += '</a>';

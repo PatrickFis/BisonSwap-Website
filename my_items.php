@@ -131,7 +131,7 @@
         // Get the key for the offers object and use it to grab the name and other information
         var off_key = Object.keys(items[i].offers);
         for(var j = 0; j < off_key.length; j++) {
-          string += '<div class="panel-body">'+items[i].offers[off_key[j]].itemName;
+          string += '<div class="panel-body"><a href="item.php?key='+items[i].offers[off_key[j]].item+'">'+items[i].offers[off_key[j]].itemName+'</a>';
           var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key[j]].email];
           chat_emails = chat_emails.sort();
           string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a>';
