@@ -33,10 +33,8 @@
             </div>
             <div class="modal-body" id="item_list">
             </div>
-            <div class="container">
-              <p>Choose the item that you wish to trade. The item owner has 72 hours to accept your offer.
-              You may extend your offers on the My Offers page.</p>
-            </div>
+            <p>Choose the item that you wish to trade. The item owner has 72 hours to accept your offer.
+            You may extend your offers on the My Offers page.</p>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Trade this item</button>
             </div>
