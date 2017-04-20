@@ -134,9 +134,14 @@
           string += '<div class="panel-body">'+items[i].offers[off_key[j]].itemName;
           var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key[j]].email];
           chat_emails = chat_emails.sort();
-          string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a>'
-          string += '&nbsp;&nbsp;<button onclick=acceptOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Accept</button>';
-          string += '&nbsp;&nbsp;<button onclick=rejectOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Reject</button>';
+          string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a>';
+          if(items[i].offers[off_key[j]].accepted == "1") {
+            string += "Offer accepted.";
+          }
+          else {
+            string += '&nbsp;&nbsp;<button onclick=acceptOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Accept</button>';
+            string += '&nbsp;&nbsp;<button onclick=rejectOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Reject</button>';
+          }
           string += '</div>'
           }
         }
