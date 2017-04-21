@@ -70,13 +70,12 @@ FriendlyChat.prototype.onAuthStateChanged = function(user) {
     this.userName.removeAttribute('hidden');
     // this.userPic.removeAttribute('hidden');
     this.signOutButton.removeAttribute('hidden');
-
     // Hide sign-in button.
     this.signInButton.setAttribute('hidden', 'true');
-    firebase.database().ref('users/').child(firebase.auth().currentUser.uid).update({
-      "created": 1
+    // Add the user to the users database for use later.
+    return firebase.database().ref('users/' + firebase.auth().currentUser.uid).update({
+      exists: 1
     });
-
   } else { // User is signed out!
     // Hide user's profile and sign-out button.
     this.userName.setAttribute('hidden', 'true');
