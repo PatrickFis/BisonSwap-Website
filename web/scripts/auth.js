@@ -73,6 +73,9 @@ FriendlyChat.prototype.onAuthStateChanged = function(user) {
 
     // Hide sign-in button.
     this.signInButton.setAttribute('hidden', 'true');
+    firebase.database().ref('users/').child(firebase.auth().currentUser.uid).update({
+      "created": 1
+    });
 
   } else { // User is signed out!
     // Hide user's profile and sign-out button.

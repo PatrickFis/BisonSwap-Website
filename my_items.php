@@ -157,7 +157,7 @@
               // If the item has arrived, show this instead of the item arrived button.
               if(items[i].offers[off_key[j]].arrived == "1") {
                 string += '<br><p>Item has arrived. Click the button below to provide feedback.</p>';
-                string += '<br><button onclick=provideFeedback("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Provide Feedback</button>';
+                string += '<br><a href="offerFeedback.php?itemKey='+items[i].key+'&offerKey='+off_key[j]+'" class="btn btn-info">Provide Feedback</a>';
               }
               // Show this if the item has been shipped.
               else {

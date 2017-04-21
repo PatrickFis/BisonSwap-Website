@@ -153,7 +153,7 @@
                 // Display this if the item has arrived
                 if(items[i].arrived == "1") {
                   string += '<br><p>Item has arrived. Click the button below to provide feedback.</p>';
-                  string += '<br><button onclick=provideFeedback("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Provide Feedback</button>';
+                  string += '<br><a href="itemFeedback.php?itemKey='+items[i].key+'" class="btn btn-info">Provide Feedback</a>';
                 }
                 // Display this if the item has not arrived
                 else {
