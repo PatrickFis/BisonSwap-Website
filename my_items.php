@@ -268,6 +268,9 @@
   }
 </script>
 
+<script>
+  //TODO jQuery to gracefully remove portions of the page.
+</script>
 
 <script src="web/scripts/auth.js"></script>
 
