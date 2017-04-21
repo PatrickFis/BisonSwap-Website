@@ -149,7 +149,8 @@
       date: new Date().getTime(),
       accepted: 0,
       shipped: 0,
-      arrived: 0
+      arrived: 0,
+      rated: 0
     }
     var updates = {};
     var newPushKey = firebase.database().ref().child('/items/').push().key;

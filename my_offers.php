@@ -69,7 +69,7 @@
 </script>
 
 <script>
-  function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, key, offers, url, arrived, shipped) {
+  function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, key, offers, url, arrived, shipped, rated) {
     this.date = date;
     this.email = email;
     this.itemCategory = itemCategory;
@@ -82,6 +82,7 @@
     this.url = url;
     this.arrived = arrived;
     this.shipped = shipped;
+    this.rated = rated;
   }
   firebase.database().ref('/items/').once('value').then(function(snapshot) {
     var items = [];
@@ -97,7 +98,9 @@
       childSnapshot.val().offer,
       childSnapshot.val().url,
       childSnapshot.val().arrived,
-      childSnapshot.val().shipped);
+      childSnapshot.val().shipped,
+      childSnapshot.val().rated
+    );
       var item = new Item(
         childSnapshot.val().date,
         childSnapshot.val().email,
@@ -110,7 +113,8 @@
         childSnapshot.val().offer,
         childSnapshot.val().url,
         childSnapshot.val().arrived,
-        childSnapshot.val().shipped
+        childSnapshot.val().shipped,
+        childSnapshot.val().rated
       );
       items.push(item);
     });
@@ -194,7 +198,8 @@
         uid: snapshot.val().uid,
         accepted: snapshot.val().accepted,
         shipped: snapshot.val().shipped,
-        arrived: snapshot.val().arrived
+        arrived: snapshot.val().arrived,
+        rated: snapshot.val().rated
       };
       var updates = {};
       updates['/items/'+itemID+'/offer/'+offerKey] = pushData;
@@ -219,7 +224,8 @@
         itemName: snapshot.val().itemName,
         uid: snapshot.val().uid,
         shipped: 1,
-        accepted: snapshot.val().accepted
+        accepted: snapshot.val().accepted,
+        rated: snapshot.val().rated
       };
       var updates = {};
       updates['/items/'+itemID+'/offer/'+offerKey] = pushData;
@@ -240,7 +246,8 @@
         pic_1: snapshot.val().pic_1,
         rating: snapshot.val().rating,
         shipped: snapshot.val().shipped,
-        url: snapshot.val().url
+        url: snapshot.val().url,
+        rated: snapshot.val().rated
       };
       var updates = {};
       updates['/items/'+itemID] = pushData;
