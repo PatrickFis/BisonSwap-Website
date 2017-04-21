@@ -31,6 +31,9 @@
 ?>
 
 <body>
+  <div class="container">
+
+  </div>
   <div class="row">
       <div class="col-lg-12 text-center">
           <h1 class="page-header">Items for Trade
@@ -45,6 +48,7 @@
       </div>
     </div>
   </div>
+</body>
   <?php
     include 'footer.php';
    ?>
