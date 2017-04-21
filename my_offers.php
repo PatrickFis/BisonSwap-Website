@@ -144,8 +144,16 @@
                 string += '<br><p>Item has not been shipped</p>';
               }
               else {
-                string += '<br><p>Item has been shipped. Click the button below if the item has arrived.</p>';
-                string += '<br><button onclick=otherItemArrived("'+items[i].key+'") class="btn btn-info">Item Arrived</button>';
+                // Display this if the item has arrived
+                if(items[i].arrived == "1") {
+                  string += '<br><p>Item has arrived. Click the button below to provide feedback.</p>';
+                  string += '<br><button onclick=provideFeedback("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Provide Feedback</button>';
+                }
+                // Display this if the item has not arrived
+                else {
+                  string += '<br><p>Item has been shipped. Click the button below if the item has arrived.</p>';
+                  string += '<br><button onclick=otherItemArrived("'+items[i].key+'") class="btn btn-info">Item Arrived</button>';
+                }
               }
               string += '</div>';
             }

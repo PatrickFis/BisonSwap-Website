@@ -144,11 +144,20 @@
             string += '<div>';
             string += '<p>Status of offered item:</p>';
             if(items[i].offers[off_key[j]].shipped == "0") {
+              // Show this if the item has not been shipped
               string += '<br><p>Item has not been shipped</p>';
             }
             else {
-              string += '<br><p>Item has been shipped. Click the button below if the item has arrived.</p>';
-              string += '<br><button onclick=offeredItemArrived("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Item Arrived</button>';
+              // If the item has arrived, show this instead of the item arrived button.
+              if(items[i].offers[off_key[j]].arrived == "1") {
+                string += '<br><p>Item has arrived. Click the button below to provide feedback.</p>';
+                string += '<br><button onclick=provideFeedback("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Provide Feedback</button>';
+              }
+              // Show this if the item has been shipped.
+              else {
+                string += '<br><p>Item has been shipped. Click the button below if the item has arrived.</p>';
+                string += '<br><button onclick=offeredItemArrived("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Item Arrived</button>';
+              }
             }
             string += '</div>';
           }
