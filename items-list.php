@@ -31,6 +31,13 @@
 ?>
 
 <body>
+  <div class="row">
+      <div class="col-lg-12">
+          <h1 class="page-header">Items for Trade
+              <small>Be sure to upload your own!</small>
+          </h1>
+      </div>
+  </div>
   <div class="container">
     <div id="test">
       <div class="row" id="replace">
