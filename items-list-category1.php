@@ -32,7 +32,7 @@
 
 <body>
   <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-12 text-center">
           <h1 class="page-header">Items for Trade
               <small>Be sure to upload your own!</small>
           </h1>
