@@ -69,7 +69,7 @@
 </script>
 
 <script>
-  function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, key, offers, url) {
+  function Item(date, email, itemCategory, itemDescription, itemName, pic_1, rating, key, offers, url, arrived, shipped) {
     this.date = date;
     this.email = email;
     this.itemCategory = itemCategory;
@@ -80,6 +80,8 @@
     this.key = key;
     this.offers = offers;
     this.url = url;
+    this.arrived = arrived;
+    this.shipped = shipped;
   }
   firebase.database().ref('/items/').once('value').then(function(snapshot) {
     var items = [];
@@ -93,7 +95,9 @@
       childSnapshot.val().rating,
       childSnapshot.key,
       childSnapshot.val().offer,
-      childSnapshot.val().url);
+      childSnapshot.val().url
+      childSnapshot.val().arrived,
+      childSnapshot.val().shipped);
       var item = new Item(
         childSnapshot.val().date,
         childSnapshot.val().email,
@@ -104,7 +108,9 @@
         childSnapshot.val().rating,
         childSnapshot.key,
         childSnapshot.val().offer,
-        childSnapshot.val().url
+        childSnapshot.val().url,
+        childSnapshot.val().arrived,
+        childSnapshot.val().shipped
       );
       items.push(item);
     });
