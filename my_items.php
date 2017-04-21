@@ -98,7 +98,7 @@
       childSnapshot.val().rating,
       childSnapshot.key,
       childSnapshot.val().offer,
-      childSnapshot.val().url
+      childSnapshot.val().url,
       childSnapshot.val().arrived,
       childSnapshot.val().shipped);
       var item = new Item(
