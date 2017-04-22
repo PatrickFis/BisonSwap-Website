@@ -130,7 +130,7 @@
             string += '<div class="col-md-6 portfolio-item">';
             string += '<a href="item.php?key='+items[i].key+'">';
             // Replace src with image from database
-            string += '<img height=400 width=100% src="'+items[i].url+'" id ="pic_'+i+'" alt="">';
+            string += '<img height=400 width=100% src="uploads/'+items[i].pic_1+'" id ="pic_'+i+'" alt="">';
             string += '</a>';
             string += '<div class="panel panel-default">';
             string += '<div class="panel-heading">';
