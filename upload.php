@@ -193,7 +193,7 @@ function addItem() {
   // if(pic_1_name.length < 4) {
   //   pic_1_name = '0';
   // }
-  /*else*/ pic_1_name = 'images/' + user.uid + '/' + pic_1_name.substring(pic_1_name.lastIndexOf('\\')+1, pic_1_name.length);
+  /*else*/ pic_1_name = 'images~' + user.uid + '~' + pic_1_name.substring(pic_1_name.lastIndexOf('\\')+1, pic_1_name.length);
   var pushData = {
     email: user.email,
     itemName: document.getElementById("itemname").value,
