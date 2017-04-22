@@ -47,7 +47,7 @@ if (!empty($_GET['submit'])) {
         $valid = false;
       }
       // Check file size
-      if ($_FILES["fileToUpload"]["size"] > 500000) {
+      if ($_FILES["fileToUpload"]["size"] > 500000000) {
         $error_messages[] = "Sorry, your file is too large.";
         $valid = false;
       }
@@ -90,12 +90,75 @@ if (!empty($_GET['submit'])) {
   <?php include 'navbar.php'; ?>
   <?php echo implode('<br>', $error_messages); ?>
 
-<form action="upload.php?submit=true" method="post" enctype="multipart/form-data">
+  <div class="container">
+    <div class="rows">
+      <div class="col-sm-8">
+        <div class="form">
+          <form action="upload.php?submit=true" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <h2 class="">Upload your item information</h2>
+              <p>Your item will be removed after 14 days if no offers have been accepted.
+                Offers will be automatically retracted after 72 hours unless the owner
+                extends their offer.</p>
+              </div>
+              <div class="form-group">
+                <hr />
+              </div>
+              <div class="form-group">
+                <label for="itemname">Item Name:</label>
+                <input type="itemname" class="form-control" id="itemname">
+              </div>
+              <div class="form-group">
+                <label for="cat">Category:</label>
+                <select class="form-control" id="cat">
+                  <option value disabled selected style="display: none;">Select Category</option>
+                  <option>Cat 1</option>
+                  <option>Cat 2</option>
+                  <option>Cat 3</option>
+                  <option>Cat 4</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="condition">Item Condition:</label>
+                <select class="form-control" id="condition">
+                  <option value disabled selected style="display: none;">-Select-</option>
+                  <option>1 - Like new</option>
+                  <option>2 - Very Good</option>
+                  <option>3 - Good</option>
+                  <option>4 - Fair</option>
+                  <option>5 - Acceptable</option>
+                  <option>6 - Has defects</option>
+                  <option>7 - Slightly damaged</option>
+                  <option>8 - Need repair</option>
+                </select>
+              </div>
+              <input type='text' name='uid' id='uid' class="hidden">
+              <div class="form-group">
+                <label for="item-description">Item Description:</label>
+                <textarea class="form-control" rows="5" id="item-description"></textarea>
+              </div>
+              <div class="form-group">
+                <p><b>Upload an image</b></p>
+              </div>
+              <div class="form-group">
+                <input class="btn btn-default btn-file" type="file" name="fileToUpload" id="pic-1">
+              </div>
+      <div class="form-group">
+        <hr />
+      </div>
+      <input type="submit" value="Submit" name="submit" onclick="addItem()">
+      <!-- <button type="submit" class="btn btn-success" onclick="addItem()">Submit</button> -->
+    </form>
+  </div>
+</div>
+</div>
+</div>
+<!-- <form action="upload.php?submit=true" method="post" enctype="multipart/form-data">
     Select image to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type='text' name='uid' id='uid' class="hidden">
     <input type="submit" value="Upload Image" name="submit" onclick=sayHello()>
-</form>
+</form> -->
 
 <script>
   $(document).ready(function () {
@@ -119,6 +182,40 @@ if (!empty($_GET['submit'])) {
       }
     });
     // alert(user.email);
+  }
+</script>
+
+<script>
+function addItem() {
+  var user = firebase.auth().currentUser;
+  // var storageRef = firebase.storage().ref();
+  var pic_1_name = document.getElementById("pic-1").value;
+  // if(pic_1_name.length < 4) {
+  //   pic_1_name = '0';
+  // }
+  /*else*/ pic_1_name = 'images/' + user.uid + '/' + pic_1_name.substring(pic_1_name.lastIndexOf('\\')+1, pic_1_name.length);
+  var pushData = {
+    email: user.email,
+    itemName: document.getElementById("itemname").value,
+    itemCategory: document.getElementById("cat").value,
+    itemDescription: document.getElementById("item-description").value,
+    date: new Date().getTime(),
+    //itemPictures: document.getElementById("pic-1").value,
+    pic_1: pic_1_name,
+    rating: document.getElementById("condition").value,
+    shipped: 0,
+    arrived: 0,
+    rated: 0
+  };
+  var newPushKey = firebase.database().ref().child('items').push().key;
+  var updates = {};
+  updates['/items/' + newPushKey] = pushData;
+  // Get the first image uploaded by the user
+  if(pic_1_name != '0') {
+    var file1 = document.getElementById("pic-1").files[0];
+    // var uploadTask = storageRef.child(pic_1_name).put(file1);
+    }
+    return firebase.database().ref().update(updates);
   }
 </script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
