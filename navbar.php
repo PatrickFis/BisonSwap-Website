@@ -36,7 +36,7 @@
         <div style="position:absolute; width:232px; z-index:1;background-color:#fff;" class="entry"></div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="add-new-item.php">Upload Item</a></li>
+        <li><a href="upload.php">Upload Item</a></li>
         <li><a href="my_items.php">My Items</a></li>
         <li><a href="my_offers.php">My Offers</a></li>
         <li><a href="items-list.php">Items</a></li>
