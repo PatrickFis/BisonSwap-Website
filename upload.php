@@ -3,8 +3,9 @@ $error_messages = [];
 
 // check if the form was submitted
 if (!empty($_GET['submit'])) {
-  
   $valid = true;
+  $uid = $_POST['uid'];
+  // echo $_POST['uid'];
 
   // check if there are values in $_POST
   if (!isset($_POST['submit'])) {
@@ -29,7 +30,8 @@ if (!empty($_GET['submit'])) {
 
     if ($valid) {
       $target_dir = "uploads/";
-      $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+      //$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+      $target_file = $target_dir . 'images~' . $uid . '~' . basename($_FILES["fileToUpload"]["name"]);
       $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
       // Check if image file is a actual image or fake image
       $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -72,16 +74,69 @@ if (!empty($_GET['submit'])) {
 
 ?>
 <!DOCTYPE html>
+<html lang="en">
+<script src="http://www.w3schools.com/lib/w3data.js"></script><div w3-include-html="content.html"></div>
+<head>
+  <title>Add Item | Bison Swap</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/helper.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <html>
 <body>
-
+  <?php include 'navbar.php'; ?>
   <?php echo implode('<br>', $error_messages); ?>
 
 <form action="upload.php?submit=true" method="post" enctype="multipart/form-data">
     Select image to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
+    <input type='text' name='uid' id='uid' class="hidden">
+    <input type="submit" value="Upload Image" name="submit" onclick=sayHello()>
 </form>
 
+<script>
+  $(document).ready(function () {
+    alertEmail();
+  });
+</script>
+
+<script>
+  function alertEmail() {
+    var user = firebase.auth().currentUser;
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        // console.log(user.email);
+        document.getElementById('uid').value = user.uid;
+        // console.log(user.uid);
+        // alert(document.getElementById('uid').value);
+      } else {
+        // No user is signed in.
+        console.log("?");
+      }
+    });
+    // alert(user.email);
+  }
+</script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+<script>
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyA0saZpdhgWuQ5MvD81I3K09M0Wbk31c6Q",
+  authDomain: "bisonswap-a0af2.firebaseapp.com",
+  databaseURL: "https://bisonswap-a0af2.firebaseio.com",
+  storageBucket: "bisonswap-a0af2.appspot.com",
+  messagingSenderId: "307753783953"
+};
+firebase.initializeApp(config);
+</script>
+<script src="web/scripts/auth.js"></script>
 </body>
 </html>
