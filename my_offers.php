@@ -246,7 +246,7 @@
         pic_1: snapshot.val().pic_1,
         rating: snapshot.val().rating,
         shipped: snapshot.val().shipped,
-        url: snapshot.val().url,
+        //url: snapshot.val().url,
         rated: snapshot.val().rated
       };
       var updates = {};
