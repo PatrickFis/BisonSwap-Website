@@ -205,7 +205,8 @@ function addItem() {
     rating: document.getElementById("condition").value,
     shipped: 0,
     arrived: 0,
-    rated: 0
+    rated: 0,
+    uid: user.uid
   };
   var newPushKey = firebase.database().ref().child('items').push().key;
   var updates = {};

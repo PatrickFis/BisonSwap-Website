@@ -64,9 +64,8 @@
   <script>
     function feedback(itemKey) {
       // Give the user a rating
-      firebase.database().ref('/items/'+itemKey+).once('value').then(function(snapshot) {
+      firebase.database().ref('items/'+itemKey).once('value').then(function(snapshot) {
         var itemKey = document.getElementById("itemKey").value;
-        var offerKey = document.getElementById("offerKey").value;
         var condition = document.getElementById("condition").value;
         var uid = snapshot.val().uid;
         console.log(uid);
