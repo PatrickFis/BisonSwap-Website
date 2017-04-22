@@ -245,7 +245,8 @@
         rating: snapshot.val().rating,
         shipped: 1,
         //url: snapshot.val().url,
-        rated: snapshot.val().rated
+        rated: snapshot.val().rated,
+        uid: snapshot.val().uid
       };
       var updates = {};
       updates['/items/'+itemID] = pushData;
