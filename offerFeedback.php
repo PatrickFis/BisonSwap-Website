@@ -74,7 +74,23 @@
         var offerKey = document.getElementById("offerKey").value;
         var condition = document.getElementById("condition").value;
         var uid = snapshot.val().uid;
-        console.log(uid);
+        // console.log(uid);
+        // Update the rated field in items/itemKey/offer/offerKey
+        var updateOfferRated = {
+          accepted: snapshot.val().accepted,
+          arrived: snapshot.val().arrived,
+          date: snapshot.val().date,
+          email: snapshot.val().email,
+          item: snapshot.val().item,
+          itemName: snapshot.val().itemName,
+          uid: snapshot.val().uid,
+          shipped: snapshot.val().shipped,
+          accepted: snapshot.val().accepted,
+          rated: 1
+        };
+        var updateOffer = {};
+        updateOffer['/items/'+itemKey+'/offer/'+offerKey] = updateOfferRated;
+        firebase.database().ref().update(updateOffer);
         var pushData = {
           rating: parseInt(condition)
         };
