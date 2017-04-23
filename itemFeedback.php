@@ -68,7 +68,27 @@
         var itemKey = document.getElementById("itemKey").value;
         var condition = document.getElementById("condition").value;
         var uid = snapshot.val().uid;
-        console.log(uid);
+        // console.log(uid);
+        // Update the rated field in items/itemKey
+        var updateRatedItem = {
+          arrived: snapshot.val().arrived,
+          date: snapshot.val().date,
+          email: snapshot.val().email,
+          itemCategory: snapshot.val().itemCategory,
+          itemDescription: snapshot.val().itemDescription,
+          itemName: snapshot.val().itemName,
+          offer: snapshot.val().offer,
+          pic_1: snapshot.val().pic_1,
+          rating: snapshot.val().rating,
+          shipped: snapshot.val().shipped,
+          //url: snapshot.val().url,
+          rated: 1,
+          uid: snapshot.val().uid
+        };
+        updateItem = {};
+        updateItem['items/' + itemKey] = updateRatedItem;
+        firebase.database().ref().update(updateItem);
+        // Give the user a rating
         var pushData = {
           rating: parseInt(condition)
         };
