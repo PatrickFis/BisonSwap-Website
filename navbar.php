@@ -20,7 +20,7 @@
             <li><a href="items-list-category1.php">Home Goods</a></li>
             <li><a href="items-list-category2.php">Electronics</a></li>
             <li><a href="items-list-category3.php">Clothing</a></li>
-            <li><a href="items-list-category4.php">Miscellaneous</a></li>
+            <li><a href="item-list-category4.php">Miscellaneous</a></li>
           </ul>
         </li>
       </ul>
