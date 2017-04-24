@@ -112,10 +112,10 @@ if (!empty($_GET['submit'])) {
                 <label for="cat">Category:</label>
                 <select class="form-control" id="cat">
                   <option value disabled selected style="display: none;">Select Category</option>
-                  <option>Cat 1</option>
-                  <option>Cat 2</option>
-                  <option>Cat 3</option>
-                  <option>Cat 4</option>
+                  <option>Home Goods</option>
+                  <option>Electronics</option>
+                  <option>Clothing</option>
+                  <option>Miscellaneous</option>
                 </select>
               </div>
               <div class="form-group">
