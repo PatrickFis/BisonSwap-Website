@@ -112,19 +112,25 @@
 
         var string = "";
         for(var i = 0; i < items.length; i++) {
-          string += '<div class="col-md-4 portfolio-item">';
-          string += '<a href="#">';
-          // Replace src with image from database
-          string += '<img height=300 width=250 src="'+items[i].url+'" id ="pic_'+i+'" alt="">';
-          string += '</a>';
-          string += '<h3>';
-          string += '<a href="item.php?key='+items[i].key+'">'+items[i].itemName+'</a>';
-          string += '</h3>';
-          string += '<p>'+items[i].itemDescription+'</p>';
-          string += '<p> Category: '+items[i].itemCategory+'</p>';
-          string += '<p> Rating: '+items[i].rating+'</p>';
-          // string += '<div hidden>'+items[i].key+'</div>';
-          string += '</div>';
+          if (items[i].itemCategory == 'Miscellaneous')
+          {
+            string += '<div class="col-md-4 portfolio-item">';
+            string += '<a href="#">';
+            // Replace src with image from database
+            string += '<img height=300 width=250 src="'+items[i].url+'" id ="pic_'+i+'" alt="">';
+            string += '</a>';
+            string += '<h3>';
+            string += '<a href="item.php?key='+items[i].key+'">'+items[i].itemName+'</a>';
+            string += '</h3>';
+            string += '<p>'+items[i].itemDescription+'</p>';
+            string += '<p> Category: '+items[i].itemCategory+'</p>';
+            string += '<p> Rating: '+items[i].rating+'</p>';
+            // string += '<div hidden>'+items[i].key+'</div>';
+            string += '</div>';
+          }
+          else {
+            continue;
+          }
         }
         document.getElementById("replace").innerHTML = string;
         // var urls = [];
