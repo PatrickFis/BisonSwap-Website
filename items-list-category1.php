@@ -112,7 +112,7 @@
 
         var string = "";
         for(var i = 0; i < items.length; i++) {
-          if (items[i].itemCategory == 'Home Goods')
+          if (items[i].itemCategory == 'Home Goods' || items[i].itemCategory == 'Cat 1')
           {
             string += '<div class="col-md-4 portfolio-item">';
             string += '<a href="#">';

@@ -105,7 +105,7 @@
 
         var string = "";
         for(var i = 0; i < items.length; i++) {
-          if (items[i].itemCategory == 'Electronics')
+          if (items[i].itemCategory == 'Electronics' || items[i].itemCategory == 'Cat 2')
           {
             string += '<div class="col-md-4 portfolio-item">';
             string += '<a href="#">';

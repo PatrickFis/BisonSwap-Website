@@ -112,7 +112,7 @@
 
         var string = "";
         for(var i = 0; i < items.length; i++) {
-          if (items[i].itemCategory == 'Miscellaneous')
+          if (items[i].itemCategory == 'Miscellaneous' || items[i].itemCategory == '4')
           {
             string += '<div class="col-md-4 portfolio-item">';
             string += '<a href="#">';
