@@ -86,11 +86,12 @@
           uid: snapshot.val().uid,
           shipped: snapshot.val().shipped,
           accepted: snapshot.val().accepted,
-          rated: 1
+          rated: 1,
+          pic_1: snapshot.val().pic_1
         };
         var updateOffer = {};
         updateOffer['/items/'+itemKey+'/offer/'+offerKey] = updateOfferRated;
-        firebase.database().ref().update(updateOffer);
+        firebase.database().ref().update(updateOffer);l
         var pushData = {
           rating: parseInt(condition)
         };

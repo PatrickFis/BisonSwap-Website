@@ -225,7 +225,8 @@
         uid: snapshot.val().uid,
         shipped: 1,
         accepted: snapshot.val().accepted,
-        rated: snapshot.val().rated
+        rated: snapshot.val().rated,
+        pic_1: snapshot.val().pic_1
       };
       var updates = {};
       updates['/items/'+itemID+'/offer/'+offerKey] = pushData;

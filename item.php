@@ -117,7 +117,7 @@
     // console.log(offerItems);
     var string = '<div class="list-group">';
     for(var i = 0; i < offerItems.length; i++) {
-      string += '<a href="#" class="list-group-item" id="' + offerItems[i].key + '">' + offerItems[i].itemName + '</a>';
+      string += '<a href="#" class="list-group-item" id="' + offerItems[i].key + "," + offerItems[i].key + '">' + offerItems[i].itemName + '</a>';
     }
     string += '</div>';
     document.getElementById("item_list").innerHTML = string;
@@ -137,7 +137,9 @@
   function makeOffer(id) {
     var user = firebase.auth().currentUser;
     // Item that you are offering
-    var offerKey = id;
+    var idSplit = id.split(",");
+    var offerKey = idSplit[0];
+    var picKey = idSplit[1];
     // Item that you are making an offer for
     var itemKey = document.getElementById("KEY").value;
     console.log(id);
@@ -150,7 +152,8 @@
       accepted: 0,
       shipped: 0,
       arrived: 0,
-      rated: 0
+      rated: 0,
+      pic_1: picKey
     }
     var updates = {};
     var newPushKey = firebase.database().ref().child('/items/').push().key;
