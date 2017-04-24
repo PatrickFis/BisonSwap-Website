@@ -176,7 +176,7 @@
             string += '</div>';
           }
           else {
-            string += "No offers";
+            //string += "No offers";
           }
         }
       }
