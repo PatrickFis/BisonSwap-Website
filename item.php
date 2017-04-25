@@ -188,7 +188,7 @@
         currentRating = currentRating / ratingCount;
         // Display the rating
         if(ratingCount > 0) {
-          document.getElementById("user-rating").innerHTML = "This user has a rating of " + currentRating + "/10.";
+          document.getElementById("user-rating").innerHTML = "This user has a rating of " + Math.round(currentRating) + "/10.";
         }
         else {
           document.getElementById("user-rating").innerHTML = "This user has not yet been rated.";
