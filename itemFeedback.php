@@ -113,8 +113,9 @@
         updateItem['items/' + itemKey] = updateRatedItem;
         firebase.database().ref().update(updateItem);
         // Give the user a rating
+        r = parseInt(condition) + parseInt(rating2) + parseInt(rating3);
         var pushData = {
-          rating: parseInt(condition) + parseInt(rating2) + parseInt(rating3)
+          rating: r
         };
         var updates = {};
         var newPushKey = firebase.database().ref().child('users').push().key;
