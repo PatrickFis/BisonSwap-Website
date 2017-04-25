@@ -135,7 +135,7 @@
             continue;
           }
           string += '<div class="col-md-4 portfolio-item">';
-          string += '<a href="#">';
+          string += '<a href="item.php?key='+items[i].key+'">';
           // Replace src with image from database
           string += '<img height=300 width=250 src="uploads/'+items[i].pic_1+'" id ="pic_'+i+'" alt="">';
           string += '</a>';
