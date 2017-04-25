@@ -124,6 +124,7 @@
     for(var i = 0; i < items.length; i++) {
       if(items[i].offers != null) {
         var off_key = Object.keys(items[i].offers)
+
         for(var j = 0; j < off_key.length; j++) {
           // If the user has made an offer on an item
           if(items[i].offers[off_key[j]].email == firebase.auth().currentUser.email) {
@@ -138,45 +139,81 @@
             string += items[i].itemName;
             string += '</h4>';
             string += '</div>';
-            string += '<div class="panel-body">' + '<b>Offered item:&nbsp;</b>' + items[i].offers[off_key[j]].itemName;
-            var chat_emails = [firebase.auth().currentUser.email, items[i].email];
-            chat_emails = chat_emails.sort();
-            string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info float-right" role="button">Chat with user</a>';
-            if(items[i].offers[off_key[j]].accepted == "1") {
-              string += "Offer accepted";
-              string += '<div>';
-              string += '<p>Update your item\'s status:</p>';
-              string += '<br><button onclick=updateYourItem("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Item Shipped</button>';
-              string += '</div>';
-              string += '<div>';
-              string += '<p>Status of other item:</p>';
-              if(items[i].shipped == "0") {
-                string += '<br><p>Item has not been shipped</p>';
-              }
-              else {
-                // Display this if the item has arrived
-                if(items[i].arrived == "1") {
-                  string += '<br><p>Item has arrived. Click the button below to provide feedback.</p>';
-                  string += '<br><a href="itemFeedback.php?itemKey='+items[i].key+'" class="btn btn-info">Provide Feedback</a>';
-                }
-                // Display this if the item has not arrived
-                else {
-                  string += '<br><p>Item has been shipped. Click the button below if the item has arrived.</p>';
-                  string += '<br><button onclick=otherItemArrived("'+items[i].key+'") class="btn btn-info">Item Arrived</button>';
-                }
-              }
-              string += '</div>';
+            string += '<div class="panel-body">';
+            if(items[i].offers[off_key[j]].accepted == 0) {
+              // If the item has not yet been accepted display a table with
+              // the offered item's name, a chat button, and an extend offer
+              // button.
+              string += '<table class="table">';
+              string += '<thead>';
+              string += '<tr>';
+              string += '<th>Offered Item</th>';
+              string += '<th>Chat</th>';
+              string += '<th>Extend</th>';
+              string += '</tr>';
+              string += '</thead>';
+              string += '<tbody>';
+              string += '<tr>';
+              string += '<th>'+items[i].offers[off_key[j]].itemName+'</th>';
+              var chat_emails = [firebase.auth().currentUser.email, items[i].email];
+              chat_emails = chat_emails.sort();
+              string += '<th><a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a></th>';
+              string += '<th><button onclick=extendOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Extend Offer</button></th>';
+              string += '</tr>';
+              string += '</tbody>';
+              string += '</table>';
             }
-            else {
-              string += '&nbsp;&nbsp;<button onclick=extendOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Extend Offer</button>';
+            else if(items[i].offers[off_key[j]].accepted == 1) {
+              // If the item has been accepted by the other user, display
+              // a table with the offered items name, a chat button, the
+              // status of the other item, a button to ship your item,
+              // and a button to receive the other item.
+              string += '<table class="table">';
+              string += '<thead>';
+              string += '<tr>';
+              string += '<th>Offered Item</th>';
+              string += '<th>Chat</th>';
+              string += '<th>Ship Your Item</th>';
+              string += '<th>Status of Other Item</th>';
+              string += '<th>Receive Item</th>';
+              string += '</tr>';
+              string += '</thead>';
+              string += '<tbody>';
+              string += '<tr>';
+              string += '<th>'+items[i].offers[off_key[j]].itemName+'</th>';
+              var chat_emails = [firebase.auth().currentUser.email, items[i].email];
+              chat_emails = chat_emails.sort();
+              string += '<th><a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a></th>';
+              if(items[i].offers[off_key[j]].shipped == 0) {
+                // You have not shipped your item yet
+                string += '<th><button onclick=updateYourItem("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Item Shipped</button></th>';
+              }
+              else if(items[i].offers[off_key[j]].shipped == 1) {
+                // You have shipped your item
+                string += '<th>Item shipped</th>';
+              }
+              if(items[i].shipped == 0) {
+                // Other item has not been shipped yet;
+                string += '<th>Not shipped</th>';
+                string += '<th>Not shipped</th>';
+              }
+              else if(items[i].shipped == 1) {
+                if(items[i].arrived == 0) {
+                  string += '<th>Item shipped</th>';
+                  string += '<th><button onclick=otherItemArrived("'+items[i].key+'") class="btn btn-info">Item Arrived</button></th>';
+                }
+                else if(items[i].arrived == 1) {
+                  string += '<th>Item arrived</th>';
+                  string += '<th><a href="itemFeedback.php?itemKey='+items[i].key+'" class="btn btn-info">Provide Feedback</a></th>';
+                }
+              }
+              string += '</tr>';
+              string += '</tbody>';
+              string += '</table>';
             }
-            string += '</div>'
-            string += '<div class="panel-footer">Panel Footer</div>';
             string += '</div>';
             string += '</div>';
-          }
-          else {
-            //string += "No offers";
+            string += '</div>';
           }
         }
       }
