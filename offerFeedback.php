@@ -116,7 +116,7 @@
         };
         var updateOffer = {};
         updateOffer['/items/'+itemKey+'/offer/'+offerKey] = updateOfferRated;
-        firebase.database().ref().update(updateOffer);l
+        firebase.database().ref().update(updateOffer);
         var pushData = {
           rating: parseInt(condition) + parseInt(rating2) + parseInt(rating3)
         };
