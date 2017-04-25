@@ -52,6 +52,28 @@
                 </select>
               </div>
               <div class="form-group">
+                <label for="condition">How likely are you to trade with this person again?</label>
+                <select class="form-control" id="rating2">
+                  <option value disabled selected style="display: none;">-Select-</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="condition">How satisfied are you with this transaction?</label>
+                <select class="form-control" id="rating3">
+                  <option value disabled selected style="display: none;">-Select-</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
                 <hr />
               </div>
               <?php
@@ -74,6 +96,8 @@
         var itemKey = document.getElementById("itemKey").value;
         var offerKey = document.getElementById("offerKey").value;
         var condition = document.getElementById("condition").value;
+        var rating2 = document.getElementById("rating2").value;
+        var rating3 = document.getElementById("rating3").value;
         var uid = snapshot.val().uid;
         // console.log(uid);
         // Update the rated field in items/itemKey/offer/offerKey
@@ -94,7 +118,7 @@
         updateOffer['/items/'+itemKey+'/offer/'+offerKey] = updateOfferRated;
         firebase.database().ref().update(updateOffer);l
         var pushData = {
-          rating: parseInt(condition)
+          rating: parseInt(condition) + parseInt(rating2) + parseInt(rating3)
         };
         var updates = {};
         var newPushKey = firebase.database().ref().child('users').push().key;

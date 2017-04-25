@@ -26,8 +26,7 @@
             <div class="form-group">
               <h2 class="">Provide feedback</h2>
               <p>Use this form to provide feedback about the quality of the
-                item you received. Not providing feedback will result in negative
-                feedback being applied to the other person after a period of 72 hours.</p>
+                item you received.</p>
               </div>
               <div class="form-group">
                 <hr />
@@ -46,6 +45,28 @@
                   <option>8</option>
                   <option>9</option>
                   <option>10</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="condition">How likely are you to trade with this person again?</label>
+                <select class="form-control" id="rating2">
+                  <option value disabled selected style="display: none;">-Select-</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="condition">How satisfied are you with this transaction?</label>
+                <select class="form-control" id="rating3">
+                  <option value disabled selected style="display: none;">-Select-</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
                 </select>
               </div>
               <div class="form-group">
@@ -68,6 +89,8 @@
       firebase.database().ref('items/'+itemKey).once('value').then(function(snapshot) {
         var itemKey = document.getElementById("itemKey").value;
         var condition = document.getElementById("condition").value;
+        var rating2 = document.getElementById("rating2").value;
+        var rating3 = document.getElementById("rating3").value;
         var uid = snapshot.val().uid;
         // console.log(uid);
         // Update the rated field in items/itemKey
@@ -91,7 +114,7 @@
         firebase.database().ref().update(updateItem);
         // Give the user a rating
         var pushData = {
-          rating: parseInt(condition)
+          rating: parseInt(condition) + parseInt(rating2) + parseInt(rating3)
         };
         var updates = {};
         var newPushKey = firebase.database().ref().child('users').push().key;
