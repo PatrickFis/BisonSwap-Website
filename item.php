@@ -180,7 +180,7 @@
         var currentRating = 0;
         ratingSnapshot.forEach(function(childSnapshot) {
           if(childSnapshot.val().rating != null) {
-            ratingCount = ratingCount + 1;
+            ratingCount = ratingCount + 2;
             currentRating = currentRating + childSnapshot.val().rating;
           }
         });
