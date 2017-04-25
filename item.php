@@ -117,7 +117,7 @@
     // console.log(offerItems);
     var string = '<div class="list-group">';
     for(var i = 0; i < offerItems.length; i++) {
-      string += '<a href="#" class="list-group-item" id="' + offerItems[i].key + "," + offerItems[i].key + '">' + offerItems[i].itemName + '</a>';
+      string += '<a href="#" class="list-group-item" id="' + offerItems[i].key + "," + offerItems[i].pic_1 + '">' + offerItems[i].itemName + '</a>';
     }
     string += '</div>';
     document.getElementById("item_list").innerHTML = string;
