@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-4">
             <ul style="list-style-type:none">
-                <li><a style="color:#fff" href="#">Terms of Use</a></li>
+                <li><a style="color:#fff" href="/legal.pdf">Terms of Use</a></li>
                 <li><a style="color:#fff" href="#">Advertise with us</a></li>
             </ul>
         </div>
@@ -20,7 +20,7 @@
             </ul>
         </div>
     </div>
-    
+
     <div class="row">
         <br><br>
         <div class="col-xs-12">
@@ -30,4 +30,4 @@
         </div>
     </div>
 </div>
-</div>  
+</div>
