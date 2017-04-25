@@ -88,7 +88,7 @@ if (!empty($_GET['submit'])) {
 <html>
 <body>
   <?php include 'navbar.php'; ?>
-  <?php echo implode('<br>', $error_messages); ?>
+  <?php //echo implode('<br>', $error_messages); ?>
 
   <div class="container">
     <div class="rows">
