@@ -186,7 +186,13 @@
         });
         // Return the average rating
         currentRating = currentRating / ratingCount;
-        document.getElementById("user-rating").innerHTML = "This user has a rating of " + currentRating + "/10."
+        // Display the rating
+        if(ratingCount > 0) {
+          document.getElementById("user-rating").innerHTML = "This user has a rating of " + currentRating + "/10.";
+        }
+        else {
+          document.getElementById("user-rating").innerHTML = "This user has not yet been rated.";
+        }
         console.log(ratingCount);
         console.log(currentRating);
       });
