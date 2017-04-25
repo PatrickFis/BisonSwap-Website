@@ -140,42 +140,85 @@
         // Get the key for the offers object and use it to grab the name and other information
         var off_key = Object.keys(items[i].offers);
         for(var j = 0; j < off_key.length; j++) {
-          string += '<div class="panel-body"><a href="item.php?key='+items[i].offers[off_key[j]].item+'">'+items[i].offers[off_key[j]].itemName+'</a>';
           var chat_emails = [firebase.auth().currentUser.email, items[i].offers[off_key[j]].email];
           chat_emails = chat_emails.sort();
-          string += '&nbsp;&nbsp;<a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a>';
-          if(items[i].offers[off_key[j]].accepted == "1") {
-            string += "&nbsp;&nbsp;Offer accepted.";
-            string += '<div>';
-            string += '<p>Update your item\'s status:</p>';
-            string += '<br><button onclick=updateYourItem("'+items[i].key+'") class="btn btn-info">Item Shipped</button>';
-            string += '</div>';
-            string += '<div>';
-            string += '<p>Status of offered item:</p>';
-            if(items[i].offers[off_key[j]].shipped == "0") {
-              // Show this if the item has not been shipped
-              string += '<br><p>Item has not been shipped</p>';
+          if(j == 0) {
+            string += '<table class="table">';
+            if(items[i].offers[off_key[j]].accepted == "0") {
+              // Display this table if no offer has been accepted yet
+              string += '<thead>';
+              string += '<tr>';
+              string += '<th>Item Name</th>';
+              string += '<th>Chat</th>';
+              string += '<th>Accept</th>';
+              string += '<th>Reject</th>';
+              string += '</tr>';
+              string += '</thead>';
+              string += '<tbody>';
             }
             else {
-              // If the item has arrived, show this instead of the item arrived button.
-              if(items[i].offers[off_key[j]].arrived == "1") {
-                string += '<br><p>Item has arrived. Click the button below to provide feedback.</p>';
-                string += '<br><a href="offerFeedback.php?itemKey='+items[i].key+'&offerKey='+off_key[j]+'" class="btn btn-info">Provide Feedback</a>';
-              }
-              // Show this if the item has been shipped.
-              else {
-                string += '<br><p>Item has been shipped. Click the button below if the item has arrived.</p>';
-                string += '<br><button onclick=offeredItemArrived("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Item Arrived</button>';
-              }
+              // Display this table if an offer has been accepted
+              string += '<thead>';
+              string += '<tr>';
+              string += '<th>Item Name</th>';
+              string += '<th>Chat</th>';
+              string += '<th>Ship Your Item</th>';
+              string += '<th>Status of Offered Item</th>';
+              string += '<th>Receive Item</th>';
+              string += '</tr>';
+              string += '</thead>';
+              string += '<tbody>';
             }
-            string += '</div>';
+          }
+          if(items[i].offers[off_key[j]].accepted == "0") {
+            // Display a link to the item, a chat button, an accept button,
+            // and a reject button if no offers have been accepted
+            string += '<tr>';
+            string += '<td><a href="item.php?key='+items[i].offers[off_key[j]].item+'">'+items[i].offers[off_key[j]].itemName+'</a></td>';
+            string += '<td><a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a></td>';
+            string += '<td><button onclick=acceptOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Accept</button></td>';
+            string += '<td><button onclick=rejectOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Reject</button></td>';
+            string += '</tr>';
           }
           else {
-            string += '&nbsp;&nbsp;<button onclick=acceptOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Accept</button>';
-            string += '&nbsp;&nbsp;<button onclick=rejectOffer("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Reject</button>';
+            // Display a link to the item, a chat button, a button to ship your
+            // item, the status of the offered item, and a receive item btuton.
+            // Display a feedback button if your the item has been received.
+            string += '<tr>';
+            string += '<td><a href="item.php?key='+items[i].offers[off_key[j]].item+'">'+items[i].offers[off_key[j]].itemName+'</a></td>';
+            string += '<td><a href="web/chat.php?email1='+chat_emails[0]+'&email2='+chat_emails[1]+'" class="btn btn-info" role="button">Chat with user</a></td>';
+            if(items[i].shipped == 0) {
+              // Show a shipping button if you haven't shipped your item yet
+              string += '<td><button onclick=updateYourItem("'+items[i].key+'") class="btn btn-info">Item Shipped</button></td>';
+            }
+            else {
+              // Show this if you have already shipped your item
+              string += '<td>Item shipped</td>';
+            }
+            if(items[i].offers[off_key[j]].shipped == "0") {
+              // Show this if the offered item has not been shipped yet
+              string += '<td>Item not shipped</td>';
+              string += '<td>Item not shipped</td>';
+            }
+            else {
+              // Show this if the offered item has been shipped
+              if(items[i].offers[off_key[j]].arrived == 0) {
+                // Show this if the offered item has not yet arrived
+                string += '<td>Item has been shipped</td>';
+                string += '<td><button onclick=offeredItemArrived("'+off_key[j]+'","'+items[i].key+'") class="btn btn-info">Item Arrived</button></td>';
+              }
+              else {
+                string += '<td>Item has arrived</td>';
+                string += '<td><a href="offerFeedback.php?itemKey='+items[i].key+'&offerKey='+off_key[j]+'" class="btn btn-info">Provide Feedback</a></td>';
+              }
+            }
+            string += '</tr>';
           }
-          string += '</div>'
+          if(j == off_key.length-1) {
+            string += '</tbody>';
+            string += '</table>';
           }
+        }
         }
         else {
           string += '<div class="panel-body">No Offers</div>';
@@ -204,7 +247,8 @@
         accepted: 1,
         shipped: snapshot.val().shipped,
         arrived: snapshot.val().arrived,
-        rated: snapshot.val().rated
+        rated: snapshot.val().rated,
+        pic_1: snapshot.val().pic_1
       };
       var updates = {};
       // Remove all other offers
