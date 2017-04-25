@@ -26,7 +26,8 @@
             <div class="form-group">
               <h2 class="">Provide feedback</h2>
               <p>Use this form to provide feedback about the quality of the
-                item you received.</p>
+                item you received. Not providing feedback will result in negative
+                feedback being applied to the other person after a period of 72 hours.</p>
               </div>
               <div class="form-group">
                 <hr />
