@@ -5,9 +5,11 @@
 	  	</div>
 	  	<div class="col-sm-3">
 	  		<h3 id="item-name"></h3>
-	  		<p><b>Description:<b><p>
+	  		<p><b>Description:<b></p>
 	  		<p id="item-description"></p>
         <!-- Trigger the modal with a button -->
+        <p><b>User's rating:</b></p>
+        <p id="user-rating"></p>
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Make Offer</button>
 
         <?php

@@ -169,6 +169,27 @@
       document.getElementById("item-description").innerHTML = snapshot.val().itemDescription;
       document.getElementById("pic_1").src = 'uploads/' + snapshot.val().pic_1;
       // This portion will download an image based on whatever is in the item reference's pic_1 field
+
+      // Get the user's rating
+      var ratingRef = 'users/' + snapshot.val().uid;
+      console.log(ratingRef);
+      firebase.database().ref(ratingRef).once('value').then(function(ratingSnapshot) {
+        // Store the number of ratings the user has received
+        var ratingCount = 0;
+        // Store the total amount of ratings for this user
+        var currentRating = 0;
+        ratingSnapshot.forEach(function(childSnapshot) {
+          if(childSnapshot.val().rating != null) {
+            ratingCount = ratingCount + 1;
+            currentRating = currentRating + childSnapshot.val().rating;
+          }
+        });
+        // Return the average rating
+        currentRating = currentRating / ratingCount;
+        document.getElementById("user-rating").innerHTML = "This user has a rating of " + currentRating + "/10."
+        console.log(ratingCount);
+        console.log(currentRating);
+      });
       var storage = firebase.storage();
       var path = storage.ref(snapshot.val().pic_1);
       // document.getElementById("pic_1").innerHTML = path;
