@@ -125,6 +125,9 @@
     var string = "";
     for(var i = 0; i < items.length; i++) {
       if(items[i].email == firebase.auth().currentUser.email) {
+      if(i == 0 || i%2==0) {
+        string += '<div class="row">';
+      }
       string += '<div class="col-md-6 portfolio-item">';
       string += '<a href="#">';
       // Replace src with image from database
@@ -227,6 +230,9 @@
         string += '<div class="panel-footer">Panel Footer</div>';
         string += '</div>';
         string += '</div>';
+        if(i == 0 || i%2==0) {
+          string += '</div>';
+        }
       }
       // string += '<div hidden>'+items[i].key+'</div>';
       string += '</div>';
