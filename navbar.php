@@ -54,6 +54,9 @@
     </div>
   </div>
 </nav>
+<div class="container">
+  <img class="img-responsive" style="margin:0 auto;" src="http://placehold.it/800x100?text=banner+ad+here">
+</div>
   <script type="text/javascript" src="http://code.jquery.com/jquery-git2.min.js" ></script>
   <script>
     $(function(){
